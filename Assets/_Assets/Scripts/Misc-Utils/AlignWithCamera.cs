@@ -14,6 +14,6 @@ public class AlignWithCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.forward = cameraTransform.forward;
+        transform.rotation = Quaternion.LookRotation(cameraTransform.forward, cameraTransform.up);
     }
 }

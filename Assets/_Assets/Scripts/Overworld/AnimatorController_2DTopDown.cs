@@ -30,10 +30,10 @@ public class AnimatorController_2DTopDown : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rb.velocity.magnitude > idleCutoffSpeed)
+        if (rb.velocity.magnitude >= idleCutoffSpeed)
         {
             //Moving
-            if (Mathf.Abs(rb.velocity.x * 2) >= Mathf.Abs(rb.velocity.y))
+            if (Mathf.Abs(rb.velocity.x) * 1.1f >= Mathf.Abs(rb.velocity.y))
             {
                 //play horizontal move animation
                 if (rb.velocity.x > 0)

@@ -9,6 +9,7 @@ public class CombatController : MonoBehaviour
     [SerializeField] private GameObject combatParent;
     [Space(10)]
     [SerializeField] private Transform overworldCamera;
+    [SerializeField] private Transform combatCamera_parent;
     [SerializeField] private Transform combatCamera;
     [Space(10)]
     [SerializeField] private Transform player_overworld;
@@ -22,6 +23,7 @@ public class CombatController : MonoBehaviour
     [SerializeField] private Animator combatFloorAnim;
     [Space(5)]
     [SerializeField] private float lerpDuration = 1.0f;
+    [SerializeField] private float cameraSpinDuration = 1.0f;
 
     public void TriggerCombat()
     {
@@ -30,14 +32,19 @@ public class CombatController : MonoBehaviour
 
     private IEnumerator ToCombat()
     {
+        Vector3 heroToEnemy = enemy_overworld.position - player_overworld.position;
+        float heroToEnemyAngle = Mathf.Atan2(heroToEnemy.y, heroToEnemy.x) * Mathf.Rad2Deg;
+        float startAngle = -heroToEnemyAngle + 90.0f;
+        if (startAngle > 180)
+            startAngle -= 360;
+        // Debug.Log(startAngle);
+        combatCamera_parent.eulerAngles = new Vector3(90, 0, startAngle);
+
         yield return null;
         // while (InputHandler.Instance.Interact.Down == false) { yield return null; }
 
         PlaceCombatSpriteRelativeToOverworldSprite(player_overworld, player_combat);
         PlaceCombatSpriteRelativeToOverworldSprite(enemy_overworld, enemy_combat);
-
-        combatCameraAnim.SetTrigger("CombatStarted");
-        combatFloorAnim.SetTrigger("CombatStarted");
 
         yield return null;
         // while (InputHandler.Instance.Interact.Down == false) { yield return null; }
@@ -45,8 +52,15 @@ public class CombatController : MonoBehaviour
         overworldParent.SetActive(false);
         combatParent.SetActive(true);
 
+        combatCameraAnim.SetTrigger("CombatStarted");
+        combatFloorAnim.SetTrigger("CombatStarted");
+
         yield return null;
         // while (InputHandler.Instance.Interact.Down == false) { yield return null; }
+
+        combatCameraAnim.enabled = true;
+        combatFloorAnim.enabled = true;
+        StartCoroutine(SpinCameraParent(startAngle));
 
         StartCoroutine(LerpCombatEntity(player_combat, player_combat_targetPos.position, 1));
         StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_targetPos.position, 4));
@@ -55,11 +69,12 @@ public class CombatController : MonoBehaviour
     private void PlaceCombatSpriteRelativeToOverworldSprite(Transform overworldObj, Transform combatObj)
     {
         float horizontalOffset = overworldObj.position.x - overworldCamera.position.x;
-        float verticalOffset = overworldObj.position.y - overworldCamera.position.y;
+        float verticalOffset = overworldObj.position.y - overworldCamera.position.y - 0.5f;
 
-        Vector3 newCombatPos = combatObj.position;
-        newCombatPos.x = combatCamera.position.x + horizontalOffset;
-        newCombatPos.z = combatCamera.position.z + verticalOffset;
+        float yPos = combatObj.position.y;
+        Vector3 newCombatPos = combatCamera.position + combatCamera.right * horizontalOffset + combatCamera.up * verticalOffset;
+        newCombatPos.y = yPos;
+
         combatObj.position = newCombatPos;
     }
 
@@ -84,5 +99,24 @@ public class CombatController : MonoBehaviour
 
         _entity.position = _targetPos;
         _entity.localScale = targetScale;
+    }
+
+    private IEnumerator SpinCameraParent(float _zAngle)
+    {
+        float targetZAngle = 0;
+
+        float startTime = Time.time;
+        float elapsedPercentage = 0;
+
+        while (elapsedPercentage < 1)
+        {
+            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / cameraSpinDuration);
+
+            combatCamera_parent.eulerAngles = new Vector3(90, 0, Mathf.Lerp(_zAngle, targetZAngle, elapsedPercentage));
+
+            yield return null;
+        }
+
+        combatCamera_parent.eulerAngles = new Vector3(90, 0, targetZAngle);
     }
 }
