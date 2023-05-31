@@ -18,8 +18,8 @@ public class MiscInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] private UnityEvent interactEvent;
 
-    [Header("Optional References For Events")]
-    [SerializeField] private List<GameObject> objs;
+    // [Header("Optional References For Events")]
+    // [SerializeField] private List<GameObject> objs;
 
     private void OnTriggerEnter(Collider other)
     {
