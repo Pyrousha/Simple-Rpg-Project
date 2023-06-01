@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatController : MonoBehaviour
+public class CombatController : Singleton<CombatController>
 {
     [SerializeField] private GameObject overworldParent;
     [SerializeField] private GameObject combatParent;
@@ -13,7 +13,7 @@ public class CombatController : MonoBehaviour
     [SerializeField] private Transform combatCamera;
     [Space(10)]
     [SerializeField] private Transform player_overworld;
-    [SerializeField] private Transform enemy_overworld;
+    private Transform enemy_overworld;
     [SerializeField] private Transform player_combat;
     [SerializeField] private Transform enemy_combat;
     [SerializeField] private Transform player_combat_targetPos;
@@ -21,12 +21,14 @@ public class CombatController : MonoBehaviour
     [Space(10)]
     [SerializeField] private Animator combatCameraAnim;
     [SerializeField] private Animator combatFloorAnim;
+    [SerializeField] private Animator combatButtonsAnim;
     [Space(5)]
     [SerializeField] private float lerpDuration = 1.0f;
     [SerializeField] private float cameraSpinDuration = 1.0f;
 
-    public void TriggerCombat()
+    public void TriggerCombat(Transform _overworldEnemy)
     {
+        enemy_overworld = _overworldEnemy;
         StartCoroutine(ToCombat());
     }
 
@@ -37,7 +39,6 @@ public class CombatController : MonoBehaviour
         float startAngle = -heroToEnemyAngle + 90.0f;
         if (startAngle > 180)
             startAngle -= 360;
-        // Debug.Log(startAngle);
         combatCamera_parent.eulerAngles = new Vector3(90, 0, startAngle);
 
         yield return null;
@@ -47,19 +48,19 @@ public class CombatController : MonoBehaviour
         PlaceCombatSpriteRelativeToOverworldSprite(enemy_overworld, enemy_combat);
 
         yield return null;
-        // while (InputHandler.Instance.Interact.Down == false) { yield return null; }
 
         overworldParent.SetActive(false);
         combatParent.SetActive(true);
 
         combatCameraAnim.SetTrigger("CombatStarted");
         combatFloorAnim.SetTrigger("CombatStarted");
+        combatButtonsAnim.SetTrigger("CombatStarted"); //This assumes player always goes before enemy
 
         yield return null;
-        // while (InputHandler.Instance.Interact.Down == false) { yield return null; }
 
         combatCameraAnim.enabled = true;
         combatFloorAnim.enabled = true;
+        combatButtonsAnim.enabled = true;
         StartCoroutine(SpinCameraParent(startAngle));
 
         StartCoroutine(LerpCombatEntity(player_combat, player_combat_targetPos.position, 1));
@@ -76,6 +77,25 @@ public class CombatController : MonoBehaviour
         newCombatPos.y = yPos;
 
         combatObj.position = newCombatPos;
+    }
+
+    private IEnumerator SpinCameraParent(float _zAngle)
+    {
+        float targetZAngle = 0;
+
+        float startTime = Time.time;
+        float elapsedPercentage = 0;
+
+        while (elapsedPercentage < 1)
+        {
+            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / cameraSpinDuration);
+
+            combatCamera_parent.eulerAngles = new Vector3(90, 0, Mathf.Lerp(_zAngle, targetZAngle, elapsedPercentage));
+
+            yield return null;
+        }
+
+        combatCamera_parent.eulerAngles = new Vector3(90, 0, targetZAngle);
     }
 
     private IEnumerator LerpCombatEntity(Transform _entity, Vector3 _targetPos, float _targetScaleMultiplier)
@@ -99,24 +119,5 @@ public class CombatController : MonoBehaviour
 
         _entity.position = _targetPos;
         _entity.localScale = targetScale;
-    }
-
-    private IEnumerator SpinCameraParent(float _zAngle)
-    {
-        float targetZAngle = 0;
-
-        float startTime = Time.time;
-        float elapsedPercentage = 0;
-
-        while (elapsedPercentage < 1)
-        {
-            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / cameraSpinDuration);
-
-            combatCamera_parent.eulerAngles = new Vector3(90, 0, Mathf.Lerp(_zAngle, targetZAngle, elapsedPercentage));
-
-            yield return null;
-        }
-
-        combatCamera_parent.eulerAngles = new Vector3(90, 0, targetZAngle);
     }
 }

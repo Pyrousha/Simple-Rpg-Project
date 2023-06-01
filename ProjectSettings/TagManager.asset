@@ -24,6 +24,7 @@ TagManager:
   - InteractHurtbox
   - InteractHitbox
   - 
+  - HeroTrigger
   - 
   - 
   - 
@@ -35,8 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - All
   m_SortingLayers:
   - name: Default
     uniqueID: 0
