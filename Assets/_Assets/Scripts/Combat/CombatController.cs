@@ -26,6 +26,11 @@ public class CombatController : Singleton<CombatController>
     [SerializeField] private float lerpDuration = 1.0f;
     [SerializeField] private float cameraSpinDuration = 1.0f;
 
+    float cameraStartZAngle;
+
+    private Vector3 player_combat_startingPos;
+    private Vector3 enemy_combat_startingPos;
+
     public void TriggerCombat(Transform _overworldEnemy)
     {
         enemy_overworld = _overworldEnemy;
@@ -36,10 +41,10 @@ public class CombatController : Singleton<CombatController>
     {
         Vector3 heroToEnemy = enemy_overworld.position - player_overworld.position;
         float heroToEnemyAngle = Mathf.Atan2(heroToEnemy.y, heroToEnemy.x) * Mathf.Rad2Deg;
-        float startAngle = -heroToEnemyAngle + 90.0f;
-        if (startAngle > 180)
-            startAngle -= 360;
-        combatCamera_parent.eulerAngles = new Vector3(90, 0, startAngle);
+        cameraStartZAngle = -heroToEnemyAngle + 90.0f;
+        if (cameraStartZAngle > 180)
+            cameraStartZAngle -= 360;
+        combatCamera_parent.eulerAngles = new Vector3(90, 0, cameraStartZAngle);
 
         yield return null;
         // while (InputHandler.Instance.Interact.Down == false) { yield return null; }
@@ -49,19 +54,22 @@ public class CombatController : Singleton<CombatController>
 
         yield return null;
 
+        player_combat_startingPos = player_combat.position;
+        enemy_combat_startingPos = enemy_combat.position;
+
         overworldParent.SetActive(false);
         combatParent.SetActive(true);
 
-        combatCameraAnim.SetTrigger("CombatStarted");
-        combatFloorAnim.SetTrigger("CombatStarted");
-        combatButtonsAnim.SetTrigger("CombatStarted"); //This assumes player always goes before enemy
+        combatCameraAnim.SetBool("Status", true);
+        combatFloorAnim.SetBool("Status", true);
+        combatButtonsAnim.SetBool("Status", true); //This assumes player always goes before enemy
 
         yield return null;
 
         combatCameraAnim.enabled = true;
         combatFloorAnim.enabled = true;
         combatButtonsAnim.enabled = true;
-        StartCoroutine(SpinCameraParent(startAngle));
+        StartCoroutine(SpinCameraParent(cameraStartZAngle, 0));
 
         StartCoroutine(LerpCombatEntity(player_combat, player_combat_targetPos.position, 1));
         StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_targetPos.position, 4));
@@ -79,10 +87,8 @@ public class CombatController : Singleton<CombatController>
         combatObj.position = newCombatPos;
     }
 
-    private IEnumerator SpinCameraParent(float _zAngle)
+    private IEnumerator SpinCameraParent(float _startZAngle, float _targetZAngle)
     {
-        float targetZAngle = 0;
-
         float startTime = Time.time;
         float elapsedPercentage = 0;
 
@@ -90,19 +96,19 @@ public class CombatController : Singleton<CombatController>
         {
             elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / cameraSpinDuration);
 
-            combatCamera_parent.eulerAngles = new Vector3(90, 0, Mathf.Lerp(_zAngle, targetZAngle, elapsedPercentage));
+            combatCamera_parent.eulerAngles = new Vector3(90, 0, Mathf.Lerp(_startZAngle, _targetZAngle, elapsedPercentage));
 
             yield return null;
         }
 
-        combatCamera_parent.eulerAngles = new Vector3(90, 0, targetZAngle);
+        combatCamera_parent.eulerAngles = new Vector3(90, 0, _targetZAngle);
     }
 
-    private IEnumerator LerpCombatEntity(Transform _entity, Vector3 _targetPos, float _targetScaleMultiplier)
+    private IEnumerator LerpCombatEntity(Transform _entity, Vector3 _targetPos, float _targetLocalScale)
     {
         Vector3 startPos = _entity.position;
         Vector3 startScale = _entity.localScale;
-        Vector3 targetScale = startScale * _targetScaleMultiplier;
+        Vector3 targetScale = Vector3.one * _targetLocalScale;
 
         float startTime = Time.time;
         float elapsedPercentage = 0;
@@ -119,5 +125,27 @@ public class CombatController : Singleton<CombatController>
 
         _entity.position = _targetPos;
         _entity.localScale = targetScale;
+    }
+
+    public void EndCombat()
+    {
+        StartCoroutine(EndCombatCoroutine());
+    }
+
+    private IEnumerator EndCombatCoroutine()
+    {
+        StartCoroutine(LerpCombatEntity(player_combat, player_combat_startingPos, 1));
+        StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_startingPos, 1));
+
+        StartCoroutine(SpinCameraParent(0, cameraStartZAngle));
+
+        combatCameraAnim.SetBool("Status", false);
+        combatFloorAnim.SetBool("Status", false);
+        combatButtonsAnim.SetBool("Status", false);
+
+        yield return new WaitForSeconds(1);
+
+        combatParent.SetActive(false);
+        overworldParent.SetActive(true);
     }
 }

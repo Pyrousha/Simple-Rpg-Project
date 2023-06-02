@@ -44,6 +44,9 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         isMenuActive = true;
         anim.SetBool("Active", isMenuActive);
 
+        foreach (Button button in buttons)
+            button.enabled = true;
+
         buttons[0].Select(); //Select first button
     }
 
@@ -51,6 +54,9 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
     {
         isMenuActive = false;
         anim.SetBool("Active", isMenuActive);
+
+        foreach (Button button in buttons)
+            button.enabled = false;
 
         EventSystem.current.SetSelectedGameObject(null);
     }
