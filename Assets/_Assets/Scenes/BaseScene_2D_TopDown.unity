@@ -1280,12 +1280,12 @@ PrefabInstance:
     - target: {fileID: 7728651185421110648, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Name
-      value: StatusButton
+      value: SettingsButton
       objectReference: {fileID: 0}
     - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_text
-      value: Status
+      value: Settings
       objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
@@ -1395,7 +1395,7 @@ PrefabInstance:
     - target: {fileID: 636791056854928598, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 688
+      value: 725.5
       objectReference: {fileID: 0}
     - target: {fileID: 636791056854928598, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
@@ -23035,7 +23035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -24.999878, y: -25}
+  m_AnchoredPosition: {x: -24.999756, y: -25}
   m_SizeDelta: {x: 745, y: 1030}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &959394912
@@ -23113,6 +23113,7 @@ GameObject:
   - component: {fileID: 1016241355}
   - component: {fileID: 1016241354}
   - component: {fileID: 1016241357}
+  - component: {fileID: 1016241358}
   m_Layer: 0
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -23227,6 +23228,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1016241358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016241352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc51e231418de945a500d7e2b325ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1060601689
 GameObject:
   m_ObjectHideFlags: 0
@@ -23821,12 +23834,12 @@ PrefabInstance:
     - target: {fileID: 7728651185421110648, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Name
-      value: SettingsButton
+      value: CloseMenuButton
       objectReference: {fileID: 0}
     - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_text
-      value: Settings
+      value: Close Menu
       objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
@@ -24151,7 +24164,7 @@ PrefabInstance:
     - target: {fileID: 636791056854928598, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 688
+      value: 725.5
       objectReference: {fileID: 0}
     - target: {fileID: 636791056854928598, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
@@ -24376,7 +24389,7 @@ PrefabInstance:
     - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_text
-      value: Save + Exit
+      value: Save Game
       objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
@@ -24536,7 +24549,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -25}
-  m_SizeDelta: {x: 1100, y: 317.125}
+  m_SizeDelta: {x: 1100, y: 279.625}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1700577052
 MonoBehaviour:
@@ -24596,7 +24609,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 333.33368, y: 121.0625}
+  m_CellSize: {x: 333.33368, y: 102.3125}
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -25346,7 +25359,7 @@ PrefabInstance:
     - target: {fileID: 636791056854928598, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 688
+      value: 725.5
       objectReference: {fileID: 0}
     - target: {fileID: 636791056854928598, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}

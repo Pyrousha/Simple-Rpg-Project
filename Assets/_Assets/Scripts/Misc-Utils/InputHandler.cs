@@ -11,7 +11,8 @@ public class InputHandler : Singleton<InputHandler>
         Ability1 = 1,
         Ability2 = 2,
         Ability3 = 3,
-        Jump = 4
+        Jump = 4,
+        Menu = 5
     }
 
     public Vector2 MoveXZ
@@ -25,6 +26,7 @@ public class InputHandler : Singleton<InputHandler>
         private set;
     }
     public ButtonState Interact => buttons[(int)ButtonIndices.Interact];
+    public ButtonState Menu => buttons[(int)ButtonIndices.Menu];
     public ButtonState Ability1 => buttons[(int)ButtonIndices.Ability1];
     public ButtonState Ability2 => buttons[(int)ButtonIndices.Ability2];
     public ButtonState Ability3 => buttons[(int)ButtonIndices.Ability3];
@@ -109,6 +111,10 @@ public class InputHandler : Singleton<InputHandler>
     public void CTX_Interact(InputAction.CallbackContext _ctx)
     {
         buttons[(int)ButtonIndices.Interact].Set(_ctx);
+    }
+    public void CTX_Menu(InputAction.CallbackContext _ctx)
+    {
+        buttons[(int)ButtonIndices.Menu].Set(_ctx);
     }
 
 
