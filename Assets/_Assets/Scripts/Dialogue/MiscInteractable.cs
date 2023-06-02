@@ -39,7 +39,7 @@ public class MiscInteractable : MonoBehaviour, IInteractable
 
     public void TryInteract(HeroDialogueInteract player)
     {
-        if (played && playOnce)
+        if ((played && playOnce) || OverworldMenuController.Instance.IsMenuActive)
             return;
 
         if (playWithoutInput || InputHandler.Instance.Interact.Down)

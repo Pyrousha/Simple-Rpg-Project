@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 8306353893299338716}
   - component: {fileID: 8857192608037896505}
   - component: {fileID: 3498404620728444596}
+  - component: {fileID: 157249761163770702}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -258,7 +259,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8306353893299338716}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 157249761163770702}
+        m_TargetAssemblyTypeName: OverworldMenuButton, Assembly-CSharp
+        m_MethodName: TriggerClickOnMenuController
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3498404620728444596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,3 +285,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 7967504859673983632}
+--- !u!114 &157249761163770702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728651185421110648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a29a88de1682440b0e671971e1b17e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonType: 0

@@ -22,7 +22,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -713
+        value: -750.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -41,7 +41,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -713
+        value: -750.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -60,7 +60,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -713
+        value: -750.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -109,7 +109,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: TopLeftButton
+    path: TopLeftButtons_Parent
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -149,7 +149,7 @@ AnimationClip:
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1914358918
+      path: 2788622190
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -182,7 +182,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -713
+        value: -750.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -201,7 +201,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -713
+        value: -750.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -220,7 +220,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -713
+        value: -750.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -269,7 +269,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: TopLeftButton
+    path: TopLeftButtons_Parent
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

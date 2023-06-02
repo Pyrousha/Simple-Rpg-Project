@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Menu",
+                    "name": "Menu/Cancel",
                     "type": "Button",
                     "id": "74ffa848-e710-41da-bfa9-81d75f024592",
                     "expectedControlType": "Button",
@@ -301,12 +301,23 @@
                 },
                 {
                     "name": "",
+                    "id": "92d4ea1e-8544-4e7c-b17d-6c0234ff0599",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "65d35699-4782-433d-8b6b-d8d0d374dce0",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "Menu/Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -317,7 +328,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "Menu/Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -328,7 +339,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "Menu/Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fb62219-345b-4aba-8fc7-367a16275ce5",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu/Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -696,11 +718,44 @@
                 },
                 {
                     "name": "",
-                    "id": "9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc",
-                    "path": "*/{Submit}",
+                    "id": "b33809fa-639f-49c0-9b72-fd76ed8bf638",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5ca5587-61a0-46bf-b90e-62c18cead221",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a0cee9a-321a-4e27-b986-79822e9884d8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4db1e01f-b0ec-4eab-93c9-913332c23f25",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false

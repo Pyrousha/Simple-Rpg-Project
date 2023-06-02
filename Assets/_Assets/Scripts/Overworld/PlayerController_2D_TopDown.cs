@@ -30,6 +30,15 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
     private List<Transform> raycastPoints = new List<Transform>();
     bool grounded = false;
 
+    private bool CanMove()
+    {
+        if (OverworldMenuController.Instance.IsMenuActive || DialogueUI.Instance.isOpen)
+            return false;
+        return true;
+    }
+
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -73,14 +82,15 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
 
         //XZ Friction + acceleration
         Vector3 currInput;
-        if (DialogueUI.Instance.isOpen)
-            currInput = Vector3.zero;
-        else
+        if (CanMove())
         {
             currInput = new Vector3(InputHandler.Instance.MoveXZ.x, InputHandler.Instance.MoveXZ.y, 0);
             if (currInput.magnitude > 1f)
                 currInput.Normalize();
         }
+        else
+            currInput = Vector3.zero;
+
 
         float accelSpeedToUse;
         float frictionSpeedToUse;
