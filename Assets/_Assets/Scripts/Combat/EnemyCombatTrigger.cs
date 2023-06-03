@@ -20,6 +20,6 @@ public class EnemyCombatTrigger : MonoBehaviour
 
     public void OnTouchedPlayer()
     {
-        CombatController.Instance.TriggerCombat(enemyTransform);
+        CombatTransitionController.Instance.TriggerCombat(enemyTransform);
     }
 }

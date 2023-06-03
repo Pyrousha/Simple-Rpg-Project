@@ -3,22 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static OverworldMenuButton;
 
 public class OverworldMenuController : Singleton<OverworldMenuController>
 {
     private Animator anim;
     private bool isMenuActive = false;
     public bool IsMenuActive => isMenuActive;
-
-    public enum MenuButtons_OverworldEnum
-    {
-        Items,
-        Spells,
-        CloseMenu,
-        Equip,
-        Settings,
-        Save
-    }
 
     [SerializeField] private Button[] buttons;
 
@@ -61,25 +52,25 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    public void OnButtonClicked(MenuButtons_OverworldEnum _buttonType)
+    public void OnButtonClicked(MenuButtons_Overworld_Enum _buttonType)
     {
         if (isMenuActive == false)
             return;
 
         switch (_buttonType)
         {
-            case MenuButtons_OverworldEnum.Items:
+            case MenuButtons_Overworld_Enum.Items:
                 break;
-            case MenuButtons_OverworldEnum.Spells:
+            case MenuButtons_Overworld_Enum.Spells:
                 break;
-            case MenuButtons_OverworldEnum.CloseMenu:
+            case MenuButtons_Overworld_Enum.CloseMenu:
                 CloseMenu();
                 break;
-            case MenuButtons_OverworldEnum.Equip:
+            case MenuButtons_Overworld_Enum.Equip:
                 break;
-            case MenuButtons_OverworldEnum.Settings:
+            case MenuButtons_Overworld_Enum.Settings:
                 break;
-            case MenuButtons_OverworldEnum.Save:
+            case MenuButtons_Overworld_Enum.Save:
                 break;
         }
     }

@@ -146,5 +146,5 @@ SpriteAtlas:
   - forest tilemap_29
   - forest tilemap_28
   m_RenderDataMap: {}
-  m_Tag: New Sprite Atlas
+  m_Tag: Forest Tileset Atlas
   m_IsVariant: 0

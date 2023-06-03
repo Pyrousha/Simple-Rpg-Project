@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class OverworldMenuButton : MonoBehaviour
 {
-    [SerializeField] private OverworldMenuController.MenuButtons_OverworldEnum buttonType;
+    public enum MenuButtons_Overworld_Enum
+    {
+        Items,
+        Spells,
+        CloseMenu,
+        Equip,
+        Settings,
+        Save
+    }
+
+    [SerializeField] private MenuButtons_Overworld_Enum buttonType;
 
     public void TriggerClickOnMenuController()
     {
