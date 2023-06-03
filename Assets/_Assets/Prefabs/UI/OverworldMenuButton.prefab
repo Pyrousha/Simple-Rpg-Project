@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 3498404620728444596}
   - component: {fileID: 157249761163770702}
   m_Layer: 0
-  m_Name: Button
+  m_Name: OverworldMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
