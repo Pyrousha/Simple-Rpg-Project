@@ -8,7 +8,7 @@ public class AlignWithCamera : MonoBehaviour
 
     private void Awake()
     {
-        cameraTransform = Camera.main.transform;
+        cameraTransform = CombatTransitionController.Instance.CombatCamera;
     }
 
     // Update is called once per frame

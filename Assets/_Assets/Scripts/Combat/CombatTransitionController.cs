@@ -11,6 +11,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
     [SerializeField] private Transform overworldCamera;
     [SerializeField] private Transform combatCamera_parent;
     [SerializeField] private Transform combatCamera;
+    public Transform CombatCamera => combatCamera;
     [Space(10)]
     [SerializeField] private Transform player_overworld;
     private Transform enemy_overworld;

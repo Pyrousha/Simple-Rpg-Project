@@ -30,6 +30,9 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
     private List<Transform> raycastPoints = new List<Transform>();
     bool grounded = false;
 
+    private Vector3 dirFacing = new Vector3(0, 1, 0);
+    public Vector3 DirFacing => dirFacing;
+
     private bool CanMove()
     {
         if (OverworldMenuController.Instance.IsMenuActive || DialogueUI.Instance.isOpen)
@@ -91,6 +94,7 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
         else
             currInput = Vector3.zero;
 
+        dirFacing = currInput;
 
         float accelSpeedToUse;
         float frictionSpeedToUse;
@@ -137,6 +141,10 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
                             updatedVelocity = velocity_friction_and_input;
                     }
                 }
+
+                //Rotate interact hitbox based on input
+                float angle = Mathf.Atan2(InputHandler.Instance.MoveXZ.y, InputHandler.Instance.MoveXZ.x);
+                interactParentToRotate.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
             }
 
             //Apply velocity
@@ -144,11 +152,5 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
             rb.velocity = updatedVelocity;
         }
         #endregion
-
-        if (rb.velocity.magnitude >= velocityRotateCutoff)
-        {
-            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x);
-            interactParentToRotate.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
-        }
     }
 }

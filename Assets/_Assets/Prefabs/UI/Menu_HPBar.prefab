@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100/100
+  m_text: ???/???
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2858a3b59c3fd0c4cad9abcb2b7afcb2, type: 2}
   m_sharedMaterial: {fileID: 3269922141108842566, guid: 2858a3b59c3fd0c4cad9abcb2b7afcb2,
@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberText: {fileID: 736552730582387173}
   slider: {fileID: 7199363515529027061}
+  xpLeftText: {fileID: 0}
 --- !u!1 &7199363515479794387
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ public class AnimatorController_2DTopDown : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody rb;
+    private PlayerController_2D_TopDown playerController;
+
+    private bool isPlayer = false;
 
     [SerializeField] private float idleCutoffSpeed = 0.1f;
 
@@ -26,17 +29,26 @@ public class AnimatorController_2DTopDown : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        playerController = GetComponent<PlayerController_2D_TopDown>();
+        if (playerController != null)
+            isPlayer = true;
     }
 
     void FixedUpdate()
     {
-        if (rb.velocity.magnitude >= idleCutoffSpeed)
+        Vector3 dirFacing;
+        if (!isPlayer)
+            dirFacing = rb.velocity;
+        else
+            dirFacing = playerController.DirFacing;
+
+        if (dirFacing.magnitude >= idleCutoffSpeed)
         {
             //Moving
-            if (Mathf.Abs(rb.velocity.x) * 1.1f >= Mathf.Abs(rb.velocity.y))
+            if (Mathf.Abs(dirFacing.x) * 1.1f >= Mathf.Abs(dirFacing.y))
             {
                 //play horizontal move animation
-                if (rb.velocity.x > 0)
+                if (dirFacing.x > 0)
                     ChangeAnimationState(MoveStateEnum.Right);
                 else
                     ChangeAnimationState(MoveStateEnum.Left);
@@ -44,7 +56,7 @@ public class AnimatorController_2DTopDown : MonoBehaviour
             else
             {
                 //play vertical move animation
-                if (rb.velocity.y > 0)
+                if (dirFacing.y > 0)
                     ChangeAnimationState(MoveStateEnum.Up);
                 else
                     ChangeAnimationState(MoveStateEnum.Down);

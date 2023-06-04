@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613dd780abd19384a825f3788b687d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
+  maxSpeed: 4
   accelSpeed_ground: 1
   frictionSpeed_ground: 0.5
   velocityRotateCutoff: 0.25
