@@ -117,7 +117,7 @@ public class DialogueUI : Singleton<DialogueUI>
 
             //Wait for input to show next slide
             yield return null;
-            yield return new WaitUntil(() => InputHandler.Instance.Interact.Down);
+            yield return new WaitUntil(() => InputHandler.Instance.Interact_Or_Confirm.Down);
 
             //Handle Dialogue Events if they exist
             if ((dialogueEvents != null) && (dialogueEvents.Length > 0) && (i < dialogueEvents.Length))
@@ -151,7 +151,7 @@ public class DialogueUI : Singleton<DialogueUI>
         {
             yield return null;
 
-            if (InputHandler.Instance.Interact.Down)
+            if (InputHandler.Instance.Interact_Or_Confirm.Down)
             {
                 typewriterEffect.Stop();
             }

@@ -21,3 +21,31 @@ MonoBehaviour:
   def_M: 2
   speed: 5
   maxXp: 68
+  leveledStats:
+  - level: 1
+    maxHp: 12
+    maxMp: 0
+    atk_P: 7
+    atk_M: 0
+    def_P: 3
+    def_M: 2
+    speed: 5
+    maxXp: 68
+  - level: 2
+    maxHp: 15
+    maxMp: 0
+    atk_P: 9
+    atk_M: 0
+    def_P: 4
+    def_M: 3
+    speed: 6
+    maxXp: 94
+  - level: 3
+    maxHp: 16
+    maxMp: 0
+    atk_P: 11
+    atk_M: 0
+    def_P: 6
+    def_M: 4
+    speed: 0
+    maxXp: 102

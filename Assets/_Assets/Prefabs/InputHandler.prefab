@@ -93,23 +93,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1874223784840221787}
         m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: CTX_Look
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 06e77eeb-c7c5-4d97-a8e3-e50822db68b9
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1874223784840221787}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: CTX_Interact
+        m_MethodName: CTX_Interact_Or_Confirm
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -121,70 +105,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b7e4ae73-ad5a-4f7b-bbfb-218200d1f78f
     m_ActionName: Player/Interact[/Mouse/leftButton,/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1874223784840221787}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: CTX_Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ec2d3501-0ca5-4cc2-9288-4644247e0160
-    m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1874223784840221787}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: CTX_Ability1
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 18837d75-26d3-4d99-a7f3-e3b912cfca9d
-    m_ActionName: Player/Ability1
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1874223784840221787}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: CTX_Ability2
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5b4c0f4a-6490-4403-8e94-f379277acebd
-    m_ActionName: Player/Ability2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1874223784840221787}
-        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: CTX_Ability3
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 72124e5d-1a41-47d6-9cd2-614c5a9e179e
-    m_ActionName: Player/Ability3
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 38ce1711-1c82-40ab-93de-c53430d38211
@@ -241,6 +161,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 74ffa848-e710-41da-bfa9-81d75f024592
     m_ActionName: Player/Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1874223784840221787}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: CTX_Cancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ae86f889-adc1-4bf1-a6a8-6aa863f44a87
+    m_ActionName: Player/Cancel[/Keyboard/backspace,/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

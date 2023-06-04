@@ -28,8 +28,8 @@ public class CharacterMenuDisplay : MonoBehaviour
         characterPortrait.sprite = entity.MenuPortraitSprite;
         characterName.text = entity.name;
         levelNum.text = "Lv " + entity.Level;
-        hpBar.SetUIValues(entity.Hp, entity.maxHp.Value);
-        mpBar.SetUIValues(entity.Mp, entity.maxMp.Value);
+        hpBar.SetUIValues(entity.Hp, entity.MaxHp.Value);
+        mpBar.SetUIValues(entity.Mp, entity.MaxMp.Value);
         xpBar.SetUIValues(entity.Xp);
     }
 }

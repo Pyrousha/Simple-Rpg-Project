@@ -54,7 +54,7 @@ public class ResponseHandler : MonoBehaviour
         }
 
         //Press Space
-        if (InputHandler.Instance.Interact.Down)
+        if (InputHandler.Instance.Interact_Or_Confirm.Down)
             OnPickedResponse(responseArray[responseIndex], responseIndex);
     }
 

@@ -7,12 +7,9 @@ public class InputHandler : Singleton<InputHandler>
 {
     private enum ButtonIndices
     {
-        Interact = 0,
-        Ability1 = 1,
-        Ability2 = 2,
-        Ability3 = 3,
-        Jump = 4,
-        Menu = 5
+        Interact_Confirm,
+        Cancel,
+        Menu
     }
 
     public Vector2 MoveXZ
@@ -20,18 +17,11 @@ public class InputHandler : Singleton<InputHandler>
         get;
         private set;
     }
-    public Vector2 Look //Only used in games where the player can move the camera
-    {
-        get;
-        private set;
-    }
-    public ButtonState Interact => buttons[(int)ButtonIndices.Interact];
+    public ButtonState Interact_Or_Confirm => buttons[(int)ButtonIndices.Interact_Confirm];
+    public ButtonState Cancel => buttons[(int)ButtonIndices.Cancel];
     public ButtonState Menu => buttons[(int)ButtonIndices.Menu];
-    public ButtonState Ability1 => buttons[(int)ButtonIndices.Ability1];
-    public ButtonState Ability2 => buttons[(int)ButtonIndices.Ability2];
-    public ButtonState Ability3 => buttons[(int)ButtonIndices.Ability3];
-    public ButtonState Jump => buttons[(int)ButtonIndices.Jump];
 
+    //TODO: Refactor dialogue code to use Interactable/Navigation instead of this
     public AnalogToDigitalButtonState Up;
     public AnalogToDigitalButtonState Down;
     public AnalogToDigitalButtonState Left;
@@ -86,31 +76,14 @@ public class InputHandler : Singleton<InputHandler>
     {
         MoveXZ = _ctx.ReadValue<Vector2>();
     }
-    public void CTX_Look(InputAction.CallbackContext _ctx)
-    {
-        Look = _ctx.ReadValue<Vector2>();
-    }
 
-    //Buttons
-    public void CTX_Jump(InputAction.CallbackContext _ctx)
+    public void CTX_Interact_Or_Confirm(InputAction.CallbackContext _ctx)
     {
-        buttons[(int)ButtonIndices.Jump].Set(_ctx);
+        buttons[(int)ButtonIndices.Interact_Confirm].Set(_ctx);
     }
-    public void CTX_Ability1(InputAction.CallbackContext _ctx)
+    public void CTX_Cancel(InputAction.CallbackContext _ctx)
     {
-        buttons[(int)ButtonIndices.Ability1].Set(_ctx);
-    }
-    public void CTX_Ability2(InputAction.CallbackContext _ctx)
-    {
-        buttons[(int)ButtonIndices.Ability2].Set(_ctx);
-    }
-    public void CTX_Ability3(InputAction.CallbackContext _ctx)
-    {
-        buttons[(int)ButtonIndices.Ability3].Set(_ctx);
-    }
-    public void CTX_Interact(InputAction.CallbackContext _ctx)
-    {
-        buttons[(int)ButtonIndices.Interact].Set(_ctx);
+        buttons[(int)ButtonIndices.Cancel].Set(_ctx);
     }
     public void CTX_Menu(InputAction.CallbackContext _ctx)
     {

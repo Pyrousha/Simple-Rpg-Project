@@ -8,8 +8,6 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
     [SerializeField] private float maxSpeed;
     [SerializeField] private float accelSpeed_ground;
     [SerializeField] private float frictionSpeed_ground;
-    [Space(5)]
-    [SerializeField] private float velocityRotateCutoff = 1f;
 
     [Header("References")]
     [SerializeField] private Transform interactParentToRotate;

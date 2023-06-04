@@ -61,7 +61,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         if ((played && playOnce) || OverworldMenuController.Instance.IsMenuActive)
             return;
 
-        if (playWithoutInput || InputHandler.Instance.Interact.Down)
+        if (playWithoutInput || InputHandler.Instance.Interact_Or_Confirm.Down)
         {
             played = true;
             DialogueUI.Instance.ShowDialogue(dialogueObject, gameObject);

@@ -1811,7 +1811,7 @@ PrefabInstance:
     - target: {fileID: 157249761163770702, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: buttonType
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 321654788181284943, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
@@ -1921,12 +1921,12 @@ PrefabInstance:
     - target: {fileID: 7728651185421110648, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Name
-      value: CloseMenuButton
+      value: SettingsButton
       objectReference: {fileID: 0}
     - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_text
-      value: Close Menu
+      value: Settings
       objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
@@ -24318,7 +24318,7 @@ PrefabInstance:
     - target: {fileID: 157249761163770702, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: buttonType
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 321654788181284943, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
@@ -24428,14 +24428,12 @@ PrefabInstance:
     - target: {fileID: 7728651185421110648, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Name
-      value: SettingsButton
+      value: StatsButton
       objectReference: {fileID: 0}
     - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_text
-      value: 'Settings
-
-'
+      value: Attributes
       objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}

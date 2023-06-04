@@ -14,7 +14,7 @@ public class CombatController : Singleton<CombatController>
 
     public void OnCombatStarted()
     {
-        //TEMP: Assume player goes first
+        //TODO: Calculate if player or enemy should go first (rign now assume player goes first)
         OnPlayerTurnStarted();
     }
 
@@ -43,7 +43,7 @@ public class CombatController : Singleton<CombatController>
             case MenuButtons_Combat_Enum.Items:
                 break;
             case MenuButtons_Combat_Enum.Flee:
-                //TEMP: Assume flee always works
+                //TODO: Calculate if flee suceeds or fails (for now assume flee always works)
                 CombatTransitionController.Instance.EndCombat();
                 OnCombatEnded();
                 break;

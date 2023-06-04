@@ -8,7 +8,7 @@ public class OverworldMenuButton : MonoBehaviour
     {
         Items,
         Spells,
-        CloseMenu,
+        Attributes,
         Equip,
         Settings,
         Save

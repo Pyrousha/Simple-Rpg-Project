@@ -7,46 +7,42 @@ using static Utils;
 [CreateAssetMenu(menuName = "Combat/BaseCombatEntity")]
 public class BaseCombatEntity : ScriptableObject
 {
+    public List<StatValues> leveledStats;
+
     [System.Serializable]
-    public enum StatEnum
+    public struct StatValues
     {
-        Health,
-        Atk_P,
-        Atk_M,
-        Def_P,
-        Def_M,
-        Speed,
-        MaxXp
+        public int level;
+        // [Space(10)]
+        public int maxHp;
+        public int maxMp;
+
+        public int atk_P;
+        public int atk_M;
+        public int def_P;
+        public int def_M;
+
+        public int speed;
+
+        public int maxXp;
     }
 
-    [SerializeField] private int level;
-    public int Level => level;
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        leveledStats.Sort((a, b) => a.level.CompareTo(b.level));
+    }
 
-    [SerializeField] private int maxHp;
-    public int MaxHp => maxHp;
-    [SerializeField] private int maxMp;
-    public int MaxMp => maxMp;
+    public StatValues GetStatsForLevel(int _level)
+    {
+        foreach (StatValues stats in leveledStats)
+        {
+            if (stats.level == _level)
+                return stats;
+        }
 
-    [SerializeField] private int atk_P;
-    public int Atk_P => atk_P;
-    [SerializeField] private int atk_M;
-    public int Atk_M => atk_M;
-    [SerializeField] private int def_P;
-    public int Def_P => def_P;
-    [SerializeField] private int def_M;
-    public int Def_M => def_M;
-    [SerializeField] private int speed;
-    public int Speed => speed;
-
-    [Header("Playable Character-Specific Field")]
-    [SerializeField] private int maxXp = -999;
-    public int MaxXp => maxXp;
-    public List<List<UpgradeBlock>> upgrades;
-}
-
-[System.Serializable]
-public struct UpgradeBlock
-{
-    public BaseCombatEntity.StatEnum statType;
-    public int amountToAdd;
+        Debug.LogError("CombatEntity \"" + name + "\" has no stats for level " + _level);
+        return new StatValues();
+    }
+#endif
 }

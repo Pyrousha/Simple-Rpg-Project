@@ -7,6 +7,15 @@ using static OverworldMenuButton;
 
 public class OverworldMenuController : Singleton<OverworldMenuController>
 {
+    private enum OverworldMenuSubmenus_Enum
+    {
+        Main
+
+        //Todo: Fill with submenus (Like "Items", "Equip", etc.)
+    }
+
+    private OverworldMenuSubmenus_Enum currSubmenu;
+
     private Animator anim;
     private bool isMenuActive = false;
     public bool IsMenuActive => isMenuActive;
@@ -21,6 +30,16 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
     // Update is called once per frame
     void Update()
     {
+        if (isMenuActive && InputHandler.Instance.Cancel.Down)
+        {
+            switch (currSubmenu)
+            {
+                case OverworldMenuSubmenus_Enum.Main:
+                    CloseMenu();
+                    return;
+            }
+        }
+
         if (InputHandler.Instance.Menu.Down && !DialogueUI.Instance.isOpen)
         {
             if (isMenuActive)
@@ -63,8 +82,7 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
                 break;
             case MenuButtons_Overworld_Enum.Spells:
                 break;
-            case MenuButtons_Overworld_Enum.CloseMenu:
-                CloseMenu();
+            case MenuButtons_Overworld_Enum.Attributes:
                 break;
             case MenuButtons_Overworld_Enum.Equip:
                 break;
