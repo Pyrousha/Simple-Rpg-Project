@@ -16,7 +16,7 @@ public class CharacterMenuDisplay : MonoBehaviour
     [SerializeField] private Menubar mpBar;
     [SerializeField] private Menubar xpBar;
 
-    private void Awake()
+    private void Start()
     {
         if (entity == null)
         {

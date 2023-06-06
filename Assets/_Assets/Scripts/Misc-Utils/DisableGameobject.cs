@@ -4,7 +4,7 @@ public class DisableGameobject : MonoBehaviour
 {
     [SerializeField] private bool disableOnStart;
 
-    private void Awake()
+    private void Start()
     {
         if (disableOnStart)
             Disable();

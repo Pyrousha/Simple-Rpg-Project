@@ -62,14 +62,14 @@ public class CombatEntity : MonoBehaviour
         //     Xp = [code_here_lol];
         // }
         // else
-        {
-            //No existing data for this entity (only playable characters have data saved)
+        // {
+        //No existing data for this entity (only playable characters have data saved)
 
-            level = statsToLoad.level;
-            hp = statsToLoad.maxHp;
-            mp = statsToLoad.maxMp;
-            Xp = new Utils.RangedInt(0, statsToLoad.maxXp);
-        }
+        level = statsToLoad.level;
+        hp = statsToLoad.maxHp;
+        mp = statsToLoad.maxMp;
+        Xp = new Utils.RangedInt(0, statsToLoad.maxXp);
+        // }
 
         //Load from baseStats
         MaxHp = new ModifiableStat(statsToLoad.maxHp);
