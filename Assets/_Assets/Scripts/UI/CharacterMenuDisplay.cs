@@ -31,5 +31,23 @@ public class CharacterMenuDisplay : MonoBehaviour
         hpBar.SetUIValues(entity.Hp, entity.MaxHp.Value);
         mpBar.SetUIValues(entity.Mp, entity.MaxMp.Value);
         xpBar.SetUIValues(entity.Xp);
+
+        entity.SetHealthBars += UpdateHpUI;
+        entity.SetManaBars += UpdateMpUI;
+    }
+
+    private void UpdateHpUI(int _hp, int _maxHp)
+    {
+        hpBar.SetUIValues(_hp, _maxHp);
+    }
+    private void UpdateMpUI(int _mp, int _maxMp)
+    {
+        mpBar.SetUIValues(_mp, _maxMp);
+    }
+
+    void OnDestroy()
+    {
+        entity.SetHealthBars -= UpdateHpUI;
+        entity.SetManaBars -= UpdateMpUI;
     }
 }

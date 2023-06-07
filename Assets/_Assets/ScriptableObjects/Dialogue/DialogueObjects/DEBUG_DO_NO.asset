@@ -15,7 +15,8 @@ MonoBehaviour:
   <DialogueLines>k__BackingField:
   - Speaker: {fileID: 11400000, guid: fecca1b425617d24a9b2ef34654c5da7, type: 2}
     Text: You said no.
-    PortraitImageOverride: {fileID: 0}
-    VoiceClipOverride: {fileID: 0}
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
   <NextDialogueObject>k__BackingField: {fileID: 0}
   <Responses>k__BackingField: []

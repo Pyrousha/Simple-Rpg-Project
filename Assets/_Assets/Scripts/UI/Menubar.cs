@@ -9,7 +9,11 @@ public class Menubar : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI numberText;
     [SerializeField] private Slider slider;
-    [Header("")]
+    [SerializeField] private Image fillImage;
+    [SerializeField] private Color fillColor;
+    [SerializeField] private Image fillImageBg;
+    [SerializeField] private Color bgColor;
+    [Header("Optional References")]
     [SerializeField] private TextMeshProUGUI xpLeftText;
 
     private void Awake()
@@ -38,4 +42,12 @@ public class Menubar : MonoBehaviour
     {
         SetUIValues(_rangedInt.Value, _rangedInt.MaxValue);
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        fillImage.color = fillColor;
+        fillImageBg.color = bgColor;
+    }
+#endif
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,6 +20,9 @@ public class CombatEntity : MonoBehaviour
     }
 
     [SerializeField] private BaseCombatEntity baseStats;
+    [Space(10)]
+    [SerializeField, ContextMenuItem("TakeDamage", nameof(DEBUG_TAKE_DAMAGE))] private Menubar hpBar;
+    [SerializeField] private Menubar mpBar;
 
     private int level;
     public int Level => level;
@@ -79,6 +83,55 @@ public class CombatEntity : MonoBehaviour
         Def_P = new ModifiableStat(statsToLoad.def_P);
         Def_M = new ModifiableStat(statsToLoad.def_M);
         Speed = new ModifiableStat(statsToLoad.speed);
+
+        SetHealthBars = SetHealthUI;
+        SetManaBars = SetManaUI;
+
+        if (hpBar != null)
+            SetHealthUI(hp, MaxHp.Value);
+        if (mpBar != null)
+            SetManaUI(mp, MaxMp.Value);
+    }
+
+    public event Action<int, int> SetHealthBars;
+    private void SetHealthUI(int _hp, int _maxHp)
+    {
+        if (hpBar != null)
+            hpBar.SetUIValues(hp, MaxHp.Value);
+    }
+
+    public event Action<int, int> SetManaBars;
+    private void SetManaUI(int _mp, int _maxMp)
+    {
+        if (mpBar != null)
+            mpBar.SetUIValues(_mp, _maxMp);
+    }
+
+    public void TakeDamage(int _damage)
+    {
+        hp = Mathf.Clamp(hp - _damage, 0, MaxHp.Value);
+
+        SetHealthBars?.Invoke(hp, MaxHp.Value);
+
+        if (hp == 0)
+            Die();
+    }
+
+    public void UseMana(int _manaToUse)
+    {
+        mp = Mathf.Clamp(mp - _manaToUse, 0, MaxMp.Value);
+
+        SetManaBars?.Invoke(mp, MaxMp.Value);
+    }
+
+    public void DEBUG_TAKE_DAMAGE()
+    {
+        TakeDamage(1);
+    }
+
+    private void Die()
+    {
+        Debug.Log("Oh no! " + gameObject.name + " Died...");
     }
 
     public ModifiableStat GetStatBlockOfType(StatType_Enum _statType)

@@ -38,8 +38,8 @@ public class StatValues_Drawer : PropertyDrawer
         };
 
         //How many pixes should be between elements (horizontally)
-        int bigSpace = 20;
-        int smallSpace = 5;
+        int bigSpace = 10;
+        int smallSpace = 2;
 
         List<int> spacesAfterDrawingStat = new List<int>(){
             bigSpace, // "level",

@@ -45,12 +45,12 @@ PrefabInstance:
     - target: {fileID: 321654788181284943, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 350
+      value: 227.5
       objectReference: {fileID: 0}
     - target: {fileID: 321654788181284943, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 321654788181284943, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
@@ -112,11 +112,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586744909136046901, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7728651185421110648, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Name
       value: CombatMenuButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306353893299338716, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 499416daba67e5340b6a4660c52315fe,
+        type: 3}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
