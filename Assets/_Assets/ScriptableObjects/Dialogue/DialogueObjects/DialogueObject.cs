@@ -2,8 +2,6 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
-using ScriptableObjectDropdown;
-using ScriptableObjectDropdown.Editor;
 
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
