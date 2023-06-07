@@ -12,14 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
   m_Name: DEBUG_DO_00
   m_EditorClassIdentifier: 
-  dialogueLines:
-  - speaker: {fileID: 11400000, guid: fecca1b425617d24a9b2ef34654c5da7, type: 2}
-    text: Test Line 1
-  - speaker: {fileID: 11400000, guid: fecca1b425617d24a9b2ef34654c5da7, type: 2}
-    text: Yes or No?
-  nextDialogueObject: {fileID: 0}
-  responses:
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: fecca1b425617d24a9b2ef34654c5da7, type: 2}
+    Text: Ayooooooooo
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: fecca1b425617d24a9b2ef34654c5da7, type: 2}
+    Text: Yes or no?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField:
   - responseText: Yes
-    dialogueObject: {fileID: 11400000, guid: c5dbcacf85aae5544a9b1114447b1a01, type: 2}
+    nextDialogueObject: {fileID: 11400000, guid: c5dbcacf85aae5544a9b1114447b1a01,
+      type: 2}
   - responseText: No
-    dialogueObject: {fileID: 11400000, guid: 6870f8b98fc376a4b8b653a5807e919b, type: 2}
+    nextDialogueObject: {fileID: 11400000, guid: 6870f8b98fc376a4b8b653a5807e919b,
+      type: 2}

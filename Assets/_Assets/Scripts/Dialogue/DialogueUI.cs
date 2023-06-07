@@ -89,30 +89,47 @@ public class DialogueUI : Singleton<DialogueUI>
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
     {
-        for (int i = 0; i < dialogueObject.GetDialogue().Length; i++)
+        for (int i = 0; i < dialogueObject.DialogueLines.Length; i++)
         {
-            //Set speaker labels + icon
-            AudioClip voiceClip = null;
-            CharacterObject newSpeaker = dialogueObject.Characters[i];
-            if (newSpeaker != null)
-            {
-                nameLabel.text = newSpeaker.CharacterName;
-                nameSpacing.text = newSpeaker.CharacterName;
-                speakerImage.sprite = newSpeaker.PortraitSprite;
-                voiceClip = newSpeaker.Voice;
-            }
-            else
+            Dialogue currDialogueLine = dialogueObject.DialogueLines[i];
+
+            CharacterObject speaker = currDialogueLine.Speaker;
+            if (speaker == null)
             {
                 Debug.LogError("No speaker set for DialogueObject \"" + dialogueObject.name + "\", on dialogue line " + i);
+                yield break;
             }
 
+            //Set speaker labels + icon
+            nameLabel.text = speaker.CharacterName;
+            nameSpacing.text = " " + speaker.CharacterName + " ";
+
+            //Set portrait and voice to override values, or default if null
+            Debug.Log("defaultSprite: ");
+            Debug.Log(speaker.DefaultPortraitSprite);
+
+            Debug.Log("override sprite:");
+            Debug.Log(currDialogueLine.OptionalOverrides.PortraitImageOverride);
+
+            if (currDialogueLine.OptionalOverrides.PortraitImageOverride != null)
+                speakerImage.sprite = currDialogueLine.OptionalOverrides.PortraitImageOverride;
+            else
+                speakerImage.sprite = speaker.DefaultPortraitSprite;
+
+            AudioClip voiceClip;
+            if (currDialogueLine.OptionalOverrides.VoiceClipOverride != null)
+                voiceClip = currDialogueLine.OptionalOverrides.VoiceClipOverride;
+            else
+                voiceClip = speaker.DefaultVoice;
+
+
             //show text
-            string dialogue = dialogueObject.GetDialogue()[i];
+            string dialogue = currDialogueLine.Text;
             yield return RunTypingEffect(dialogue, voiceClip);
             textLabel.color = typewriterEffect.TextColor;
 
             //if responses exist, don't let player close text box
-            if ((i == dialogueObject.GetDialogue().Length - 1) && (dialogueObject.HasResponses))
+            if ((i == dialogueObject.DialogueLines.Length - 1) && (dialogueObject.HasResponses))
                 break;
 
             //Wait for input to show next slide
@@ -132,9 +149,9 @@ public class DialogueUI : Singleton<DialogueUI>
         }
         else
         {
-            if (dialogueObject.nextDialogueObject != null)
+            if (dialogueObject.NextDialogueObject != null)
             {
-                ShowDialogue(dialogueObject.nextDialogueObject, null);
+                ShowDialogue(dialogueObject.NextDialogueObject, null);
             }
             else
             {
