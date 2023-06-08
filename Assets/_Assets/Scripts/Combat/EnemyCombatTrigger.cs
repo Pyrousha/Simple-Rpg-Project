@@ -8,6 +8,7 @@ public class EnemyCombatTrigger : MonoBehaviour
 
     [SerializeField] private bool triggerCombatOnTouchPlayer = true;
     [SerializeField] private Transform enemyTransform;
+    [SerializeField] private CombatEntity combatEntity;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +21,6 @@ public class EnemyCombatTrigger : MonoBehaviour
 
     public void OnTouchedPlayer()
     {
-        CombatTransitionController.Instance.TriggerCombat(enemyTransform);
+        CombatTransitionController.Instance.TriggerCombat(enemyTransform, combatEntity);
     }
 }

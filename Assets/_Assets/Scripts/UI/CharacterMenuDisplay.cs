@@ -6,7 +6,7 @@ using TMPro;
 
 public class CharacterMenuDisplay : MonoBehaviour
 {
-    [SerializeField] private CombatEntity entity;
+    private CombatEntity entity;
 
     [Space(10)]
     [SerializeField] private Image characterPortrait;
@@ -15,6 +15,13 @@ public class CharacterMenuDisplay : MonoBehaviour
     [SerializeField] private Menubar hpBar;
     [SerializeField] private Menubar mpBar;
     [SerializeField] private Menubar xpBar;
+
+    private bool subscribedToAction = false;
+
+    public void SetEntity(CombatEntity _newEntity)
+    {
+        entity = _newEntity;
+    }
 
     private void Start()
     {
@@ -34,6 +41,7 @@ public class CharacterMenuDisplay : MonoBehaviour
 
         entity.SetHealthBars += UpdateHpUI;
         entity.SetManaBars += UpdateMpUI;
+        subscribedToAction = true;
     }
 
     private void UpdateHpUI(int _hp, int _maxHp)
@@ -47,7 +55,10 @@ public class CharacterMenuDisplay : MonoBehaviour
 
     void OnDestroy()
     {
-        entity.SetHealthBars -= UpdateHpUI;
-        entity.SetManaBars -= UpdateMpUI;
+        if (subscribedToAction)
+        {
+            entity.SetHealthBars -= UpdateHpUI;
+            entity.SetManaBars -= UpdateMpUI;
+        }
     }
 }

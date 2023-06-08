@@ -7,8 +7,6 @@ using static Utils;
 [CreateAssetMenu(menuName = "Combat/BaseCombatEntity")]
 public class BaseCombatEntity : ScriptableObject
 {
-    public List<StatValues> leveledStats;
-
     [System.Serializable]
     public struct StatValues
     {
@@ -26,6 +24,19 @@ public class BaseCombatEntity : ScriptableObject
 
         public int maxXp;
     }
+    [System.Serializable]
+    public struct EnemyDrops
+    {
+        public int XP;
+        public int GP;
+        //TODO: list of items to drop
+    }
+
+
+    public List<StatValues> leveledStats;
+
+    [field: SerializeField, Header("Enemy-Specific")] public EnemyDrops Drops { get; private set; }
+
 
 #if UNITY_EDITOR
     private void OnValidate()

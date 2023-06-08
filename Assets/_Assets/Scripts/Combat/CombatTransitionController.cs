@@ -31,9 +31,13 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
     private Vector3 player_combat_startingPos;
     private Vector3 enemy_combat_startingPos;
 
-    public void TriggerCombat(Transform _overworldEnemy)
+    public void TriggerCombat(Transform _overworldEnemy, CombatEntity _enemyEntity)
     {
+        CombatController.Instance.ResetEntityLists();
+        CombatController.Instance.AddEnemy(_enemyEntity);
+
         enemy_overworld = _overworldEnemy;
+
         StartCoroutine(ToCombat());
     }
 

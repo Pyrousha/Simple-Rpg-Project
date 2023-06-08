@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 6965151933890721685}
   - component: {fileID: 8374267936525464667}
   m_Layer: 0
-  m_Name: CombatEntity
+  m_Name: Player_Combat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

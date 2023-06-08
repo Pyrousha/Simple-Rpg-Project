@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leveledStats:
   - level: 1
-    maxHp: 12
+    maxHp: 11
     maxMp: 3
-    atk_P: 7
+    atk_P: 3
     atk_M: 0
-    def_P: 3
+    def_P: 4
     def_M: 2
     speed: 5
-    maxXp: 68
+    maxXp: 0
+  drops:
+    XP: 17
+    GP: 5

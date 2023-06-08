@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
+using UnityEngine.UI;
 using static BaseCombatEntity;
 
 public class CombatEntity : MonoBehaviour
@@ -21,18 +22,17 @@ public class CombatEntity : MonoBehaviour
 
     [SerializeField] private BaseCombatEntity baseStats;
     [Space(10)]
-    [SerializeField, ContextMenuItem("TakeDamage", nameof(DEBUG_TAKE_DAMAGE))] private Menubar hpBar;
+    [SerializeField] private Menubar hpBar;
     [SerializeField] private Menubar mpBar;
 
-    private int level;
-    public int Level => level;
+    public int Level { get; private set; }
 
-    private int hp;
-    public int Hp => hp;
+    public bool Dead { get; private set; }
+
+    public int Hp { get; private set; }
     [System.NonSerialized] public ModifiableStat MaxHp;
 
-    private int mp;
-    public int Mp => mp;
+    public int Mp { get; private set; }
     [System.NonSerialized] public ModifiableStat MaxMp;
 
     [System.NonSerialized] public ModifiableStat Atk_P;
@@ -40,10 +40,13 @@ public class CombatEntity : MonoBehaviour
     [System.NonSerialized] public ModifiableStat Def_P;
     [System.NonSerialized] public ModifiableStat Def_M;
     [System.NonSerialized] public ModifiableStat Speed;
+
     [Header("Playable Character-Specific Field")]
     [SerializeField] private Sprite menuPortraitSprite;
     public Sprite MenuPortraitSprite => menuPortraitSprite;
     [System.NonSerialized] public Utils.RangedInt Xp;
+
+    [field: SerializeField, Header("Enemy-Specific Field")] public Selectable EnemyButton { get; private set; }
 
     private void Awake()
     {
@@ -69,9 +72,9 @@ public class CombatEntity : MonoBehaviour
         // {
         //No existing data for this entity (only playable characters have data saved)
 
-        level = statsToLoad.level;
-        hp = statsToLoad.maxHp;
-        mp = statsToLoad.maxMp;
+        Level = statsToLoad.level;
+        Hp = statsToLoad.maxHp;
+        Mp = statsToLoad.maxMp;
         Xp = new Utils.RangedInt(0, statsToLoad.maxXp);
         // }
 
@@ -88,16 +91,16 @@ public class CombatEntity : MonoBehaviour
         SetManaBars = SetManaUI;
 
         if (hpBar != null)
-            SetHealthUI(hp, MaxHp.Value);
+            SetHealthUI(Hp, MaxHp.Value);
         if (mpBar != null)
-            SetManaUI(mp, MaxMp.Value);
+            SetManaUI(Mp, MaxMp.Value);
     }
 
     public event Action<int, int> SetHealthBars;
     private void SetHealthUI(int _hp, int _maxHp)
     {
         if (hpBar != null)
-            hpBar.SetUIValues(hp, MaxHp.Value);
+            hpBar.SetUIValues(Hp, MaxHp.Value);
     }
 
     public event Action<int, int> SetManaBars;
@@ -107,30 +110,51 @@ public class CombatEntity : MonoBehaviour
             mpBar.SetUIValues(_mp, _maxMp);
     }
 
-    public void TakeDamage(int _damage)
+    public void TakeDamage(int _atkValue, bool _isPhysical)
     {
-        hp = Mathf.Clamp(hp - _damage, 0, MaxHp.Value);
+        if (_atkValue < 0)
+        {
+            Debug.LogError("Damage should not be negative, use Heal() instead.\nReturning.");
+            return;
+        }
 
-        SetHealthBars?.Invoke(hp, MaxHp.Value);
+        int defValue;
+        if (_isPhysical)
+            defValue = Def_P.Value;
+        else
+            defValue = Def_M.Value;
 
-        if (hp == 0)
+        int damageToTake;
+        if (_atkValue >= defValue)
+            damageToTake = Mathf.Max(1, _atkValue * 2 - defValue);
+        else
+            damageToTake = Mathf.Max(1, Mathf.RoundToInt((float)_atkValue * _atkValue - defValue));
+
+        Hp = Mathf.Clamp(Hp - damageToTake, 0, MaxHp.Value);
+
+        SetHealthBars?.Invoke(Hp, MaxHp.Value);
+
+        if (Hp == 0)
             Die();
+    }
+
+    public void Heal(int _healAmount)
+    {
+        Hp = Mathf.Clamp(Hp + _healAmount, 0, MaxHp.Value);
+
+        SetHealthBars?.Invoke(Hp, MaxHp.Value);
     }
 
     public void UseMana(int _manaToUse)
     {
-        mp = Mathf.Clamp(mp - _manaToUse, 0, MaxMp.Value);
+        Mp = Mathf.Clamp(Mp - _manaToUse, 0, MaxMp.Value);
 
-        SetManaBars?.Invoke(mp, MaxMp.Value);
-    }
-
-    public void DEBUG_TAKE_DAMAGE()
-    {
-        TakeDamage(1);
+        SetManaBars?.Invoke(Mp, MaxMp.Value);
     }
 
     private void Die()
     {
+        Dead = true;
         Debug.Log("Oh no! " + gameObject.name + " Died...");
     }
 
