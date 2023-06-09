@@ -231,10 +231,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3821f7d187eef46b30e31a595a153c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseStats: {fileID: 11400000, guid: 293eb4549d1ce6948907bfefd225e55a, type: 2}
+  <IsPlayer>k__BackingField: 0
+  <BaseStats>k__BackingField: {fileID: 11400000, guid: 293eb4549d1ce6948907bfefd225e55a,
+    type: 2}
+  <BasicAttack>k__BackingField: {fileID: 11400000, guid: 4097a1b35869e8b48b5b76ac5e7ff4d0,
+    type: 2}
+  <Spells>k__BackingField: []
   hpBar: {fileID: 540931787248390545}
   mpBar: {fileID: 6093416259122332560}
   menuPortraitSprite: {fileID: 21300000, guid: 5661e8e89ee5c254f9155b4a004d777e, type: 3}
+  <EnemyButton>k__BackingField: {fileID: 0}
 --- !u!1 &9029512263973724464
 GameObject:
   m_ObjectHideFlags: 0

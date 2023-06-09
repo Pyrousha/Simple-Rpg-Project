@@ -512,6 +512,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374267936525464667, guid: 4b011145d2fff954ba5c902bfb33da76,
         type: 3}
+      propertyPath: <BaseStats>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 9edff76893755bf4d8041bbace3c4134,
+        type: 2}
+    - target: {fileID: 8374267936525464667, guid: 4b011145d2fff954ba5c902bfb33da76,
+        type: 3}
       propertyPath: <EnemyButton>k__BackingField
       value: 
       objectReference: {fileID: 5067867704357166128}

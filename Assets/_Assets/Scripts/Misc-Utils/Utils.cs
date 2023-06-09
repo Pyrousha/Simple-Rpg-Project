@@ -68,40 +68,48 @@ public static class Utils
 
         public RangedInt(int _value, int _maxValue)
         {
-            if (_value > _maxValue)
-                Debug.LogError("Cannot have value be greater than maxvalue (value: " + _value + ", maxValue: " + _maxValue + ")");
-            else
-            {
-                value = _value;
-                maxValue = _maxValue;
-            }
+            // if (_value > _maxValue)
+            //     Debug.LogError("Cannot have value be greater than maxvalue (value: " + _value + ", maxValue: " + _maxValue + ")");
+            // else
+            // {
+            value = _value;
+            maxValue = _maxValue;
+            // }
         }
 
         public void SetValue(int _value)
         {
-            if (_value > maxValue)
-                Debug.LogError("Cannot have value be greater than maxvalue (value: " + _value + ", maxValue: " + maxValue + ")");
-            else
-                value = _value;
+            // if (_value > maxValue)
+            //     Debug.LogError("Cannot have value be greater than maxvalue (value: " + _value + ", maxValue: " + maxValue + ")");
+            // else
+            value = _value;
+        }
+
+        public void AddToValue(int _valueToAdd)
+        {
+            // if (_value > maxValue)
+            //     Debug.LogError("Cannot have value be greater than maxvalue (value: " + _value + ", maxValue: " + maxValue + ")");
+            // else
+            value += _valueToAdd;
         }
 
         public void SetMaxValue(int _maxValue)
         {
-            if (_maxValue < value)
-                Debug.LogError("Cannot have maxValue be smaller than value (value: " + value + ", maxValue: " + _maxValue + ")");
-            else
-                maxValue = _maxValue;
+            // if (_maxValue < value)
+            //     Debug.LogError("Cannot have maxValue be smaller than value (value: " + value + ", maxValue: " + _maxValue + ")");
+            // else
+            maxValue = _maxValue;
         }
 
         public void SetValueAndMax(int _value, int _maxValue)
         {
-            if (_value > _maxValue)
-                Debug.LogError("Cannot have value be greater than maxvalue (value: " + _value + ", maxValue: " + _maxValue + ")");
-            else
-            {
-                value = _value;
-                maxValue = _maxValue;
-            }
+            // if (_value > _maxValue)
+            //     Debug.LogError("Cannot have value be greater than maxvalue (value: " + _value + ", maxValue: " + _maxValue + ")");
+            // else
+            // {
+            value = _value;
+            maxValue = _maxValue;
+            // }
         }
     }
 }

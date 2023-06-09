@@ -33,8 +33,17 @@ public class Menubar : MonoBehaviour
 
         if (xpLeftText != null)
         {
-            string xpLeft = (_maxValue - _value).ToString();
-            xpLeftText.text = xpLeft + "xp Left";
+            if (_maxValue - _value > 0)
+            {
+                string xpLeft = (_maxValue - _value).ToString();
+                xpLeftText.text = xpLeft + "xp Left";
+            }
+            else
+            {
+                //Max level!
+                numberText.text = "Max Level!";
+                xpLeftText.text = "";
+            }
         }
     }
 

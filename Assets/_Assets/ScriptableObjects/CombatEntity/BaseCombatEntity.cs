@@ -33,7 +33,7 @@ public class BaseCombatEntity : ScriptableObject
     }
 
 
-    public List<StatValues> leveledStats;
+    [field: SerializeField] public List<StatValues> LeveledStats { get; private set; }
 
     [field: SerializeField, Header("Enemy-Specific")] public EnemyDrops Drops { get; private set; }
 
@@ -41,12 +41,12 @@ public class BaseCombatEntity : ScriptableObject
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        leveledStats.Sort((a, b) => a.level.CompareTo(b.level));
+        LeveledStats.Sort((a, b) => a.level.CompareTo(b.level));
     }
 
     public StatValues GetStatsForLevel(int _level)
     {
-        foreach (StatValues stats in leveledStats)
+        foreach (StatValues stats in LeveledStats)
         {
             if (stats.level == _level)
                 return stats;

@@ -140,8 +140,6 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
     private IEnumerator EndCombatCoroutine()
     {
-        CombatController.Instance.OnCombatEnded();
-
         StartCoroutine(LerpCombatEntity(player_combat, player_combat_startingPos, 1));
         StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_startingPos, 1));
 

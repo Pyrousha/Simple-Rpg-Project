@@ -20,7 +20,10 @@ public class CombatEntity : MonoBehaviour
         Speed
     }
 
-    [SerializeField] private BaseCombatEntity baseStats;
+    [field: SerializeField] public bool IsPlayer { get; private set; }
+    [field: SerializeField] public BaseCombatEntity BaseStats { get; private set; }
+    [field: SerializeField] public AttackSpell BasicAttack { get; private set; }
+    [field: SerializeField] public List<AttackSpell> Spells { get; private set; }
     [Space(10)]
     [SerializeField] private Menubar hpBar;
     [SerializeField] private Menubar mpBar;
@@ -50,13 +53,13 @@ public class CombatEntity : MonoBehaviour
 
     private void Awake()
     {
-        if (baseStats == null)
+        if (BaseStats == null)
         {
             Debug.LogWarning("No baseStats assigned for CombatEntity \"" + gameObject.name + "\"");
             return;
         }
 
-        StatValues statsToLoad = baseStats.leveledStats[0];
+        StatValues statsToLoad = BaseStats.LeveledStats[0];
 
         //TODO: load data from storage
         // if ([local_save_data_exists])
@@ -90,10 +93,46 @@ public class CombatEntity : MonoBehaviour
         SetHealthBars = SetHealthUI;
         SetManaBars = SetManaUI;
 
-        if (hpBar != null)
-            SetHealthUI(Hp, MaxHp.Value);
-        if (mpBar != null)
-            SetManaUI(Mp, MaxMp.Value);
+        SetHealthBars?.Invoke(Hp, MaxHp.Value);
+        SetManaBars?.Invoke(Mp, MaxMp.Value);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="_baseStatIndex"></param>
+    /// <returns> Is entity max level </returns>
+    private bool LevelUpToIndex(int _baseStatIndex)
+    {
+        if (_baseStatIndex < BaseStats.LeveledStats.Count)
+        {
+            //Valid level
+            StatValues newStats = BaseStats.LeveledStats[_baseStatIndex];
+
+            Hp += newStats.maxHp - MaxHp.BaseValue;
+            Mp += newStats.maxMp - MaxMp.BaseValue;
+            Xp.SetMaxValue(newStats.maxXp);
+            Debug.Log("Max Xp: " + Xp.MaxValue);
+
+            MaxHp.SetBaseValue(newStats.maxHp);
+            MaxMp.SetBaseValue(newStats.maxMp);
+            Atk_P.SetBaseValue(newStats.atk_P);
+            Atk_M.SetBaseValue(newStats.atk_M);
+            Def_P.SetBaseValue(newStats.def_P);
+            Def_M.SetBaseValue(newStats.def_M);
+            Speed.SetBaseValue(newStats.speed);
+
+            SetHealthBars?.Invoke(Hp, MaxHp.Value);
+            SetManaBars?.Invoke(Mp, MaxMp.Value);
+
+            return _baseStatIndex == BaseStats.LeveledStats.Count - 1;
+        }
+        else
+        {
+            //Invalid level
+            Debug.LogError(BaseStats.name + " does not contain leveledStats with index " + _baseStatIndex);
+            return true;
+        }
     }
 
     public event Action<int, int> SetHealthBars;
@@ -110,12 +149,20 @@ public class CombatEntity : MonoBehaviour
             mpBar.SetUIValues(_mp, _maxMp);
     }
 
-    public void TakeDamage(int _atkValue, bool _isPhysical)
+    public event Action<Utils.RangedInt, int> SetXpBarAndLevelNum;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="_atkValue"></param>
+    /// <param name="_isPhysical"></param>
+    /// <returns>If the attack killed this entity</returns>
+    public bool TakeDamage(int _atkValue, bool _isPhysical)
     {
         if (_atkValue < 0)
         {
             Debug.LogError("Damage should not be negative, use Heal() instead.\nReturning.");
-            return;
+            return false;
         }
 
         int defValue;
@@ -135,7 +182,11 @@ public class CombatEntity : MonoBehaviour
         SetHealthBars?.Invoke(Hp, MaxHp.Value);
 
         if (Hp == 0)
+        {
             Die();
+            return true;
+        }
+        return false;
     }
 
     public void Heal(int _healAmount)
@@ -156,6 +207,34 @@ public class CombatEntity : MonoBehaviour
     {
         Dead = true;
         Debug.Log("Oh no! " + gameObject.name + " Died...");
+    }
+
+    public void GainXP(int _xpToGain)
+    {
+        if (Level == BaseStats.LeveledStats[^1].level)
+        {
+            //Already max level
+            return;
+        }
+
+        Xp.AddToValue(_xpToGain);
+        while (Xp.Value >= Xp.MaxValue)
+        {
+            //Level up!
+            Level++;
+
+            Debug.Log(gameObject.name + " leveled up to level " + Level + "!");
+
+            Xp.AddToValue(-Xp.MaxValue);
+            if (LevelUpToIndex(Level - 1))
+            {
+                //Max level
+                Xp.SetValue(Xp.MaxValue);
+                break;
+            }
+        }
+
+        SetXpBarAndLevelNum?.Invoke(Xp, Level);
     }
 
     public ModifiableStat GetStatBlockOfType(StatType_Enum _statType)
@@ -193,6 +272,7 @@ public class CombatEntity : MonoBehaviour
 public class ModifiableStat
 {
     [SerializeField] private int baseValue;
+    public int BaseValue => baseValue;
     public void SetBaseValue(int _baseValue)
     {
         if (_baseValue != baseValue)

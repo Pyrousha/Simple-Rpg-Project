@@ -9,19 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4050eb5fdd62089478a7de391aa30c9f, type: 3}
-  m_Name: Enemy
+  m_Script: {fileID: 11500000, guid: 53b061c82e498004991f9411d6e3f77d, type: 3}
+  m_Name: BasicAttack_Physical
   m_EditorClassIdentifier: 
-  <LeveledStats>k__BackingField:
-  - level: 1
-    maxHp: 11
-    maxMp: 3
-    atk_P: 3
-    atk_M: 0
-    def_P: 4
-    def_M: 2
-    speed: 4
-    maxXp: 0
-  <Drops>k__BackingField:
-    XP: 48
-    GP: 9
+  <IsPhysical>k__BackingField: 1
+  <AttackScalingMultiplier>k__BackingField: 1

@@ -41,6 +41,7 @@ public class CharacterMenuDisplay : MonoBehaviour
 
         entity.SetHealthBars += UpdateHpUI;
         entity.SetManaBars += UpdateMpUI;
+        entity.SetXpBarAndLevelNum += UpdateXpAndLevelUI;
         subscribedToAction = true;
     }
 
@@ -52,6 +53,11 @@ public class CharacterMenuDisplay : MonoBehaviour
     {
         mpBar.SetUIValues(_mp, _maxMp);
     }
+    private void UpdateXpAndLevelUI(Utils.RangedInt _rangedInt, int _level)
+    {
+        xpBar.SetUIValues(_rangedInt);
+        levelNum.text = "Lv " + _level;
+    }
 
     void OnDestroy()
     {
@@ -59,6 +65,7 @@ public class CharacterMenuDisplay : MonoBehaviour
         {
             entity.SetHealthBars -= UpdateHpUI;
             entity.SetManaBars -= UpdateMpUI;
+            entity.SetXpBarAndLevelNum -= UpdateXpAndLevelUI;
         }
     }
 }
