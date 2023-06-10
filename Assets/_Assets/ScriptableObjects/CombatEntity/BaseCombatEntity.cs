@@ -34,6 +34,10 @@ public class BaseCombatEntity : ScriptableObject
 
 
     [field: SerializeField] public List<StatValues> LeveledStats { get; private set; }
+    [field: SerializeField] public Sprite Sprite_Up { get; private set; }
+    [field: SerializeField] public Sprite Sprite_Down { get; private set; }
+    [field: SerializeField] public Sprite Sprite_Left { get; private set; }
+    [field: SerializeField] public Sprite Sprite_Right { get; private set; }
 
     [field: SerializeField, Header("Enemy-Specific")] public EnemyDrops Drops { get; private set; }
 

@@ -29,7 +29,7 @@ public class EnemyCombatButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnClicked()
     {
-        CombatController.Instance.SetPlayerTargetAndMoveToNextPlayer(enemyEntity);
+        CombatController.Instance.SetPlayerTargetAndMoveToNextPlayer(enemyEntity.OverworldEntity);
         OnDeselect(null);
     }
 }

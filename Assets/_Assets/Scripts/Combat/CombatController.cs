@@ -7,15 +7,16 @@ using static CombatMenuButton;
 
 public class CombatController : Singleton<CombatController>
 {
+    [System.Serializable]
     public struct EntityWithAttack
     {
-        public CombatEntity Caster { get; private set; }
-        public CombatEntity Target { get; private set; }
+        public OverworldEntity Caster { get; private set; }
+        public OverworldEntity Target { get; private set; }
         public AttackSpell AttackToUse { get; private set; }
 
         //TODO: Add parameters for healing/mana restoration spells
 
-        public EntityWithAttack(CombatEntity caster, CombatEntity target, AttackSpell attackToUse)
+        public EntityWithAttack(OverworldEntity caster, OverworldEntity target, AttackSpell attackToUse)
         {
             Caster = caster;
             Target = target;
@@ -23,6 +24,11 @@ public class CombatController : Singleton<CombatController>
         }
     }
 
+    [SerializeField] private List<CombatEntity> enemyEntitySlots;
+    [SerializeField] private List<CombatEntity> playerEntitySlots;
+    private List<CombatEntity> activeEnemyEntities;
+    private List<CombatEntity> activePlayerEntities;
+    [Space(10)]
     [SerializeField] private Animator combatButtonsAnim;
     [SerializeField] private Selectable firstCombatButton;
     [Space(10)]
@@ -30,10 +36,10 @@ public class CombatController : Singleton<CombatController>
     [SerializeField] private GameObject damageNumberPrefab;
     [SerializeField] private float bladeDuration = 1.0f;
     private Selectable lastSelectedButton;
-    private List<CombatEntity> alivePlayers;
-    private List<CombatEntity> deadPlayers;
-    private List<CombatEntity> aliveEnemies;
-    private List<CombatEntity> deadEnemies;
+    private List<OverworldEntity> alivePlayers;
+    private List<OverworldEntity> deadPlayers;
+    private List<OverworldEntity> aliveEnemies;
+    private List<OverworldEntity> deadEnemies;
 
     private bool isPlayerTurn = false;
 
@@ -42,11 +48,19 @@ public class CombatController : Singleton<CombatController>
     private int currPlayerIndex;
     private AttackSpell selectedAttackSpell;
 
-    public void ResetEntityLists()
+    public void SetEntitiesForCombat(List<OverworldEntity> _enemiesToFight)
     {
-        alivePlayers = new List<CombatEntity>();
-        deadPlayers = new List<CombatEntity>();
-        foreach (CombatEntity currPlayerEntity in PartyManager.Instance.PartyMembers)
+        foreach (CombatEntity entity in enemyEntitySlots)
+            entity.SetOverworldEntity(null);
+        foreach (CombatEntity entity in playerEntitySlots)
+            entity.SetOverworldEntity(null);
+
+        activeEnemyEntities = new List<CombatEntity>(enemyEntitySlots);
+        activePlayerEntities = new List<CombatEntity>(playerEntitySlots);
+
+        alivePlayers = new List<OverworldEntity>();
+        deadPlayers = new List<OverworldEntity>();
+        foreach (OverworldEntity currPlayerEntity in PartyManager.Instance.PartyMembers)
         {
             if (currPlayerEntity.IsDead == false)
                 alivePlayers.Add(currPlayerEntity);
@@ -54,18 +68,68 @@ public class CombatController : Singleton<CombatController>
                 deadPlayers.Add(currPlayerEntity);
         }
 
-        aliveEnemies = new List<CombatEntity>();
-        deadEnemies = new List<CombatEntity>();
-    }
+        aliveEnemies = new List<OverworldEntity>(_enemiesToFight);
+        deadEnemies = new List<OverworldEntity>();
 
-    public void AddEnemy(CombatEntity _enemy)
-    {
-        aliveEnemies.Add(_enemy);
+        //The goal here is to have all entities that will be fighting on the player or enemy side to be centered, while also being ordered left to right
+        bool deleteRight = true;
+        while (activeEnemyEntities.Count > aliveEnemies.Count)
+        {
+            if (deleteRight)
+                activeEnemyEntities.RemoveAt(activeEnemyEntities.Count - 1);
+            else
+                activeEnemyEntities.RemoveAt(0);
+            deleteRight = !deleteRight;
+        }
+        deleteRight = true;
+        while (activePlayerEntities.Count > PartyManager.Instance.PartyMembers.Count)
+        {
+            if (deleteRight)
+                activePlayerEntities.RemoveAt(activePlayerEntities.Count - 1);
+            else
+                activePlayerEntities.RemoveAt(0);
+            deleteRight = !deleteRight;
+        }
+
+        //TODO: Add catch for not enough combatEntities
+
+        //Assign each OverworldEntity to a combatEntity (and vice versa)
+        for (int i = 0; i < activeEnemyEntities.Count; i++)
+        {
+            CombatEntity combatEntity = activeEnemyEntities[i];
+            OverworldEntity overworldEntity = aliveEnemies[i];
+
+            combatEntity.SetOverworldEntity(overworldEntity);
+            overworldEntity.CombatEntity = combatEntity;
+        }
+        for (int i = 0; i < PartyManager.Instance.PartyMembers.Count; i++)
+        {
+            CombatEntity combatEntity = activePlayerEntities[i];
+            OverworldEntity overworldEntity = PartyManager.Instance.PartyMembers[i];
+
+            combatEntity.SetOverworldEntity(overworldEntity);
+            overworldEntity.CombatEntity = combatEntity;
+        }
+
+        //Link buttons on enemies
+        for (int i = 0; i < activeEnemyEntities.Count; i++)
+        {
+            Navigation customNav = new Navigation();
+            customNav.mode = Navigation.Mode.Explicit;
+
+            //Bind left
+            customNav.selectOnLeft = activeEnemyEntities[(i - 1 + activeEnemyEntities.Count) % activeEnemyEntities.Count].EnemyButton;
+
+            //Bind right
+            customNav.selectOnRight = activeEnemyEntities[(i + 1 + activeEnemyEntities.Count) % activeEnemyEntities.Count].EnemyButton;
+
+            activeEnemyEntities[i].EnemyButton.navigation = customNav;
+        }
     }
 
     public void OnCombatStarted()
     {
-        //TODO: Calculate if player or enemy should go first (rign now assume player goes first)
+        //TODO: Calculate if player or enemy should go first (right now assume player goes first)
         OnPlayerTurnStarted();
     }
 
@@ -100,7 +164,7 @@ public class CombatController : Singleton<CombatController>
                 if (aliveEnemies.Count > 1)
                 {
                     //Multiple enemies, need to select which one to attack
-                    aliveEnemies[0].EnemyButton.Select();
+                    aliveEnemies[0].CombatEntity.EnemyButton.Select();
                 }
                 else
                 {
@@ -133,7 +197,7 @@ public class CombatController : Singleton<CombatController>
         }
     }
 
-    public void SetPlayerTargetAndMoveToNextPlayer(CombatEntity _target)
+    public void SetPlayerTargetAndMoveToNextPlayer(OverworldEntity _target)
     {
         entitiesWithAttacksToUse.Add(new EntityWithAttack(alivePlayers[currPlayerIndex], _target, selectedAttackSpell));
 
@@ -154,7 +218,7 @@ public class CombatController : Singleton<CombatController>
         isPlayerTurn = false;
         combatButtonsAnim.SetBool("Status", false);
 
-        foreach (CombatEntity enemy in aliveEnemies)
+        foreach (OverworldEntity enemy in aliveEnemies)
         {
             //TODO: Allow enemies to use spells
             int targetPlayerIndex = Random.Range(0, alivePlayers.Count);
@@ -173,16 +237,15 @@ public class CombatController : Singleton<CombatController>
         //Do the attacks!
         for (int i = 0; i < entitiesWithAttacksToUse.Count; i++)
         {
-            CombatEntity caster = entitiesWithAttacksToUse[i].Caster;
-            CombatEntity target = entitiesWithAttacksToUse[i].Target;
+            OverworldEntity caster = entitiesWithAttacksToUse[i].Caster;
+            OverworldEntity target = entitiesWithAttacksToUse[i].Target;
             AttackSpell attack = entitiesWithAttacksToUse[i].AttackToUse;
 
             if (caster.IsDead)
                 continue;
 
             GameObject bladeSlash = Instantiate(bladeSlashPrefab);
-            //TODO: Make this not hirearchy-based
-            bladeSlash.GetComponent<MoveToPoint>().MoveToPosition(caster.transform.GetChild(0).position, target.transform.GetChild(0).position, bladeDuration);
+            bladeSlash.GetComponent<MoveToPoint>().MoveToPosition(caster.CombatEntity.CenterOfSprite, target.CombatEntity.CenterOfSprite, bladeDuration);
 
             yield return new WaitForSeconds(bladeDuration);
 
@@ -198,7 +261,7 @@ public class CombatController : Singleton<CombatController>
 
             //Show damage numbers
             Transform damageNumberTransform = Instantiate(damageNumberPrefab).transform;
-            damageNumberTransform.parent = target.transform;
+            damageNumberTransform.parent = target.CombatEntity.transform;
             damageNumberTransform.localScale = Vector3.one * 0.005f;
             damageNumberTransform.localRotation = Quaternion.identity;
             float angle = Random.Range(-45, 180 + 45) * Mathf.Deg2Rad;
@@ -256,12 +319,12 @@ public class CombatController : Singleton<CombatController>
         {
             case CombatWinCondition.Win:
                 //Add gold and XP
-                foreach (CombatEntity enemy in deadEnemies)
+                foreach (OverworldEntity enemy in deadEnemies)
                 {
                     InventoryManager.Instance.AddGold(enemy.BaseStats.Drops.GP);
                     Debug.Log("Gained " + enemy.BaseStats.Drops.GP + " GP from enemy " + enemy.name);
 
-                    foreach (CombatEntity livingPlayer in alivePlayers)
+                    foreach (OverworldEntity livingPlayer in alivePlayers)
                     {
                         Debug.Log(livingPlayer.name + " gained " + enemy.BaseStats.Drops.XP + " XP from enemy " + enemy.name);
                         livingPlayer.GainXP(enemy.BaseStats.Drops.XP);
@@ -278,6 +341,12 @@ public class CombatController : Singleton<CombatController>
                 //TODO: Show lose UI
                 break;
         }
+
+        //TODO: Put this in a coroutine or something
+        foreach (CombatEntity combatEntity in activeEnemyEntities)
+            combatEntity.OnCombatFinished();
+        foreach (CombatEntity combatEntity in activePlayerEntities)
+            combatEntity.OnCombatFinished();
 
         combatButtonsAnim.SetBool("Status", false);
         CombatTransitionController.Instance.EndCombat();

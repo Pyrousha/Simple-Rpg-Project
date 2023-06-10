@@ -6,7 +6,7 @@ using TMPro;
 
 public class CharacterMenuDisplay : MonoBehaviour
 {
-    private CombatEntity entity;
+    private OverworldEntity entity;
 
     [Space(10)]
     [SerializeField] private Image characterPortrait;
@@ -18,13 +18,10 @@ public class CharacterMenuDisplay : MonoBehaviour
 
     private bool subscribedToAction = false;
 
-    public void SetEntity(CombatEntity _newEntity)
+    public void SetEntity(OverworldEntity _newEntity)
     {
         entity = _newEntity;
-    }
 
-    private void Start()
-    {
         if (entity == null)
         {
             for (int i = 0; i < transform.childCount; i++)
@@ -32,8 +29,8 @@ public class CharacterMenuDisplay : MonoBehaviour
             return;
         }
 
-        characterPortrait.sprite = entity.MenuPortraitSprite;
-        characterName.text = entity.name;
+        characterPortrait.sprite = entity.BaseStats.Sprite_Down;
+        characterName.text = entity.BaseStats.name;
         levelNum.text = "Lv " + entity.Level;
         hpBar.SetUIValues(entity.Hp, entity.MaxHp.Value);
         mpBar.SetUIValues(entity.Mp, entity.MaxMp.Value);

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4050eb5fdd62089478a7de391aa30c9f, type: 3}
-  m_Name: Hero
+  m_Name: Pyrousha
   m_EditorClassIdentifier: 
   <LeveledStats>k__BackingField:
   - level: 1
@@ -18,7 +18,7 @@ MonoBehaviour:
     maxMp: 0
     atk_P: 6
     atk_M: 0
-    def_P: 6
+    def_P: 99
     def_M: 2
     speed: 5
     maxXp: 68
@@ -27,7 +27,7 @@ MonoBehaviour:
     maxMp: 0
     atk_P: 7
     atk_M: 0
-    def_P: 7
+    def_P: 99
     def_M: 3
     speed: 6
     maxXp: 94
@@ -36,7 +36,7 @@ MonoBehaviour:
     maxMp: 0
     atk_P: 8
     atk_M: 0
-    def_P: 8
+    def_P: 99
     def_M: 4
     speed: 6
     maxXp: 0

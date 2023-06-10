@@ -31,10 +31,9 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
     private Vector3 player_combat_startingPos;
     private Vector3 enemy_combat_startingPos;
 
-    public void TriggerCombat(Transform _overworldEnemy, CombatEntity _enemyEntity)
+    public void TriggerCombat(Transform _overworldEnemy, List<OverworldEntity> _enemiesToFight)
     {
-        CombatController.Instance.ResetEntityLists();
-        CombatController.Instance.AddEnemy(_enemyEntity);
+        CombatController.Instance.SetEntitiesForCombat(_enemiesToFight);
 
         enemy_overworld = _overworldEnemy;
 
@@ -149,6 +148,8 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         combatFloorAnim.SetBool("Status", false);
 
         yield return new WaitForSeconds(lerpDuration);
+
+        enemy_overworld.gameObject.SetActive(false);
 
         combatParent.SetActive(false);
         overworldParent.SetActive(true);
