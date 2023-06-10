@@ -7,7 +7,7 @@ public class PartyManager : Singleton<PartyManager>
     [SerializeField] private CharacterMenuDisplay[] characterDisplays;
     [field: SerializeField] public List<OverworldEntity> PartyMembers { get; private set; }
 
-    private void Awake()
+    private void Start()
     {
         //TODO: Load characters in party from save instead of serializedField
 
