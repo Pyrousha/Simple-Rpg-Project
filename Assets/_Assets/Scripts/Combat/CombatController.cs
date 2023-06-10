@@ -13,6 +13,8 @@ public class CombatController : Singleton<CombatController>
         public CombatEntity Target { get; private set; }
         public AttackSpell AttackToUse { get; private set; }
 
+        //TODO: Add parameters for healing/mana restoration spells
+
         public EntityWithAttack(CombatEntity caster, CombatEntity target, AttackSpell attackToUse)
         {
             Caster = caster;
@@ -23,6 +25,10 @@ public class CombatController : Singleton<CombatController>
 
     [SerializeField] private Animator combatButtonsAnim;
     [SerializeField] private Selectable firstCombatButton;
+    [Space(10)]
+    [SerializeField] private GameObject bladeSlashPrefab;
+    [SerializeField] private GameObject damageNumberPrefab;
+    [SerializeField] private float bladeDuration = 1.0f;
     private Selectable lastSelectedButton;
     private List<CombatEntity> alivePlayers;
     private List<CombatEntity> deadPlayers;
@@ -42,7 +48,7 @@ public class CombatController : Singleton<CombatController>
         deadPlayers = new List<CombatEntity>();
         foreach (CombatEntity currPlayerEntity in PartyManager.Instance.PartyMembers)
         {
-            if (currPlayerEntity.Dead == false)
+            if (currPlayerEntity.IsDead == false)
                 alivePlayers.Add(currPlayerEntity);
             else
                 deadPlayers.Add(currPlayerEntity);
@@ -82,6 +88,9 @@ public class CombatController : Singleton<CombatController>
 
     public void OnButtonClicked(MenuButtons_Combat_Enum _buttonType, Selectable _selectable)
     {
+        if (isPlayerTurn == false)
+            return;
+
         lastSelectedButton = _selectable;
 
         switch (_buttonType)
@@ -143,6 +152,7 @@ public class CombatController : Singleton<CombatController>
     private void SpecifyAttacksForEnemies()
     {
         isPlayerTurn = false;
+        combatButtonsAnim.SetBool("Status", false);
 
         foreach (CombatEntity enemy in aliveEnemies)
         {
@@ -152,10 +162,10 @@ public class CombatController : Singleton<CombatController>
             entitiesWithAttacksToUse.Add(new EntityWithAttack(enemy, alivePlayers[targetPlayerIndex], enemy.BasicAttack));
         }
 
-        EntitiesAttack();
+        StartCoroutine(EntitiesAttack());
     }
 
-    private void EntitiesAttack()
+    private IEnumerator EntitiesAttack()
     {
         //Sort array by speed (decreasing)
         entitiesWithAttacksToUse.Sort((a, b) => b.Caster.Speed.Value.CompareTo(a.Caster.Speed.Value));
@@ -167,14 +177,40 @@ public class CombatController : Singleton<CombatController>
             CombatEntity target = entitiesWithAttacksToUse[i].Target;
             AttackSpell attack = entitiesWithAttacksToUse[i].AttackToUse;
 
-            int attackValue;
+            if (caster.IsDead)
+                continue;
+
+            GameObject bladeSlash = Instantiate(bladeSlashPrefab);
+            //TODO: Make this not hirearchy-based
+            bladeSlash.GetComponent<MoveToPoint>().MoveToPosition(caster.transform.GetChild(0).position, target.transform.GetChild(0).position, bladeDuration);
+
+            yield return new WaitForSeconds(bladeDuration);
+
+            float attackValue;
             if (attack.IsPhysical)
                 attackValue = caster.Atk_P.Value;
             else
                 attackValue = caster.Atk_M.Value;
-            attackValue = Mathf.RoundToInt(attackValue * attack.AttackScalingMultiplier);
+            attackValue *= attack.AttackScalingMultiplier;
 
-            if (target.TakeDamage(attackValue, attack.IsPhysical))
+            //TODO: Add parameters for healing/mana restoration spells
+            int damageTaken = target.TakeDamage(attackValue, attack.IsPhysical);
+
+            //Show damage numbers
+            Transform damageNumberTransform = Instantiate(damageNumberPrefab).transform;
+            damageNumberTransform.parent = target.transform;
+            damageNumberTransform.localScale = Vector3.one * 0.005f;
+            damageNumberTransform.localRotation = Quaternion.identity;
+            float angle = Random.Range(-45, 180 + 45) * Mathf.Deg2Rad;
+            damageNumberTransform.localPosition = 0.5f * new Vector3(Mathf.Cos(angle), 0.5f + Mathf.Sin(angle), 0);
+
+            //TODO: Add parameters for healing/mana restoration spells
+            damageNumberTransform.GetComponent<DamageNumber>().SetVisuals(DamageNumber.DamageNumberEnum.Damage, damageTaken, bladeDuration);
+
+            yield return new WaitForSeconds(0.25f);
+
+            //Check if target just died
+            if (target.IsDead)
             {
                 //This target was just killed
                 if (target.IsPlayer)
@@ -186,7 +222,7 @@ public class CombatController : Singleton<CombatController>
                     if (alivePlayers.Count == 0)
                     {
                         EndCombat(CombatWinCondition.Lose);
-                        return;
+                        yield break;
                     }
                 }
                 else
@@ -198,7 +234,7 @@ public class CombatController : Singleton<CombatController>
                     if (aliveEnemies.Count == 0)
                     {
                         EndCombat(CombatWinCondition.Win);
-                        return;
+                        yield break;
                     }
                 }
             }

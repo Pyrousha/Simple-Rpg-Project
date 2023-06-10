@@ -11,7 +11,7 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
     {
         Main
 
-        //Todo: Fill with submenus (Like "Items", "Equip", etc.)
+        //TODO: Fill with submenus (Like "Items", "Equip", etc.)
     }
 
     private OverworldMenuSubmenus_Enum currSubmenu;

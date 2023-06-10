@@ -30,7 +30,7 @@ public class CombatEntity : MonoBehaviour
 
     public int Level { get; private set; }
 
-    public bool Dead { get; private set; }
+    public bool IsDead { get; private set; }
 
     public int Hp { get; private set; }
     [System.NonSerialized] public ModifiableStat MaxHp;
@@ -156,13 +156,13 @@ public class CombatEntity : MonoBehaviour
     /// </summary>
     /// <param name="_atkValue"></param>
     /// <param name="_isPhysical"></param>
-    /// <returns>If the attack killed this entity</returns>
-    public bool TakeDamage(int _atkValue, bool _isPhysical)
+    /// <returns>Amount of damage taken (not stopped by hitting 0 hp)</returns>
+    public int TakeDamage(float _atkValue, bool _isPhysical)
     {
         if (_atkValue < 0)
         {
             Debug.LogError("Damage should not be negative, use Heal() instead.\nReturning.");
-            return false;
+            return 0;
         }
 
         int defValue;
@@ -171,22 +171,26 @@ public class CombatEntity : MonoBehaviour
         else
             defValue = Def_M.Value;
 
-        int damageToTake;
+        float damageToTake;
         if (_atkValue >= defValue)
-            damageToTake = Mathf.Max(1, _atkValue * 2 - defValue);
+            damageToTake = _atkValue * 2 - defValue;
         else
-            damageToTake = Mathf.Max(1, Mathf.RoundToInt((float)_atkValue * _atkValue - defValue));
+            damageToTake = _atkValue * _atkValue - defValue;
 
-        Hp = Mathf.Clamp(Hp - damageToTake, 0, MaxHp.Value);
+        //Randomly have attack go from 90% to 110% damage
+        float randomMultiplier = UnityEngine.Random.Range(0.9f, 1.1f);
+        damageToTake *= randomMultiplier;
+
+        int damageToTake_int = Mathf.Max(1, Mathf.RoundToInt(damageToTake));
+
+        Hp = Mathf.Clamp(Hp - damageToTake_int, 0, MaxHp.Value);
 
         SetHealthBars?.Invoke(Hp, MaxHp.Value);
 
         if (Hp == 0)
-        {
             Die();
-            return true;
-        }
-        return false;
+
+        return damageToTake_int;
     }
 
     public void Heal(int _healAmount)
@@ -205,7 +209,7 @@ public class CombatEntity : MonoBehaviour
 
     private void Die()
     {
-        Dead = true;
+        IsDead = true;
         Debug.Log("Oh no! " + gameObject.name + " Died...");
     }
 
