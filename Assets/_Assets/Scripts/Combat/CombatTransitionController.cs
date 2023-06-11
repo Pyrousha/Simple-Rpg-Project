@@ -149,7 +149,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
         yield return new WaitForSeconds(lerpDuration);
 
-        //enemy_overworld.gameObject.SetActive(false);
+        enemy_overworld.gameObject.SetActive(false);
 
         combatParent.SetActive(false);
         overworldParent.SetActive(true);

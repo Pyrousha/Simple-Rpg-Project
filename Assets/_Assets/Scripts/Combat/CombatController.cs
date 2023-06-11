@@ -247,6 +247,13 @@ public class CombatController : Singleton<CombatController>
             //TODO: Check if target is dead, If so: 
             //  -If attack used was single-target, find another target
             //  -If attack was multi-target, just ignore
+            if (target.IsDead)
+            {
+                if (target.IsPlayer)
+                    target = alivePlayers[Random.Range(0, alivePlayers.Count)];
+                else
+                    target = aliveEnemies[Random.Range(0, aliveEnemies.Count)];
+            }
 
             GameObject bladeSlash = Instantiate(bladeSlashPrefab);
             bladeSlash.GetComponent<MoveToPoint>().MoveToPosition(caster.CombatEntity.CenterOfSprite, target.CombatEntity.CenterOfSprite, bladeDuration);
