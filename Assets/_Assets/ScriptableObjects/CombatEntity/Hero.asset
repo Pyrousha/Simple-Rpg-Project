@@ -40,13 +40,13 @@ MonoBehaviour:
     def_M: 4
     speed: 6
     maxXp: 0
-  <Sprite_Up>k__BackingField: {fileID: 21300000, guid: 5661e8e89ee5c254f9155b4a004d777e,
+  <Sprite_Up>k__BackingField: {fileID: -328249764, guid: b6aa10c020c4f7e478b64105dad95496,
     type: 3}
-  <Sprite_Down>k__BackingField: {fileID: 21300000, guid: 5661e8e89ee5c254f9155b4a004d777e,
+  <Sprite_Down>k__BackingField: {fileID: -1493000461, guid: b6aa10c020c4f7e478b64105dad95496,
     type: 3}
-  <Sprite_Left>k__BackingField: {fileID: 21300000, guid: 5661e8e89ee5c254f9155b4a004d777e,
+  <Sprite_Left>k__BackingField: {fileID: 31184707, guid: b6aa10c020c4f7e478b64105dad95496,
     type: 3}
-  <Sprite_Right>k__BackingField: {fileID: 21300000, guid: 5661e8e89ee5c254f9155b4a004d777e,
+  <Sprite_Right>k__BackingField: {fileID: 1711604169, guid: b6aa10c020c4f7e478b64105dad95496,
     type: 3}
   <Drops>k__BackingField:
     XP: 0

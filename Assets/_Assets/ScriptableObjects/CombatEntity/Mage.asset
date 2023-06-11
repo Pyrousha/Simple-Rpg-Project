@@ -10,43 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4050eb5fdd62089478a7de391aa30c9f, type: 3}
-  m_Name: Pyrousha
+  m_Name: Mage
   m_EditorClassIdentifier: 
   <LeveledStats>k__BackingField:
   - level: 1
     maxHp: 12
     maxMp: 0
-    atk_P: 6
-    atk_M: 0
-    def_P: 99
+    atk_P: 1
+    atk_M: 5
+    def_P: 6
     def_M: 2
     speed: 5
-    maxXp: 68
+    maxXp: 82
   - level: 2
     maxHp: 15
     maxMp: 0
-    atk_P: 7
-    atk_M: 0
-    def_P: 99
+    atk_P: 2
+    atk_M: 6
+    def_P: 7
     def_M: 3
     speed: 6
-    maxXp: 94
+    maxXp: 105
   - level: 3
     maxHp: 16
     maxMp: 0
-    atk_P: 8
-    atk_M: 0
-    def_P: 99
+    atk_P: 3
+    atk_M: 7
+    def_P: 8
     def_M: 4
     speed: 6
     maxXp: 0
-  <Sprite_Up>k__BackingField: {fileID: -328249764, guid: b6aa10c020c4f7e478b64105dad95496,
+  <Sprite_Up>k__BackingField: {fileID: -328249764, guid: 881501ca4fe3d61409efc324f2636fda,
     type: 3}
-  <Sprite_Down>k__BackingField: {fileID: -1493000461, guid: b6aa10c020c4f7e478b64105dad95496,
+  <Sprite_Down>k__BackingField: {fileID: -1493000461, guid: 881501ca4fe3d61409efc324f2636fda,
     type: 3}
-  <Sprite_Left>k__BackingField: {fileID: 31184707, guid: b6aa10c020c4f7e478b64105dad95496,
+  <Sprite_Left>k__BackingField: {fileID: 31184707, guid: 881501ca4fe3d61409efc324f2636fda,
     type: 3}
-  <Sprite_Right>k__BackingField: {fileID: 1711604169, guid: b6aa10c020c4f7e478b64105dad95496,
+  <Sprite_Right>k__BackingField: {fileID: 1711604169, guid: 881501ca4fe3d61409efc324f2636fda,
     type: 3}
   <Drops>k__BackingField:
     XP: 0

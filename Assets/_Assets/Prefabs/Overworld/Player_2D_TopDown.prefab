@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &735150581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 735150582}
+  - component: {fileID: 735150583}
+  m_Layer: 6
+  m_Name: OverworldEntity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &735150582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735150581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1960874119394185388}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &735150583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735150581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5667ba6f340712d4ba83100679ade630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsPlayer>k__BackingField: 1
+  <BaseStats>k__BackingField: {fileID: 11400000, guid: c2af4610997844441a99b491ae64e18d,
+    type: 2}
+  <BasicAttack>k__BackingField: {fileID: 11400000, guid: 4097a1b35869e8b48b5b76ac5e7ff4d0,
+    type: 2}
+  <Spells>k__BackingField: []
 --- !u!1 &1960874119394185389
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +84,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 735150582}
   - {fileID: 8734874474098496369}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,7 +130,7 @@ SpriteRenderer:
   m_SortingLayerID: -2068439197
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5661e8e89ee5c254f9155b4a004d777e, type: 3}
+  m_Sprite: {fileID: -1493000461, guid: b6aa10c020c4f7e478b64105dad95496, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +156,6 @@ MonoBehaviour:
   maxSpeed: 4
   accelSpeed_ground: 1
   frictionSpeed_ground: 0.5
-  velocityRotateCutoff: 0.25
   interactParentToRotate: {fileID: 8734874474098496369}
   checkForGrounded: 0
   groundLayer:
@@ -128,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919d2ef47e1129c41be9dec921b99f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleCutoffSpeed: 0.25
+  idleCutoffSpeed: 0.5
 --- !u!95 &633816359
 Animator:
   serializedVersion: 5
@@ -267,5 +317,5 @@ Transform:
   m_Children:
   - {fileID: 1019200552005895443}
   m_Father: {fileID: 1960874119394185388}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
