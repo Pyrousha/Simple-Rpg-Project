@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class AlignWithCamera : MonoBehaviour
 {
+    public enum FaceCameraMode
+    {
+        MatchForwardDirection,
+        MatchYRotation,
+        Nothing
+    }
+
     private Transform cameraTransform;
+    [field: SerializeField] public FaceCameraMode Mode { get; private set; } = FaceCameraMode.MatchYRotation;
 
     private void Awake()
     {
@@ -14,6 +22,50 @@ public class AlignWithCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(cameraTransform.forward, cameraTransform.up);
+        switch (Mode)
+        {
+            case FaceCameraMode.MatchForwardDirection:
+                transform.rotation = Quaternion.LookRotation(cameraTransform.forward, cameraTransform.up);
+                break;
+            case FaceCameraMode.MatchYRotation:
+                Vector3 newEuler = transform.eulerAngles;
+                newEuler.y = cameraTransform.eulerAngles.y;
+                transform.eulerAngles = newEuler;
+                break;
+            case FaceCameraMode.Nothing:
+                break;
+        }
+    }
+
+    public void StandUp()
+    {
+        Mode = FaceCameraMode.MatchForwardDirection;
+    }
+
+    public void StartFallOver()
+    {
+        StartCoroutine(FallOver(0.5f));
+    }
+
+    private IEnumerator FallOver(float _lerpDuration)
+    {
+        Mode = FaceCameraMode.MatchYRotation;
+
+        Vector3 startRotation = transform.localEulerAngles;
+
+        Vector3 targetRotation = new Vector3(90, 0, 0);
+
+        float startTime = Time.time;
+        float elapsedPercentage = 0;
+
+        while (elapsedPercentage < 1)
+        {
+            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / _lerpDuration);
+            elapsedPercentage = Utils.Accelerate(elapsedPercentage);
+
+            transform.localEulerAngles = Vector3.Lerp(startRotation, targetRotation, elapsedPercentage);
+
+            yield return null;
+        }
     }
 }

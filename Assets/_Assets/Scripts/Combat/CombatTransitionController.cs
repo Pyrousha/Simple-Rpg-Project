@@ -73,7 +73,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         StartCoroutine(SpinCameraParent(cameraStartZAngle, 0));
 
         StartCoroutine(LerpCombatEntity(player_combat, player_combat_targetPos.position, 1));
-        StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_targetPos.position, 4));
+        StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_targetPos.position, 3));
 
         yield return new WaitForSeconds(lerpDuration);
 
@@ -149,7 +149,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
         yield return new WaitForSeconds(lerpDuration);
 
-        enemy_overworld.gameObject.SetActive(false);
+        //enemy_overworld.gameObject.SetActive(false);
 
         combatParent.SetActive(false);
         overworldParent.SetActive(true);

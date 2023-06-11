@@ -10,6 +10,7 @@ public class CombatEntity : MonoBehaviour
     [SerializeField] private Menubar hpBar;
     [SerializeField] private Menubar mpBar;
 
+    [field: SerializeField] public AlignWithCamera alignWithCamera { get; private set; }
     [SerializeField] private SpriteRenderer combatSprite;
     [SerializeField] private SpriteRenderer spriteShadow;
 
@@ -28,6 +29,9 @@ public class CombatEntity : MonoBehaviour
         if (_entity != null)
         {
             gameObject.SetActive(true);
+
+            if (_entity.IsDead == false)
+                alignWithCamera.StandUp();
 
             OverworldEntity.SetHealthBars += SetHealthUI;
             OverworldEntity.SetManaBars += SetManaUI;

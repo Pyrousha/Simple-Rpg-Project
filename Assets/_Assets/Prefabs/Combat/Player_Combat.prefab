@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e678ee9062d1d064fa2034c423439907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <FaceCamera>k__BackingField: 1
 --- !u!114 &8374267936525464667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 540931787248390545}
   mpBar: {fileID: 6093416259122332560}
+  <alignWithCamera>k__BackingField: {fileID: 6965151933890721685}
   combatSprite: {fileID: 3033905914647355463}
   spriteShadow: {fileID: 5303359251191500609}
   <EnemyButton>k__BackingField: {fileID: 0}

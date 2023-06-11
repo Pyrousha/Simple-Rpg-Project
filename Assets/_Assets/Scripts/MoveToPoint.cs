@@ -22,7 +22,7 @@ public class MoveToPoint : MonoBehaviour
         while (elapsedPercentage < 1)
         {
             elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / _duration);
-            elapsedPercentage = Accelerate(elapsedPercentage);
+            elapsedPercentage = Utils.Accelerate(elapsedPercentage);
 
             transform.position = Vector3.Lerp(_startPos, _targetPos, elapsedPercentage);
 
@@ -32,15 +32,5 @@ public class MoveToPoint : MonoBehaviour
         transform.position = _targetPos;
 
         Destroy(gameObject);
-    }
-
-    private float Parametric(float _x)
-    {
-        return _x * _x / (2 * (_x * _x - _x) + 1);
-    }
-
-    private float Accelerate(float _x)
-    {
-        return _x * _x;
     }
 }

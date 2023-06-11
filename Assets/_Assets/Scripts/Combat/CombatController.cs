@@ -244,6 +244,10 @@ public class CombatController : Singleton<CombatController>
             if (caster.IsDead)
                 continue;
 
+            //TODO: Check if target is dead, If so: 
+            //  -If attack used was single-target, find another target
+            //  -If attack was multi-target, just ignore
+
             GameObject bladeSlash = Instantiate(bladeSlashPrefab);
             bladeSlash.GetComponent<MoveToPoint>().MoveToPosition(caster.CombatEntity.CenterOfSprite, target.CombatEntity.CenterOfSprite, bladeDuration);
 
@@ -275,6 +279,8 @@ public class CombatController : Singleton<CombatController>
             //Check if target just died
             if (target.IsDead)
             {
+                target.CombatEntity.GetComponent<AlignWithCamera>().StartFallOver();
+
                 //This target was just killed
                 if (target.IsPlayer)
                 {
