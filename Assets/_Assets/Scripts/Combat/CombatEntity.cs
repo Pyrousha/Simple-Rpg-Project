@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,18 @@ public class CombatEntity : MonoBehaviour
     public OverworldEntity OverworldEntity { get; private set; }
     private bool subscribedToAction = false;
 
+    public Vector3 InCombatPosition { get; private set; }
+    public Vector3 StartTransitionPosition { get; private set; }
+    public void SetStartTransitionPosition(Vector3 _pos)
+    {
+        StartTransitionPosition = _pos;
+    }
+
+    private void Awake()
+    {
+        InCombatPosition = transform.position;
+    }
+
     public void SetOverworldEntity(OverworldEntity _entity)
     {
         OverworldEntity = _entity;
@@ -43,8 +56,8 @@ public class CombatEntity : MonoBehaviour
             combatSprite.sprite = OverworldEntity.BaseStats.Sprite_Down;
             spriteShadow.sprite = OverworldEntity.BaseStats.Sprite_Down;
 
-            hpBar.gameObject.SetActive(true);
-            mpBar.gameObject.SetActive(true);
+            hpBar?.gameObject.SetActive(true);
+            mpBar?.gameObject.SetActive(true);
 
             if (!_entity.IsPlayer)
                 EnemyButton.interactable = true;
@@ -59,14 +72,12 @@ public class CombatEntity : MonoBehaviour
 
     private void SetHealthUI(int _hp, int _maxHp)
     {
-        if (hpBar != null)
-            hpBar.SetUIValues(_hp, _maxHp);
+        hpBar?.SetUIValues(_hp, _maxHp);
     }
 
     private void SetManaUI(int _mp, int _maxMp)
     {
-        if (mpBar != null)
-            mpBar.SetUIValues(_mp, _maxMp);
+        mpBar?.SetUIValues(_mp, _maxMp);
     }
 
     public void OnCombatFinished()
@@ -74,8 +85,8 @@ public class CombatEntity : MonoBehaviour
         if (OverworldEntity != null)
             TryUnsubscribe();
 
-        hpBar.gameObject.SetActive(false);
-        mpBar.gameObject.SetActive(false);
+        hpBar?.gameObject.SetActive(false);
+        mpBar?.gameObject.SetActive(false);
 
         if (EnemyButton != null)
             EnemyButton.interactable = false;
@@ -94,5 +105,11 @@ public class CombatEntity : MonoBehaviour
             OverworldEntity.SetManaBars -= SetManaUI;
             subscribedToAction = false;
         }
+    }
+
+    public void OnKilled(bool _isPlayer)
+    {
+        if (_isPlayer == false)
+            hpBar?.gameObject.SetActive(false);
     }
 }

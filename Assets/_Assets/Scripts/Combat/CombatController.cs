@@ -32,6 +32,18 @@ public class CombatController : Singleton<CombatController>
     [SerializeField] private Animator combatButtonsAnim;
     [SerializeField] private Selectable firstCombatButton;
     [Space(10)]
+    [SerializeField] private GameObject artsObject;
+    [SerializeField] private Transform artsParent;
+    [SerializeField] private GameObject artsButtonPrefab;
+    [Space(10)]
+    [SerializeField] private GameObject spellsObject;
+    [SerializeField] private Transform spellsParent;
+    [SerializeField] private GameObject spellButtonPrefab;
+    [Space(10)]
+    [SerializeField] private GameObject itemsObject;
+    [SerializeField] private Transform itemsParent;
+    [SerializeField] private GameObject itemsButtonPrefab;
+    [Space(10)]
     [SerializeField] private GameObject bladeSlashPrefab;
     [SerializeField] private GameObject damageNumberPrefab;
     [SerializeField] private float bladeDuration = 1.0f;
@@ -40,6 +52,8 @@ public class CombatController : Singleton<CombatController>
     private List<OverworldEntity> deadPlayers;
     private List<OverworldEntity> aliveEnemies;
     private List<OverworldEntity> deadEnemies;
+
+    public bool InCombat { get; set; } = false;
 
     private bool isPlayerTurn = false;
 
@@ -100,7 +114,7 @@ public class CombatController : Singleton<CombatController>
             OverworldEntity overworldEntity = aliveEnemies[i];
 
             combatEntity.SetOverworldEntity(overworldEntity);
-            overworldEntity.CombatEntity = combatEntity;
+            overworldEntity.SetCombatEntity(combatEntity);
         }
         for (int i = 0; i < PartyManager.Instance.PartyMembers.Count; i++)
         {
@@ -108,22 +122,29 @@ public class CombatController : Singleton<CombatController>
             OverworldEntity overworldEntity = PartyManager.Instance.PartyMembers[i];
 
             combatEntity.SetOverworldEntity(overworldEntity);
-            overworldEntity.CombatEntity = combatEntity;
+            overworldEntity.SetCombatEntity(combatEntity);
         }
 
+        UpdateEnemyButtons();
+    }
+
+    private void UpdateEnemyButtons()
+    {
         //Link buttons on enemies
-        for (int i = 0; i < activeEnemyEntities.Count; i++)
+        for (int i = 0; i < aliveEnemies.Count; i++)
         {
-            Navigation customNav = new Navigation();
-            customNav.mode = Navigation.Mode.Explicit;
+            Navigation customNav = new Navigation
+            {
+                mode = Navigation.Mode.Explicit,
 
-            //Bind left
-            customNav.selectOnLeft = activeEnemyEntities[(i - 1 + activeEnemyEntities.Count) % activeEnemyEntities.Count].EnemyButton;
+                //Bind left
+                selectOnLeft = aliveEnemies[(i - 1 + aliveEnemies.Count) % aliveEnemies.Count].CombatEntity.EnemyButton,
 
-            //Bind right
-            customNav.selectOnRight = activeEnemyEntities[(i + 1 + activeEnemyEntities.Count) % activeEnemyEntities.Count].EnemyButton;
+                //Bind right
+                selectOnRight = aliveEnemies[(i + 1 + aliveEnemies.Count) % aliveEnemies.Count].CombatEntity.EnemyButton
+            };
 
-            activeEnemyEntities[i].EnemyButton.navigation = customNav;
+            aliveEnemies[i].CombatEntity.EnemyButton.navigation = customNav;
         }
     }
 
@@ -186,6 +207,9 @@ public class CombatController : Singleton<CombatController>
 
     private void Update()
     {
+        if (!InCombat)
+            return;
+
         if (InputHandler.Instance.Cancel.Down && isPlayerTurn)
         {
             if (lastSelectedButton != null)

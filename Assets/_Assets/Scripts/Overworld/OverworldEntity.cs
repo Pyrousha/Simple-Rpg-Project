@@ -43,7 +43,11 @@ public class OverworldEntity : MonoBehaviour
     [Header("Playable Character-Specific Field")]
     [System.NonSerialized] public Utils.RangedInt Xp;
 
-    public CombatEntity CombatEntity { get; set; }
+    public CombatEntity CombatEntity { get; private set; }
+    public void SetCombatEntity(CombatEntity _entity)
+    {
+        CombatEntity = _entity;
+    }
 
     private void Awake()
     {
@@ -140,6 +144,12 @@ public class OverworldEntity : MonoBehaviour
     /// <returns>Amount of damage taken (not stopped by hitting 0 hp)</returns>
     public int TakeDamage(float _atkValue, bool _isPhysical)
     {
+        if (IsDead)
+        {
+            Debug.LogError(gameObject.name + " is already dead, but was still attacked.\nReturning");
+            return 0;
+        }
+
         if (_atkValue < 0)
         {
             Debug.LogError("Damage should not be negative, use Heal() instead.\nReturning.");
@@ -192,6 +202,7 @@ public class OverworldEntity : MonoBehaviour
     {
         IsDead = true;
         Debug.Log(BaseStats.name + " Died!");
+        CombatEntity.OnKilled(IsPlayer);
     }
 
     public void GainXP(int _xpToGain)

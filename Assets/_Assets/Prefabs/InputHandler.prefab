@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423038302ed23a44b8f6010562e35db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bufferFrames: 5
-  bufferEnabled: 1
+  bufferFrames: -1
+  bufferEnabled: 0
 --- !u!114 &-6307875126718741212
 MonoBehaviour:
   m_ObjectHideFlags: 0

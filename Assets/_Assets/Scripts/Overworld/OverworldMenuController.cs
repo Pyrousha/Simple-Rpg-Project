@@ -28,10 +28,14 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
+        if (CombatController.Instance.InCombat)
+            return;
+
         if (isMenuActive && InputHandler.Instance.Cancel.Down)
         {
+            Debug.Log("Pressed cancel when menu open");
             switch (currSubmenu)
             {
                 case OverworldMenuSubmenus_Enum.Main:
@@ -51,6 +55,8 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
 
     private void OpenMenu()
     {
+        currSubmenu = OverworldMenuSubmenus_Enum.Main;
+
         isMenuActive = true;
         anim.SetBool("Active", isMenuActive);
 

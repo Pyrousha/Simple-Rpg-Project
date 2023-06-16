@@ -17,8 +17,6 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
     private Transform enemy_overworld;
     [SerializeField] private Transform player_combat;
     [SerializeField] private Transform enemy_combat;
-    [SerializeField] private Transform player_combat_targetPos;
-    [SerializeField] private Transform enemy_combat_targetPos;
     [Space(10)]
     [SerializeField] private Animator combatCameraAnim;
     [SerializeField] private Animator combatFloorAnim;
@@ -26,16 +24,21 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
     [SerializeField] private float lerpDuration = 1.0f;
     [SerializeField] private float cameraSpinDuration = 1.0f;
 
+    private List<CombatEntity> entitiesInCombat;
     float cameraStartZAngle;
-
-    private Vector3 player_combat_startingPos;
-    private Vector3 enemy_combat_startingPos;
 
     public void TriggerCombat(Transform _overworldEnemy, List<OverworldEntity> _enemiesToFight)
     {
+        CombatController.Instance.InCombat = true;
         CombatController.Instance.SetEntitiesForCombat(_enemiesToFight);
 
         enemy_overworld = _overworldEnemy;
+
+        entitiesInCombat = new List<CombatEntity>();
+        foreach (OverworldEntity entity in PartyManager.Instance.PartyMembers)
+            entitiesInCombat.Add(entity.CombatEntity);
+        foreach (OverworldEntity entity in _enemiesToFight)
+            entitiesInCombat.Add(entity.CombatEntity);
 
         StartCoroutine(ToCombat());
     }
@@ -52,13 +55,17 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         yield return null;
         // while (InputHandler.Instance.Interact.Down == false) { yield return null; }
 
-        PlaceCombatSpriteRelativeToOverworldSprite(player_overworld, player_combat);
-        PlaceCombatSpriteRelativeToOverworldSprite(enemy_overworld, enemy_combat);
+        foreach (CombatEntity entity in entitiesInCombat)
+        {
+            PlaceCombatSpriteRelativeToOverworldSprite(entity);
+        }
+        // PlaceCombatSpriteRelativeToOverworldSprite(player_overworld, player_combat);
+        // PlaceCombatSpriteRelativeToOverworldSprite(enemy_overworld, enemy_combat);
 
         yield return null;
 
-        player_combat_startingPos = player_combat.position;
-        enemy_combat_startingPos = enemy_combat.position;
+        // player_combat_startingPos = player_combat.position;
+        // enemy_combat_startingPos = enemy_combat.position;
 
         overworldParent.SetActive(false);
         combatParent.SetActive(true);
@@ -72,16 +79,27 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         // combatFloorAnim.enabled = true;
         StartCoroutine(SpinCameraParent(cameraStartZAngle, 0));
 
-        StartCoroutine(LerpCombatEntity(player_combat, player_combat_targetPos.position, 1));
-        StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_targetPos.position, 3));
+
+        foreach (CombatEntity entity in entitiesInCombat)
+        {
+            if (entity.OverworldEntity.IsPlayer)
+                StartCoroutine(LerpCombatEntity(entity.transform, entity.InCombatPosition, 1));
+            else
+                StartCoroutine(LerpCombatEntity(entity.transform, entity.InCombatPosition, 3));
+        }
+        // StartCoroutine(LerpCombatEntity(player_combat, player_combat_targetPos.position, 1));
+        // StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_targetPos.position, 3));
 
         yield return new WaitForSeconds(lerpDuration);
 
         CombatController.Instance.OnCombatStarted();
     }
 
-    private void PlaceCombatSpriteRelativeToOverworldSprite(Transform overworldObj, Transform combatObj)
+    private void PlaceCombatSpriteRelativeToOverworldSprite(CombatEntity _entity)
     {
+        Transform overworldObj = _entity.OverworldEntity.transform;
+        Transform combatObj = _entity.transform;
+
         float horizontalOffset = overworldObj.position.x - overworldCamera.position.x;
         float verticalOffset = overworldObj.position.y - overworldCamera.position.y - 0.5f;
 
@@ -90,6 +108,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         newCombatPos.y = yPos;
 
         combatObj.position = newCombatPos;
+        _entity.SetStartTransitionPosition(newCombatPos);
     }
 
     private IEnumerator SpinCameraParent(float _startZAngle, float _targetZAngle)
@@ -139,8 +158,13 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
     private IEnumerator EndCombatCoroutine()
     {
-        StartCoroutine(LerpCombatEntity(player_combat, player_combat_startingPos, 1));
-        StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_startingPos, 1));
+        foreach (CombatEntity entity in entitiesInCombat)
+        {
+            StartCoroutine(LerpCombatEntity(entity.transform, entity.StartTransitionPosition, 1));
+        }
+
+        // StartCoroutine(LerpCombatEntity(player_combat, player_combat_startingPos, 1));
+        // StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_startingPos, 1));
 
         StartCoroutine(SpinCameraParent(0, cameraStartZAngle));
 
@@ -153,5 +177,6 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
         combatParent.SetActive(false);
         overworldParent.SetActive(true);
+        CombatController.Instance.InCombat = false;
     }
 }

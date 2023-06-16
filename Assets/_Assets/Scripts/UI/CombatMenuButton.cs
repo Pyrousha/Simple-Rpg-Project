@@ -15,6 +15,8 @@ public class CombatMenuButton : MonoBehaviour
     public enum MenuButtons_Combat_Enum
     {
         Attack,
+        Defend,
+        Abilities,
         Spells,
         Items,
         Flee
