@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CombatMenuButton : MonoBehaviour
+public class CombatMenuButton : MonoBehaviour, ISelectHandler
 {
     private Selectable selectable;
 
@@ -16,7 +17,7 @@ public class CombatMenuButton : MonoBehaviour
     {
         Attack,
         Defend,
-        Abilities,
+        Arts,
         Spells,
         Items,
         Flee
@@ -27,5 +28,10 @@ public class CombatMenuButton : MonoBehaviour
     public void TriggerClickOnCombatController()
     {
         CombatController.Instance.OnButtonClicked(buttonType, selectable);
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        CombatController.Instance.SetCurrSubmenu(CombatController.SubmenuEnum.None);
     }
 }

@@ -414,7 +414,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 569988518}
   m_HandleRect: {fileID: 569988517}
   m_Direction: 2
-  m_Value: 1.0000024
+  m_Value: 1.000002
   m_Size: 0.73182863
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2647,15 +2647,9 @@ MonoBehaviour:
   - {fileID: 312559938}
   combatButtonsAnim: {fileID: 1788172255}
   firstCombatButton: {fileID: 87482143}
-  artsObject: {fileID: 0}
-  artsParent: {fileID: 0}
-  artsButtonPrefab: {fileID: 0}
-  spellsObject: {fileID: 0}
-  spellsParent: {fileID: 0}
-  spellButtonPrefab: {fileID: 0}
-  itemsObject: {fileID: 0}
-  itemsParent: {fileID: 0}
-  itemsButtonPrefab: {fileID: 0}
+  artsSubmenu: {fileID: 2137936077}
+  spellsSubmenu: {fileID: 2077647031}
+  itemsSubmenu: {fileID: 1854428773}
   bladeSlashPrefab: {fileID: 4088127177266927222, guid: 06edbef592f469646a565befd176edc8,
     type: 3}
   damageNumberPrefab: {fileID: 4394166465700079369, guid: 6b1e8a9382dfd8245996a41ed1143125,
@@ -34366,7 +34360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 24.999878, y: 24.543701}
+  m_AnchoredPosition: {x: 25, y: 24.543701}
   m_SizeDelta: {x: 461.25, y: 325}
   m_Pivot: {x: 0, y: 0}
 --- !u!95 &1788172255
@@ -35473,6 +35467,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1854428770}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1854428773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7365888748162294411, guid: e2081ff4c03bdbe42a6991f63c5da222,
+    type: 3}
+  m_PrefabInstance: {fileID: 1854428770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2e482b163add043a519b4ab1a0dcee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1859918193 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1553166746449576261, guid: 0bb557a5c1461a84faeab55f16ca641e,
@@ -36898,6 +36904,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f3e630e9b18453489cd0762a7dc1025, type: 3}
+--- !u!114 &2077647031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7365888748162294411, guid: e2081ff4c03bdbe42a6991f63c5da222,
+    type: 3}
+  m_PrefabInstance: {fileID: 1724679517}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2e482b163add043a519b4ab1a0dcee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2086753375
 GameObject:
   m_ObjectHideFlags: 0
@@ -37356,6 +37374,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7018197439820626913}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2137936077 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7365888748162294411, guid: e2081ff4c03bdbe42a6991f63c5da222,
+    type: 3}
+  m_PrefabInstance: {fileID: 7018197439820626913}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2e482b163add043a519b4ab1a0dcee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &299289387627999008
 GameObject:
   m_ObjectHideFlags: 0

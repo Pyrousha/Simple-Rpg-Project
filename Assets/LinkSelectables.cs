@@ -30,7 +30,9 @@ public class LinkSelectables : MonoBehaviour
         selectables = new List<Selectable>();
         for (int i = 0; i < transform.childCount; i++)
         {
-            selectables.Add(transform.GetChild(i).GetComponent<Selectable>());
+            Transform childObj = transform.GetChild(i);
+            if (childObj.gameObject.activeSelf)
+                selectables.Add(childObj.GetComponent<Selectable>());
         }
 
         if (startVertical)

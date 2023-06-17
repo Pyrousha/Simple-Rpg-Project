@@ -24,6 +24,14 @@ public class CombatController : Singleton<CombatController>
         }
     }
 
+    public enum SubmenuEnum
+    {
+        None,
+        Arts,
+        Spells,
+        Items
+    }
+
     [SerializeField] private List<CombatEntity> enemyEntitySlots;
     [SerializeField] private List<CombatEntity> playerEntitySlots;
     private List<CombatEntity> activeEnemyEntities;
@@ -32,17 +40,9 @@ public class CombatController : Singleton<CombatController>
     [SerializeField] private Animator combatButtonsAnim;
     [SerializeField] private Selectable firstCombatButton;
     [Space(10)]
-    [SerializeField] private GameObject artsObject;
-    [SerializeField] private Transform artsParent;
-    [SerializeField] private GameObject artsButtonPrefab;
-    [Space(10)]
-    [SerializeField] private GameObject spellsObject;
-    [SerializeField] private Transform spellsParent;
-    [SerializeField] private GameObject spellButtonPrefab;
-    [Space(10)]
-    [SerializeField] private GameObject itemsObject;
-    [SerializeField] private Transform itemsParent;
-    [SerializeField] private GameObject itemsButtonPrefab;
+    [SerializeField] private Submenu_Combat artsSubmenu;
+    [SerializeField] private Submenu_Combat spellsSubmenu;
+    [SerializeField] private Submenu_Combat itemsSubmenu;
     [Space(10)]
     [SerializeField] private GameObject bladeSlashPrefab;
     [SerializeField] private GameObject damageNumberPrefab;
@@ -164,11 +164,18 @@ public class CombatController : Singleton<CombatController>
         SelectPlayer(0);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="_playerIndex"> index of the player in AlivePlayers </param>
     private void SelectPlayer(int _playerIndex)
     {
+        lastSelectedButton = null;
         firstCombatButton.Select();
 
         currPlayerIndex = _playerIndex;
+
+        spellsSubmenu.SetSpells(alivePlayers[_playerIndex].Spells);
     }
 
     public void OnButtonClicked(MenuButtons_Combat_Enum _buttonType, Selectable _selectable)
@@ -192,15 +199,56 @@ public class CombatController : Singleton<CombatController>
                     //Only 1 enemy, use attack on them automatically
                     SetPlayerTargetAndMoveToNextPlayer(aliveEnemies[0]);
                 }
+                break;
 
+            case MenuButtons_Combat_Enum.Arts:
+                SetCurrSubmenu(SubmenuEnum.Arts);
                 break;
+
             case MenuButtons_Combat_Enum.Spells:
+                SetCurrSubmenu(SubmenuEnum.Spells);
                 break;
+
             case MenuButtons_Combat_Enum.Items:
+                SetCurrSubmenu(SubmenuEnum.Items);
                 break;
+
             case MenuButtons_Combat_Enum.Flee:
                 //TODO: Calculate if flee suceeds or fails (for now assume flee always works)
                 EndCombat(CombatWinCondition.Flee);
+                break;
+        }
+    }
+
+    public void SetCurrSubmenu(SubmenuEnum _submenu)
+    {
+        switch (_submenu)
+        {
+            case SubmenuEnum.None:
+                artsSubmenu.SetStatus(false);
+                spellsSubmenu.SetStatus(false);
+                itemsSubmenu.SetStatus(false);
+                break;
+
+            case SubmenuEnum.Arts:
+                spellsSubmenu.SetStatus(false);
+                itemsSubmenu.SetStatus(false);
+
+                artsSubmenu.SetStatus(true);
+                break;
+
+            case SubmenuEnum.Spells:
+                artsSubmenu.SetStatus(false);
+                itemsSubmenu.SetStatus(false);
+
+                spellsSubmenu.SetStatus(true);
+                break;
+
+            case SubmenuEnum.Items:
+                artsSubmenu.SetStatus(false);
+                spellsSubmenu.SetStatus(false);
+
+                itemsSubmenu.SetStatus(true);
                 break;
         }
     }
