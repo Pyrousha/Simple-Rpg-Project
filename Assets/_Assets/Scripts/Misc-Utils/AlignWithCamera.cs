@@ -51,9 +51,9 @@ public class AlignWithCamera : MonoBehaviour
     {
         Mode = FaceCameraMode.MatchYRotation;
 
-        Vector3 startRotation = transform.localEulerAngles;
+        float startXRotation = transform.localEulerAngles.x;
 
-        Vector3 targetRotation = new Vector3(90, 0, 0);
+        float targetXRotation = 90.0f;
 
         float startTime = Time.time;
         float elapsedPercentage = 0;
@@ -63,7 +63,8 @@ public class AlignWithCamera : MonoBehaviour
             elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / _lerpDuration);
             elapsedPercentage = Utils.Accelerate(elapsedPercentage);
 
-            transform.localEulerAngles = Vector3.Lerp(startRotation, targetRotation, elapsedPercentage);
+            transform.localEulerAngles = new Vector3(
+                Mathf.Lerp(startXRotation, targetXRotation, elapsedPercentage), transform.localEulerAngles.y, transform.localEulerAngles.z);
 
             yield return null;
         }

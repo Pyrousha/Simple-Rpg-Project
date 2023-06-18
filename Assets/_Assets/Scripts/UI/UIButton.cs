@@ -5,27 +5,57 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIButton : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class UIButton : Button, ISelectHandler, IDeselectHandler
 {
+    private List<Graphic> graphics = new List<Graphic>();
     private Button button;
-    [SerializeField] private TextMeshProUGUI text;
 
-    void Awake()
+    private Color disabledColor_normal;
+    [SerializeField] private Color disabledColor_selected;
+
+    protected override void Awake()
     {
+        graphics = new List<Graphic>(GetComponentsInChildren<Graphic>());
         button = GetComponent<Button>();
+        disabledColor_normal = button.colors.disabledColor;
     }
 
-    public void OnSelect(BaseEventData eventData)
+    protected override void DoStateTransition(SelectionState state, bool instant)
     {
-        // Debug.Log(gameObject.name + "Selected");
+        var targetColor =
+            state == SelectionState.Disabled ? colors.disabledColor :
+            state == SelectionState.Highlighted ? colors.highlightedColor :
+            state == SelectionState.Normal ? colors.normalColor :
+            state == SelectionState.Pressed ? colors.pressedColor :
+            state == SelectionState.Selected ? colors.selectedColor : Color.white;
 
-        text.color = button.colors.selectedColor;
+        foreach (Graphic graphic in graphics)
+        {
+            graphic.CrossFadeColor(targetColor, instant ? 0f : colors.fadeDuration, true, true);
+        }
     }
 
-    public void OnDeselect(BaseEventData data)
+    public override void OnSelect(BaseEventData eventData)
     {
-        // Debug.Log(gameObject.name + "Deselected");
+        if (!button.interactable)
+        {
+            ColorBlock cb = button.colors;
+            cb.disabledColor = disabledColor_selected;
+            button.colors = cb;
+        }
 
-        text.color = button.colors.normalColor;
+        base.OnSelect(eventData);
+    }
+
+    public override void OnDeselect(BaseEventData eventData)
+    {
+        if (!button.interactable)
+        {
+            ColorBlock cb = button.colors;
+            cb.disabledColor = disabledColor_normal;
+            button.colors = cb;
+        }
+
+        base.OnDeselect(eventData);
     }
 }

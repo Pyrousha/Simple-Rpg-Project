@@ -15,5 +15,11 @@ MonoBehaviour:
   <IsPhysical>k__BackingField: 1
   <HitsMultipleEnemies>k__BackingField: 0
   <NumAttacks>k__BackingField: 4
-  <AttackScalingMultiplier>k__BackingField: 0.5
+  <AttackScalingMultiplier>k__BackingField: 0.35
   <ManaCost>k__BackingField: 2
+  <Description>k__BackingField:
+    <Icon>k__BackingField: {fileID: 21300000, guid: 0564d00f7665c5941b560cd3dcf80e46,
+      type: 3}
+    <Name>k__BackingField: Multislash
+    <CostText>k__BackingField: (2 MP)
+    <DescriptionText>k__BackingField: Rapidly shash 4 times at a single enemy.

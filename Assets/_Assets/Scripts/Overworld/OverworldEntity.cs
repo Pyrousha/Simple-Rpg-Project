@@ -22,6 +22,7 @@ public class OverworldEntity : MonoBehaviour
     [field: SerializeField] public bool IsPlayer { get; private set; }
     [field: SerializeField] public BaseCombatEntity BaseStats { get; private set; }
     [field: SerializeField] public AttackSpell BasicAttack { get; private set; }
+    [field: SerializeField] public List<AttackSpell> Arts { get; private set; }
     [field: SerializeField] public List<AttackSpell> Spells { get; private set; }
 
     public int Level { get; private set; }
@@ -142,7 +143,7 @@ public class OverworldEntity : MonoBehaviour
     /// <param name="_atkValue"></param>
     /// <param name="_isPhysical"></param>
     /// <returns>Amount of damage taken (not stopped by hitting 0 hp)</returns>
-    public int TakeDamage(float _atkValue, bool _isPhysical)
+    public int TakeDamage(float _atkValue, bool _isPhysical, float _attackScaleMultiplier)
     {
         if (IsDead)
         {
@@ -167,6 +168,7 @@ public class OverworldEntity : MonoBehaviour
             damageToTake = _atkValue * 2 - defValue;
         else
             damageToTake = _atkValue * _atkValue - defValue;
+        damageToTake *= _attackScaleMultiplier;
 
         //Randomly have attack go from 90% to 110% damage
         float randomMultiplier = UnityEngine.Random.Range(0.9f, 1.1f);

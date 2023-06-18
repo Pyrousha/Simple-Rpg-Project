@@ -66,6 +66,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 4203982951376412246}
+    - target: {fileID: 1553166746449576261, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553166746449576261, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AttackSpellButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2026898600499953056, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -126,6 +136,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911390614099175112, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911390614099175112, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4203982951376412246}
+    - target: {fileID: 6911390614099175112, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911390614099175112, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AttackSpellButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7714765126315431987, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}

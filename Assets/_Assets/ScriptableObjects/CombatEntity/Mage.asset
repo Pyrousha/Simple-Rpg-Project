@@ -15,7 +15,7 @@ MonoBehaviour:
   <LeveledStats>k__BackingField:
   - level: 1
     maxHp: 12
-    maxMp: 0
+    maxMp: 10
     atk_P: 1
     atk_M: 5
     def_P: 6
@@ -24,7 +24,7 @@ MonoBehaviour:
     maxXp: 82
   - level: 2
     maxHp: 15
-    maxMp: 0
+    maxMp: 12
     atk_P: 2
     atk_M: 6
     def_P: 7
@@ -33,7 +33,7 @@ MonoBehaviour:
     maxXp: 105
   - level: 3
     maxHp: 16
-    maxMp: 0
+    maxMp: 15
     atk_P: 3
     atk_M: 7
     def_P: 8
