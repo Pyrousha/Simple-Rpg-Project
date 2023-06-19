@@ -199,6 +199,28 @@
                 },
                 {
                     "name": "",
+                    "id": "25fdd587-3b69-4dab-a9cf-22ad55439d34",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact/Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5088e28-116b-4514-8721-b9b4771866f2",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact/Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "65d35699-4782-433d-8b6b-d8d0d374dce0",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -223,6 +245,17 @@
                     "name": "",
                     "id": "57a7ea0d-c6ad-4fb3-ab8a-eeb7dc9b6dc9",
                     "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3647039-7762-4d73-ae18-0a34035d4ad5",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

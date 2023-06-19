@@ -390,6 +390,7 @@ public class CombatController : Singleton<CombatController>
     {
         isPlayerTurn = false;
         combatButtonsAnim.SetBool("Status", false);
+        DescriptionBox.Instance.SetStatus(false);
 
         foreach (OverworldEntity enemy in aliveEnemies)
         {
@@ -586,6 +587,7 @@ public class CombatController : Singleton<CombatController>
             combatEntity.OnCombatFinished();
 
         combatButtonsAnim.SetBool("Status", false);
+        DescriptionBox.Instance.SetStatus(false);
         CombatTransitionController.Instance.EndCombat();
     }
 }

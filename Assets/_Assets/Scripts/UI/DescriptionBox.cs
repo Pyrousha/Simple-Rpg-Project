@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DescriptionBox : Singleton<DescriptionBox>
 {
+    [SerializeField] private Animator anim;
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI costText;
@@ -14,8 +15,16 @@ public class DescriptionBox : Singleton<DescriptionBox>
     [SerializeField] private Sprite transparentSprite;
 
     [System.Serializable]
-    public struct DescriptionInfo
+    public class DescriptionInfo
     {
+        public DescriptionInfo(Sprite icon)
+        {
+            Icon = icon;
+            Name = "name";
+            CostText = "mPCostText";
+            DescriptionText = "descriptionText";
+        }
+
         public DescriptionInfo(Sprite icon, string name, string mPCostText, string descriptionText)
         {
             Icon = icon;
@@ -32,7 +41,12 @@ public class DescriptionBox : Singleton<DescriptionBox>
 
     private void Awake()
     {
-        SetUI(new DescriptionInfo(transparentSprite, " ", " ", " "));
+        SetUI(new DescriptionInfo(transparentSprite));
+    }
+
+    public void SetStatus(bool _enabled)
+    {
+        anim.SetBool("Status", _enabled);
     }
 
     public void SetUI(DescriptionInfo _info)
@@ -41,5 +55,7 @@ public class DescriptionBox : Singleton<DescriptionBox>
         nameText.text = _info.Name;
         costText.text = _info.CostText;
         descriptionText.text = _info.DescriptionText;
+
+        SetStatus(true);
     }
 }

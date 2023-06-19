@@ -12,6 +12,7 @@ public class UIButton : Button, ISelectHandler, IDeselectHandler
 
     private Color disabledColor_normal;
     [SerializeField] private Color disabledColor_selected;
+    [SerializeField] private DescriptionBox.DescriptionInfo description;
 
     protected override void Awake()
     {
@@ -43,6 +44,11 @@ public class UIButton : Button, ISelectHandler, IDeselectHandler
             cb.disabledColor = disabledColor_selected;
             button.colors = cb;
         }
+
+        if (description != null)
+            DescriptionBox.Instance.SetUI(description);
+        else
+            DescriptionBox.Instance.SetStatus(false);
 
         base.OnSelect(eventData);
     }
