@@ -7,6 +7,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 {
     [SerializeField] private GameObject overworldParent;
     [SerializeField] private GameObject combatParent;
+    [SerializeField] private Transform combatCenter;
     [Space(10)]
     [SerializeField] private Transform overworldCamera;
     [SerializeField] private Transform combatCamera_parent;
@@ -83,9 +84,9 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         foreach (CombatEntity entity in entitiesInCombat)
         {
             if (entity.OverworldEntity.IsPlayer)
-                StartCoroutine(LerpCombatEntity(entity.transform, entity.InCombatPosition, 1));
+                StartCoroutine(LerpCombatEntity(entity, entity.InCombatPosition, 1));
             else
-                StartCoroutine(LerpCombatEntity(entity.transform, entity.InCombatPosition, 3));
+                StartCoroutine(LerpCombatEntity(entity, entity.InCombatPosition, 3));
         }
         // StartCoroutine(LerpCombatEntity(player_combat, player_combat_targetPos.position, 1));
         // StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_targetPos.position, 3));
@@ -109,6 +110,11 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
         combatObj.position = newCombatPos;
         _entity.SetStartTransitionPosition(newCombatPos);
+        if (_entity.OverworldEntity.IsPlayer)
+            _entity.SetFacingDir(new Vector3(0, 0, 1));
+        else
+            _entity.SetFacingDir(new Vector3(0, 0, -1));
+        //_entity.SetFacingDir((combatCenter.position - _entity.transform.position).normalized);
     }
 
     private IEnumerator SpinCameraParent(float _startZAngle, float _targetZAngle)
@@ -128,10 +134,10 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         combatCamera_parent.eulerAngles = new Vector3(90, 0, _targetZAngle);
     }
 
-    private IEnumerator LerpCombatEntity(Transform _entity, Vector3 _targetPos, float _targetLocalScale)
+    private IEnumerator LerpCombatEntity(CombatEntity _entity, Vector3 _targetPos, float _targetLocalScale)
     {
-        Vector3 startPos = _entity.position;
-        Vector3 startScale = _entity.localScale;
+        Vector3 startPos = _entity.transform.position;
+        Vector3 startScale = _entity.transform.localScale;
         Vector3 targetScale = Vector3.one * _targetLocalScale;
 
         float startTime = Time.time;
@@ -141,14 +147,17 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         {
             elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / lerpDuration);
 
-            _entity.position = Vector3.Lerp(startPos, _targetPos, elapsedPercentage);
-            _entity.localScale = Vector3.Lerp(startScale, targetScale, elapsedPercentage);
+            _entity.transform.position = Vector3.Lerp(startPos, _targetPos, elapsedPercentage);
+            _entity.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedPercentage);
+
+            if (_entity.OverworldEntity.IsPlayer)
+                _entity.SetFacingDir(new Vector3(0, 0, 1));
+            else
+                _entity.SetFacingDir(new Vector3(0, 0, -1));
+            // _entity.SetFacingDir((combatCenter.position - _entity.transform.position).normalized);
 
             yield return null;
         }
-
-        _entity.position = _targetPos;
-        _entity.localScale = targetScale;
     }
 
     public void EndCombat()
@@ -160,7 +169,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
     {
         foreach (CombatEntity entity in entitiesInCombat)
         {
-            StartCoroutine(LerpCombatEntity(entity.transform, entity.StartTransitionPosition, 1));
+            StartCoroutine(LerpCombatEntity(entity, entity.StartTransitionPosition, 1));
         }
 
         // StartCoroutine(LerpCombatEntity(player_combat, player_combat_startingPos, 1));

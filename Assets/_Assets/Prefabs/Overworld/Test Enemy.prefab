@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: -2068439197
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 94170f00b598df040b5fb62c2e5f721e, type: 3}
+  m_Sprite: {fileID: -630331858, guid: 327b194874f434b46954b53c9275e24c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -147,6 +147,7 @@ MonoBehaviour:
     type: 2}
   <BasicAttack>k__BackingField: {fileID: 11400000, guid: 4097a1b35869e8b48b5b76ac5e7ff4d0,
     type: 2}
+  <Arts>k__BackingField: []
   <Spells>k__BackingField: []
 --- !u!1 &1887809427875631404
 GameObject:
@@ -197,6 +198,7 @@ MonoBehaviour:
     type: 2}
   <BasicAttack>k__BackingField: {fileID: 11400000, guid: 4097a1b35869e8b48b5b76ac5e7ff4d0,
     type: 2}
+  <Arts>k__BackingField: []
   <Spells>k__BackingField: []
 --- !u!1 &4416681751170950431
 GameObject:
@@ -247,6 +249,7 @@ MonoBehaviour:
     type: 2}
   <BasicAttack>k__BackingField: {fileID: 11400000, guid: 4097a1b35869e8b48b5b76ac5e7ff4d0,
     type: 2}
+  <Arts>k__BackingField: []
   <Spells>k__BackingField: []
 --- !u!1 &7880952967779764504
 GameObject:

@@ -54,9 +54,6 @@ public class CombatEntity : MonoBehaviour
             SetHealthUI(OverworldEntity.Hp, OverworldEntity.MaxHp.Value);
             SetManaUI(OverworldEntity.Mp, OverworldEntity.MaxMp.Value);
 
-            combatSprite.sprite = OverworldEntity.BaseStats.Sprite_Down;
-            spriteShadow.sprite = OverworldEntity.BaseStats.Sprite_Down;
-
             hpBar?.gameObject.SetActive(true);
             mpBar?.gameObject.SetActive(true);
 
@@ -69,6 +66,11 @@ public class CombatEntity : MonoBehaviour
         }
     }
 
+    public void SetSprite(Sprite _sprite)
+    {
+        combatSprite.sprite = _sprite;
+        spriteShadow.sprite = _sprite;
+    }
 
 
     private void SetHealthUI(int _hp, int _maxHp)
@@ -147,6 +149,47 @@ public class CombatEntity : MonoBehaviour
             transform.position = Vector3.Lerp(_startPos, _targetPos, elapsedPercentage);
 
             yield return null;
+        }
+    }
+
+    public void SetFacingDir(Vector3 _globalForward)
+    {
+        // if (OverworldEntity.IsPlayer)
+        //     SetSprite(OverworldEntity.BaseStats.Sprite_Up);
+        // else
+        //     SetSprite(OverworldEntity.BaseStats.Sprite_Down);
+
+        // return;
+
+
+
+        Vector2 planarForward = -new Vector2(_globalForward.x, _globalForward.z);
+        Vector2 cameraForward = new Vector2(CombatTransitionController.Instance.CombatCamera.position.x,
+            CombatTransitionController.Instance.CombatCamera.position.z);
+
+        float degDiff = Vector2.SignedAngle(planarForward, cameraForward);
+        if (degDiff < 0)
+            degDiff += 360;
+        Debug.Log(degDiff);
+        if (degDiff < 45 || degDiff >= 315)
+        {
+            SetSprite(OverworldEntity.BaseStats.Sprite_Up);
+            return;
+        }
+        if (degDiff >= 45 && degDiff < 135)
+        {
+            SetSprite(OverworldEntity.BaseStats.Sprite_Left);
+            return;
+        }
+        if (degDiff >= 135 && degDiff < 225)
+        {
+            SetSprite(OverworldEntity.BaseStats.Sprite_Down);
+            return;
+        }
+        if (degDiff >= 225 && degDiff < 315)
+        {
+            SetSprite(OverworldEntity.BaseStats.Sprite_Right);
+            return;
         }
     }
 }
