@@ -10,5 +10,6 @@ public class AttackSpell : ScriptableObject
     [field: SerializeField] public int NumAttacks { get; private set; } = 1;
     [field: SerializeField] public float AttackScalingMultiplier { get; private set; } = 1f;
     [field: SerializeField] public int ManaCost { get; private set; } = 0;
+    [field: SerializeField] public int Priority { get; private set; } = 0;
     [field: SerializeField] public DescriptionBox.DescriptionInfo Description { get; private set; }
 }

@@ -14,6 +14,7 @@ public class CombatEntity : MonoBehaviour
     [field: SerializeField] public AlignWithCamera alignWithCamera { get; private set; }
     [SerializeField] private SpriteRenderer combatSprite;
     [SerializeField] private SpriteRenderer spriteShadow;
+    [field: SerializeField] public Animator DefendAnim { get; private set; }
 
     public Vector3 CenterOfSprite => combatSprite.transform.position;
 
@@ -111,5 +112,41 @@ public class CombatEntity : MonoBehaviour
     {
         if (_isPlayer == false)
             hpBar?.gameObject.SetActive(false);
+    }
+
+    private Coroutine moveCoroutine = null;
+    public void SetIsForward(bool _isFoward)
+    {
+        if (moveCoroutine != null)
+            StopCoroutine(moveCoroutine);
+
+        Vector3 targPos = InCombatPosition;
+        if (_isFoward)
+        {
+            if (OverworldEntity.IsPlayer)
+                targPos += new Vector3(0, 0, 0.5f);
+            else
+                targPos -= new Vector3(0, 0, 0.5f);
+        }
+
+        moveCoroutine = StartCoroutine(MoveToPos(targPos, 0.25f));
+    }
+
+    private IEnumerator MoveToPos(Vector3 _targetPos, float _duration)
+    {
+        Vector3 _startPos = transform.position;
+
+        float startTime = Time.time;
+        float elapsedPercentage = 0;
+
+        while (elapsedPercentage < 1)
+        {
+            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / _duration);
+            elapsedPercentage = Utils.Accelerate(elapsedPercentage);
+
+            transform.position = Vector3.Lerp(_startPos, _targetPos, elapsedPercentage);
+
+            yield return null;
+        }
     }
 }

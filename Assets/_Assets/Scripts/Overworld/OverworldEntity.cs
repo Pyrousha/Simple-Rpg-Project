@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -40,6 +41,7 @@ public class OverworldEntity : MonoBehaviour
     [System.NonSerialized] public ModifiableStat Def_P;
     [System.NonSerialized] public ModifiableStat Def_M;
     [System.NonSerialized] public ModifiableStat Speed;
+    private bool isDefending;
 
     [Header("Playable Character-Specific Field")]
     [System.NonSerialized] public Utils.RangedInt Xp;
@@ -137,6 +139,12 @@ public class OverworldEntity : MonoBehaviour
 
     public event System.Action<Utils.RangedInt, int> SetXpBarAndLevelNum;
 
+    public void SetIsDefending(bool _defending)
+    {
+        isDefending = _defending;
+        CombatEntity.DefendAnim.SetBool("Status", _defending);
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -169,6 +177,9 @@ public class OverworldEntity : MonoBehaviour
         else
             damageToTake = _atkValue * _atkValue - defValue;
         damageToTake *= _attackScaleMultiplier;
+
+        if (isDefending)
+            damageToTake *= 0.5f;
 
         //Randomly have attack go from 90% to 110% damage
         float randomMultiplier = UnityEngine.Random.Range(0.9f, 1.1f);
@@ -205,6 +216,8 @@ public class OverworldEntity : MonoBehaviour
         IsDead = true;
         Debug.Log(BaseStats.name + " Died!");
         CombatEntity.OnKilled(IsPlayer);
+
+        SetIsDefending(false);
     }
 
     public void GainXP(int _xpToGain)

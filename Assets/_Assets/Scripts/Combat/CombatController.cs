@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static CombatMenuButton;
+using System.Linq;
 
 public class CombatController : Singleton<CombatController>
 {
@@ -86,6 +87,7 @@ public class CombatController : Singleton<CombatController>
 
     private int currPlayerIndex;
     private AttackSpell selectedAttackSpell;
+    private CombatEntity forwardEntity;
 
     private List<SelectableMapping> selectablesMap = new List<SelectableMapping>();
 
@@ -186,6 +188,9 @@ public class CombatController : Singleton<CombatController>
         isPlayerTurn = true;
         entitiesWithAttacksToUse = new List<EntityWithAttack>();
 
+        foreach (OverworldEntity player in PartyManager.Instance.PartyMembers)
+            player.SetIsDefending(false);
+
         //Show player menu
         combatButtonsAnim.SetBool("Status", true);
         SelectPlayer(0);
@@ -217,9 +222,20 @@ public class CombatController : Singleton<CombatController>
         foreach (Selectable art_submenuButton in submenuButtons)
             SetLastSelectable(art_submenuButton.gameObject, artsButton);
 
+
+        SetForwardEntity(currPlayer.CombatEntity);
         // submenuButtons = itemsSubmenu.SetSpells(InventoryManager.Instance.Items);
         // foreach (Selectable submenuButton in submenuButtons)
         //     SetLastSelectable(submenuButton, itemsSubmenu.parentSelectable);
+    }
+
+    private void SetForwardEntity(CombatEntity _entity)
+    {
+        forwardEntity?.SetIsForward(false);
+
+        forwardEntity = _entity;
+
+        forwardEntity?.SetIsForward(true);
     }
 
     public void OnButtonClicked(MenuButtons_Combat_Enum _buttonType, Selectable _selectable)
@@ -244,6 +260,11 @@ public class CombatController : Singleton<CombatController>
                     //Only 1 enemy, use attack on them automatically
                     SetPlayerTargetAndMoveToNextPlayer(aliveEnemies[0]);
                 }
+                break;
+
+            case MenuButtons_Combat_Enum.Defend:
+                alivePlayers[currPlayerIndex].SetIsDefending(true);
+                TrySelectNextPlayer();
                 break;
 
             case MenuButtons_Combat_Enum.Arts:
@@ -374,6 +395,11 @@ public class CombatController : Singleton<CombatController>
         entitiesWithAttacksToUse.Add(new EntityWithAttack(alivePlayers[currPlayerIndex], _target, selectedAttackSpell));
         SetCurrSubmenu(SubmenuEnum.None);
 
+        TrySelectNextPlayer();
+    }
+
+    private void TrySelectNextPlayer()
+    {
         if (currPlayerIndex + 1 < alivePlayers.Count)
         {
             //Still have more players to specify attacks for
@@ -388,12 +414,18 @@ public class CombatController : Singleton<CombatController>
 
     private void SpecifyAttacksForEnemies()
     {
+        SetForwardEntity(null);
+
         isPlayerTurn = false;
         combatButtonsAnim.SetBool("Status", false);
         DescriptionBox.Instance.SetStatus(false);
 
+        foreach (OverworldEntity enemy in deadEnemies)
+            enemy.SetIsDefending(false);
         foreach (OverworldEntity enemy in aliveEnemies)
         {
+            enemy.SetIsDefending(false);
+
             //TODO: Allow enemies to use spells
             int targetPlayerIndex = Random.Range(0, alivePlayers.Count);
 
@@ -405,8 +437,8 @@ public class CombatController : Singleton<CombatController>
 
     private IEnumerator EntitiesAttack()
     {
-        //Sort array by speed (decreasing)
-        entitiesWithAttacksToUse.Sort((a, b) => b.Caster.Speed.Value.CompareTo(a.Caster.Speed.Value));
+        //Sort array by attack priority, and then by speed
+        entitiesWithAttacksToUse = entitiesWithAttacksToUse.OrderByDescending(a => a.AttackToUse.Priority).ThenByDescending(a => a.Caster.Speed.Value).ToList();
 
         //Do the attacks!
         for (int i = 0; i < entitiesWithAttacksToUse.Count; i++)
@@ -416,6 +448,8 @@ public class CombatController : Singleton<CombatController>
                 continue;
 
             AttackSpell attack = entitiesWithAttacksToUse[i].AttackToUse;
+
+            SetForwardEntity(caster.CombatEntity);
 
             //Use mana
             if (caster.Mp < attack.ManaCost)
@@ -474,6 +508,8 @@ public class CombatController : Singleton<CombatController>
             }
 
             yield return new WaitForSeconds(bladeDuration - timeWaited);
+
+            SetForwardEntity(null);
 
             for (int j = 0; j < attack.NumAttacks; j++)
             {

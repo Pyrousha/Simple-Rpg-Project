@@ -2510,6 +2510,7 @@ MonoBehaviour:
   damageNumberPrefab: {fileID: 4394166465700079369, guid: 6b1e8a9382dfd8245996a41ed1143125,
     type: 3}
   bladeDuration: 0.5
+  defendSpell: {fileID: 11400000, guid: d2735ee01efd4cd4bbe235be0584163e, type: 2}
 --- !u!1001 &629344221
 PrefabInstance:
   m_ObjectHideFlags: 0
