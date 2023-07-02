@@ -5,16 +5,13 @@ using UnityEngine;
 
 public class CombatTransitionController : Singleton<CombatTransitionController>
 {
-    [SerializeField] private GameObject overworldParent;
     [SerializeField] private GameObject combatParent;
-    [SerializeField] private Transform combatCenter;
+    [SerializeField] private GameObject persistentOverworldParent;
     [Space(10)]
-    [SerializeField] private Transform overworldCamera;
     [SerializeField] private Transform combatCamera_parent;
     [SerializeField] private Transform combatCamera;
     public Transform CombatCamera => combatCamera;
     [Space(10)]
-    [SerializeField] private Transform player_overworld;
     private Transform enemy_overworld;
     [SerializeField] private Transform player_combat;
     [SerializeField] private Transform enemy_combat;
@@ -46,7 +43,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
     private IEnumerator ToCombat()
     {
-        Vector3 heroToEnemy = enemy_overworld.position - player_overworld.position;
+        Vector3 heroToEnemy = enemy_overworld.position - PartyManager.Instance.GetFirstAlivePlayer().transform.position;
         float heroToEnemyAngle = Mathf.Atan2(heroToEnemy.y, heroToEnemy.x) * Mathf.Rad2Deg;
         cameraStartZAngle = -heroToEnemyAngle + 90.0f;
         if (cameraStartZAngle > 180)
@@ -68,7 +65,8 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         // player_combat_startingPos = player_combat.position;
         // enemy_combat_startingPos = enemy_combat.position;
 
-        overworldParent.SetActive(false);
+        OverworldParent.Instance.gameObject.SetActive(false);
+        persistentOverworldParent.SetActive(false);
         combatParent.SetActive(true);
 
         combatCameraAnim.SetBool("Status", true);
@@ -101,8 +99,8 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         Transform overworldObj = _entity.OverworldEntity.transform;
         Transform combatObj = _entity.transform;
 
-        float horizontalOffset = overworldObj.position.x - overworldCamera.position.x;
-        float verticalOffset = overworldObj.position.y - overworldCamera.position.y - 0.5f;
+        float horizontalOffset = overworldObj.position.x - OverworldParent.Instance.OverworldCamera.position.x;
+        float verticalOffset = overworldObj.position.y - OverworldParent.Instance.OverworldCamera.position.y - 0.5f;
 
         float yPos = combatObj.position.y;
         Vector3 newCombatPos = combatCamera.position + combatCamera.right * horizontalOffset + combatCamera.up * verticalOffset;
@@ -185,7 +183,8 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         enemy_overworld.gameObject.SetActive(false);
 
         combatParent.SetActive(false);
-        overworldParent.SetActive(true);
+        OverworldParent.Instance.gameObject.SetActive(true);
+        persistentOverworldParent.SetActive(true);
         CombatController.Instance.InCombat = false;
     }
 }

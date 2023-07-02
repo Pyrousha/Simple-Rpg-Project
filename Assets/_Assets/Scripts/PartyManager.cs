@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,5 +26,18 @@ public class PartyManager : Singleton<PartyManager>
             else
                 characterDisplays[i].SetEntity(null);
         }
+    }
+
+    public OverworldEntity GetFirstAlivePlayer()
+    {
+        foreach (OverworldEntity partyMember in PartyMembers)
+        {
+            if (!partyMember.IsDead)
+                return partyMember;
+        }
+
+        Debug.LogError("No alive party member found!");
+
+        return null;
     }
 }

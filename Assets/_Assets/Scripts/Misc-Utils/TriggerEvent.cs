@@ -11,13 +11,13 @@ public class TriggerEvent : MonoBehaviour
     [SerializeField] private UnityEvent onEnteredEvent;
     [SerializeField] private UnityEvent afterDoneEvent;
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (showDebug)
-            Debug.Log("Collided with object: " + other.gameObject.name + ", with layer: "+other.gameObject.layer);
+            Debug.Log("Collided with object: " + other.gameObject.name + ", with layer: " + other.gameObject.layer);
 
         //if other.layer is within layermask
-        if(interactionLayer == (interactionLayer | (1 << other.gameObject.layer)))
+        if (interactionLayer == (interactionLayer | (1 << other.gameObject.layer)))
         {
             DoEvent();
             if (showDebug)

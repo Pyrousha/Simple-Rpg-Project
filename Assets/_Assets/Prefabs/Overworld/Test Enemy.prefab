@@ -261,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7880952967779764507}
   - component: {fileID: 7880952967779764501}
-  - component: {fileID: 7880952967779764500}
+  - component: {fileID: 7483621954389856249}
   m_Layer: 19
   m_Name: Combat Trigger
   m_TagString: Untagged
@@ -301,19 +301,22 @@ MonoBehaviour:
   enemiesToFight:
   - {fileID: 1458790470971900674}
   - {fileID: 5507707527975276765}
---- !u!135 &7880952967779764500
-SphereCollider:
+--- !u!70 &7483621954389856249
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7880952967779764504}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.55
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 61a4fa3703d0f1b42ba9f252a6392511, type: 2}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.5}
+  m_Size: {x: 0.75, y: 0.35}
+  m_Direction: 1
 --- !u!1 &7880952969239431119
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7880952969239431118}
-  - component: {fileID: 9161943813880766609}
+  - component: {fileID: 6084017294076599226}
   m_Layer: 7
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -351,16 +354,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &9161943813880766609
-SphereCollider:
+--- !u!70 &6084017294076599226
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7880952969239431119}
-  m_Material: {fileID: 13400000, guid: 6a3635b8557d5994f8bc98649452068f, type: 2}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 61a4fa3703d0f1b42ba9f252a6392511, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.5}
+  m_Size: {x: 0.65, y: 0.25}
+  m_Direction: 1

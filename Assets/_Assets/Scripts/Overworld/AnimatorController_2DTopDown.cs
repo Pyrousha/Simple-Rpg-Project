@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimatorController_2DTopDown : MonoBehaviour
 {
     private Animator anim;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private PlayerController_2D_TopDown playerController;
 
     private bool isPlayer = false;
@@ -28,7 +28,7 @@ public class AnimatorController_2DTopDown : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController_2D_TopDown>();
         if (playerController != null)
             isPlayer = true;

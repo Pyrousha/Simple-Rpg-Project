@@ -14,7 +14,7 @@ public class FollowTarget : MonoBehaviour
     [SerializeField] private float sqrTargDistAway;
 
 
-    private Rigidbody rb;
+    private Rigidbody2D rb;
 
     private Vector3 dirFacing = new Vector3(0, 1, 0);
     public Vector3 DirFacing => dirFacing;
@@ -22,7 +22,7 @@ public class FollowTarget : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -85,7 +85,7 @@ public class FollowTarget : MonoBehaviour
         }
 
         //Apply velocity
-        updatedVelocity.z = rb.velocity.z;
+        // updatedVelocity.z = rb.velocity.z;
         rb.velocity = updatedVelocity;
     }
 }

@@ -32,7 +32,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         this.dialogueObject = dialogueObject;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out HeroDialogueInteract player))
         {
@@ -40,7 +40,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.TryGetComponent(out HeroDialogueInteract player))
         {

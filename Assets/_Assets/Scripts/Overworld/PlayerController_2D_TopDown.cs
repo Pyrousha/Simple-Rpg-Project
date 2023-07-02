@@ -24,7 +24,7 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
     [SerializeField] private float frictionSpeed_air;
 
 
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private List<Transform> raycastPoints = new List<Transform>();
     bool grounded = false;
 
@@ -42,7 +42,7 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
 
         if (checkForGrounded)
             for (int i = 0; i < raycastParent.childCount; i++)
@@ -70,10 +70,10 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
             grounded = true;
         #endregion
 
-        #region Apply Gravity
-        if (gravityStrength > 0)
-            rb.velocity -= new Vector3(0, gravityStrength, 0);
-        #endregion
+        // #region Apply Gravity
+        // if (gravityStrength > 0)
+        //     rb.velocity -= new Vector3(0, gravityStrength, 0);
+        // #endregion
 
 
         #region Acceleration
@@ -146,7 +146,8 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
             }
 
             //Apply velocity
-            updatedVelocity.z = rb.velocity.z;
+            //TODO: Clean this up
+            // updatedVelocity.z = rb.velocity.z;
             rb.velocity = updatedVelocity;
         }
         #endregion

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class CameraFollow_2D_Topdown : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    private Transform target;
     [SerializeField] private float zOffset = -10;
+
+    void Start()
+    {
+        target = PartyManager.Instance.GetFirstAlivePlayer().transform;
+    }
 
     // Update is called once per frame
     void Update()

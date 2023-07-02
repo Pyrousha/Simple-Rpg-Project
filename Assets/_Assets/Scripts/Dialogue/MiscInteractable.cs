@@ -21,7 +21,7 @@ public class MiscInteractable : MonoBehaviour, IInteractable
     // [Header("Optional References For Events")]
     // [SerializeField] private List<GameObject> objs;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out HeroDialogueInteract player))
         {
@@ -29,7 +29,7 @@ public class MiscInteractable : MonoBehaviour, IInteractable
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.TryGetComponent(out HeroDialogueInteract player))
         {
