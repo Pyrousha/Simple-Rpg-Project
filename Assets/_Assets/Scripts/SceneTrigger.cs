@@ -10,6 +10,6 @@ public class SceneTrigger : MonoBehaviour
 
     public void LoadNextScene()
     {
-        SceneTransitioner.Instance.LoadScene(newSceneIndex, spawnPosition, followerDirection);
+        StartCoroutine(SceneTransitioner.Instance.StartLoadScene(newSceneIndex, spawnPosition, followerDirection));
     }
 }

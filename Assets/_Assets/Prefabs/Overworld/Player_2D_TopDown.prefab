@@ -88,7 +88,7 @@ Transform:
   - {fileID: 735150582}
   - {fileID: 8734874474098496369}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1960874119394185385
 MonoBehaviour:
@@ -112,7 +112,6 @@ MonoBehaviour:
     m_Bits: 0
   raycastParent: {fileID: 0}
   raycastHeight: 0.05
-  gravityStrength: -1
   accelSpeed_air: 0
   frictionSpeed_air: 0
 --- !u!114 &633816360
@@ -127,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919d2ef47e1129c41be9dec921b99f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 6999404947688062813}
+  <Anim>k__BackingField: {fileID: 6999404947688062813}
   idleCutoffSpeed: 0.5
 --- !u!70 &5541400055584436342
 CapsuleCollider2D:

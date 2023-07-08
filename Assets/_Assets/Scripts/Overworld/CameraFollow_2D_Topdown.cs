@@ -15,6 +15,6 @@ public class CameraFollow_2D_Topdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = target.position + new Vector3(0, 0, zOffset);
+        transform.position = target.position + new Vector3(0, 0.5f, zOffset);
     }
 }

@@ -18,7 +18,7 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
     [SerializeField] private Transform raycastParent;
     [SerializeField] private float raycastHeight = 0.05f;
     [Space(5)]
-    [SerializeField] private float gravityStrength = -1f;
+    // [SerializeField] private float gravityStrength = -1f;
     [Space(5)]
     [SerializeField] private float accelSpeed_air;
     [SerializeField] private float frictionSpeed_air;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimatorController_2DTopDown : MonoBehaviour
 {
-    [SerializeField] private Animator anim;
+    [field: SerializeField] public Animator Anim { get; private set; }
     private Rigidbody2D rb;
     private PlayerController_2D_TopDown playerController;
 
@@ -12,7 +12,7 @@ public class AnimatorController_2DTopDown : MonoBehaviour
 
     [SerializeField] private float idleCutoffSpeed = 0.1f;
 
-    private enum MoveStateEnum
+    public enum MoveStateEnum
     {
         UpIdle,
         DownIdle,
@@ -23,7 +23,7 @@ public class AnimatorController_2DTopDown : MonoBehaviour
         Left,
         Right
     }
-    private MoveStateEnum state;
+    public MoveStateEnum State { get; private set; }
 
     void Awake()
     {
@@ -64,7 +64,7 @@ public class AnimatorController_2DTopDown : MonoBehaviour
         else
         {
             //Not moving
-            switch (state)
+            switch (State)
             {
                 case MoveStateEnum.Up:
                     ChangeAnimationState(MoveStateEnum.UpIdle);
@@ -84,10 +84,10 @@ public class AnimatorController_2DTopDown : MonoBehaviour
 
     private void ChangeAnimationState(MoveStateEnum _newState)
     {
-        if (state == _newState)
+        if (State == _newState)
             return;
 
-        state = _newState;
-        anim.Play(_newState.ToString(), 0);
+        State = _newState;
+        Anim.Play(_newState.ToString(), 0);
     }
 }

@@ -1,10 +1,6 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
-
-using UnityEditor.UIElements;
-using UnityEngine.UIElements;
 
 [CreateAssetMenu(menuName = "Dialogue/DialogueObject")]
 public class DialogueObject : ScriptableObject
