@@ -9,7 +9,10 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     [SerializeField] private DialogueObject dialogueObject;
     [SerializeField] private bool playWithoutInput;
     [SerializeField] private PlayOptions playOption;
-    public int Priority { get; set; }
+    [field: SerializeField] public string InteractPopupText { get; set; }
+    [field: SerializeField] public int Priority { get; set; }
+
+    public Transform Transform { get; set; }
 
     public enum PlayOptions
     {
@@ -20,6 +23,11 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     private bool played = false;
     private bool playOnce = false;
+
+    private void Awake()
+    {
+        Transform = transform;
+    }
 
     private void Start()
     {

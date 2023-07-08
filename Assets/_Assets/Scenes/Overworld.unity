@@ -436,6 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33091898e3f36745ae9c1ea8885b083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <InteractPopupText>k__BackingField: Enter Town
+  <Priority>k__BackingField: -1
   playWithoutInput: 0
   playOption: 0
   interactEvent:

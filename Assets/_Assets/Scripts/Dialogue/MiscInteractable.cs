@@ -8,7 +8,9 @@ using UnityEngine.Events;
 /// </summary>
 public class MiscInteractable : MonoBehaviour, IInteractable
 {
-    public int Priority { get; set; }
+    [field: SerializeField] public string InteractPopupText { get; set; }
+    [field: SerializeField] public int Priority { get; set; }
+    public Transform Transform { get; set; }
 
     private bool played = false;
     private bool playOnce = false;
@@ -20,6 +22,11 @@ public class MiscInteractable : MonoBehaviour, IInteractable
 
     // [Header("Optional References For Events")]
     // [SerializeField] private List<GameObject> objs;
+
+    private void Awake()
+    {
+        Transform = transform;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

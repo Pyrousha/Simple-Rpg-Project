@@ -56,14 +56,14 @@ public class SceneTransitioner : Singleton<SceneTransitioner>
         var scene = SceneManager.LoadSceneAsync(_newSceneIndex);
         scene.allowSceneActivation = false;
 
+        await Task.Delay(250);
+
         do
         {
             Debug.Log("Load progress: " + scene.progress);
             await Task.Delay(1);
         }
         while (scene.progress < 0.9f);
-
-        await Task.Delay(250);
 
         scene.allowSceneActivation = true;
     }

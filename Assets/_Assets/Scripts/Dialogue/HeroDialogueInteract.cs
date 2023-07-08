@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class HeroDialogueInteract : MonoBehaviour
 {
-    public PriorityQueue<IInteractable> Interactables { get; private set; } = new PriorityQueue<IInteractable>();
+    public List<IInteractable> Interactables { get; private set; } = new List<IInteractable>();
     private IInteractable highestPrioInteractable = null;
 
     // Update is called once per frame
@@ -15,7 +16,7 @@ public class HeroDialogueInteract : MonoBehaviour
         {
             if (highestPrioInteractable != null)
             {
-                Interactables.Peek().TryInteract(this);
+                Interactables[0].TryInteract(this);
             }
         }
     }
@@ -25,22 +26,33 @@ public class HeroDialogueInteract : MonoBehaviour
         if (Interactables.Contains(dialogueActivator))
             return;
 
-        Interactables.Put(dialogueActivator, dialogueActivator.Priority);
+        Interactables.Add(dialogueActivator);
 
-        highestPrioInteractable = Interactables.Peek();
+        //Sort List
+        Interactables = Interactables.OrderByDescending(a => a.Priority).ToList();
+
+        highestPrioInteractable = Interactables[0];
+        PopupIndicator.Instance.ShowPopup(highestPrioInteractable.Transform, highestPrioInteractable.InteractPopupText);
     }
 
     public void RemoveInteractable(IInteractable dialogueActivator)
     {
-        Interactables.TryRemoveElement(dialogueActivator);
+        int index = Interactables.IndexOf(dialogueActivator);
+        if (index >= 0)
+        {
+            //List contains this interactable
+            Interactables.RemoveAt(index);
+        }
 
         if (Interactables.Count > 0)
         {
-            highestPrioInteractable = Interactables.Peek();
+            highestPrioInteractable = Interactables[0];
+            PopupIndicator.Instance.ShowPopup(highestPrioInteractable.Transform, highestPrioInteractable.InteractPopupText);
         }
         else
         {
             highestPrioInteractable = null;
+            PopupIndicator.Instance.ClosePopup();
         }
     }
 }
