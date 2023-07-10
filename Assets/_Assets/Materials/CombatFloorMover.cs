@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BeauRoutine;
 
 public class CombatFloorMover : MonoBehaviour
 {
@@ -41,25 +42,15 @@ public class CombatFloorMover : MonoBehaviour
 
     public void StartGridMove()
     {
-        StartCoroutine(RampUpGridSpeed());
+        Routine.Start(this, RampUpGridSpeed());
     }
 
     private IEnumerator RampUpGridSpeed()
     {
-        float startTime = Time.time;
-        float elapsedPercentage = 0;
-
-        while (elapsedPercentage < 1)
+        yield return Tween.Float(0, 1, (elapsedPercentage) =>
         {
-            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / startupTime);
-
             move_1 = grid1Speed * elapsedPercentage;
             move_2 = grid2Speed * elapsedPercentage;
-
-            yield return null;
-        }
-
-        move_1 = grid1Speed;
-        move_2 = grid2Speed;
+        }, startupTime);
     }
 }

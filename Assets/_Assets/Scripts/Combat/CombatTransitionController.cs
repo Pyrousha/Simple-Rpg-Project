@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BeauRoutine;
 using UnityEngine;
 
 public class CombatTransitionController : Singleton<CombatTransitionController>
@@ -38,7 +39,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         foreach (OverworldEntity entity in _enemiesToFight)
             entitiesInCombat.Add(entity.CombatEntity);
 
-        StartCoroutine(ToCombat());
+        Routine.Start(this, ToCombat());
     }
 
     private IEnumerator ToCombat()
@@ -76,18 +77,16 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
         // combatCameraAnim.enabled = true;
         // combatFloorAnim.enabled = true;
-        StartCoroutine(SpinCameraParent(cameraStartZAngle, 0));
+        Routine.Start(this, SpinCameraParent(cameraStartZAngle, 0));
 
 
         foreach (CombatEntity entity in entitiesInCombat)
         {
             if (entity.OverworldEntity.IsPlayer)
-                StartCoroutine(LerpCombatEntity(entity, entity.InCombatPosition, 1));
+                Routine.Start(this, LerpCombatEntity(entity, entity.InCombatPosition, 1));
             else
-                StartCoroutine(LerpCombatEntity(entity, entity.InCombatPosition, 3));
+                Routine.Start(this, LerpCombatEntity(entity, entity.InCombatPosition, 3));
         }
-        // StartCoroutine(LerpCombatEntity(player_combat, player_combat_targetPos.position, 1));
-        // StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_targetPos.position, 3));
 
         yield return new WaitForSeconds(lerpDuration);
 
@@ -109,27 +108,18 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         combatObj.position = newCombatPos;
         _entity.SetStartTransitionPosition(newCombatPos);
         if (_entity.OverworldEntity.IsPlayer)
-            _entity.SetFacingDir(new Vector3(0, 0, 1));
+            _entity.UpdateFacingSprite(new Vector3(0, 0, 1));
         else
-            _entity.SetFacingDir(new Vector3(0, 0, -1));
+            _entity.UpdateFacingSprite(new Vector3(0, 0, -1));
         //_entity.SetFacingDir((combatCenter.position - _entity.transform.position).normalized);
     }
 
     private IEnumerator SpinCameraParent(float _startZAngle, float _targetZAngle)
     {
-        float startTime = Time.time;
-        float elapsedPercentage = 0;
-
-        while (elapsedPercentage < 1)
+        yield return Tween.Float(0, 1, (elapsedPercentage) =>
         {
-            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / cameraSpinDuration);
-
             combatCamera_parent.eulerAngles = new Vector3(90, 0, Mathf.Lerp(_startZAngle, _targetZAngle, elapsedPercentage));
-
-            yield return null;
-        }
-
-        combatCamera_parent.eulerAngles = new Vector3(90, 0, _targetZAngle);
+        }, cameraSpinDuration).Ease(Curve.QuadOut);
     }
 
     private IEnumerator LerpCombatEntity(CombatEntity _entity, Vector3 _targetPos, float _targetLocalScale)
@@ -138,42 +128,34 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         Vector3 startScale = _entity.transform.localScale;
         Vector3 targetScale = Vector3.one * _targetLocalScale;
 
-        float startTime = Time.time;
-        float elapsedPercentage = 0;
-
-        while (elapsedPercentage < 1)
+        yield return Tween.Float(0, 1, (elapsedPercentage) =>
         {
-            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / lerpDuration);
-
             _entity.transform.position = Vector3.Lerp(startPos, _targetPos, elapsedPercentage);
             _entity.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedPercentage);
 
             if (_entity.OverworldEntity.IsPlayer)
-                _entity.SetFacingDir(new Vector3(0, 0, 1));
+                _entity.UpdateFacingSprite(new Vector3(0, 0, 1));
             else
-                _entity.SetFacingDir(new Vector3(0, 0, -1));
-            // _entity.SetFacingDir((combatCenter.position - _entity.transform.position).normalized);
-
-            yield return null;
-        }
+                _entity.UpdateFacingSprite(new Vector3(0, 0, -1));
+        }, lerpDuration);
     }
 
     public void EndCombat()
     {
-        StartCoroutine(EndCombatCoroutine());
+        Routine.Start(this, EndCombatCoroutine());
     }
 
     private IEnumerator EndCombatCoroutine()
     {
         foreach (CombatEntity entity in entitiesInCombat)
         {
-            StartCoroutine(LerpCombatEntity(entity, entity.StartTransitionPosition, 1));
+            Routine.Start(this, LerpCombatEntity(entity, entity.StartTransitionPosition, 1));
         }
 
         // StartCoroutine(LerpCombatEntity(player_combat, player_combat_startingPos, 1));
         // StartCoroutine(LerpCombatEntity(enemy_combat, enemy_combat_startingPos, 1));
 
-        StartCoroutine(SpinCameraParent(0, cameraStartZAngle));
+        Routine.Start(this, SpinCameraParent(0, cameraStartZAngle));
 
         combatCameraAnim.SetBool("Status", false);
         combatFloorAnim.SetBool("Status", false);

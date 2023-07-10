@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Text.RegularExpressions;
+using BeauRoutine;
 
 public class TypewriterEffect : MonoBehaviour
 {
@@ -21,16 +22,16 @@ public class TypewriterEffect : MonoBehaviour
         new Punctuation(new HashSet<char>(){' '}, 0.01f)
     };
 
-    private Coroutine typingCoroutine;
+    private Routine typingCoroutine = Routine.Null;
 
     public void Run(string textToType, TMP_Text textLabel, AudioClip voiceClip)
     {
-        typingCoroutine = StartCoroutine(TypeText(textToType, textLabel, voiceClip));
+        typingCoroutine = Routine.Start(this, TypeText(textToType, textLabel, voiceClip));
     }
 
     public void Stop()
     {
-        StopCoroutine(typingCoroutine);
+        typingCoroutine.Stop();
         isRunning = false;
     }
 
@@ -50,7 +51,7 @@ public class TypewriterEffect : MonoBehaviour
 
         int numBreaks = Regex.Matches(textToType, "<br>").Count;
 
-        if(voiceClip != null)
+        if (voiceClip != null)
         {
             voiceAudioSource.clip = voiceClip;
             voiceAudioSource.time = 0;
@@ -59,7 +60,7 @@ public class TypewriterEffect : MonoBehaviour
 
         yield return null;
 
-        while (charIndex < textToType.Length - numBreaks*4)
+        while (charIndex < textToType.Length - numBreaks * 4)
         {
             int lastCharIndex = charIndex;
 
@@ -68,7 +69,7 @@ public class TypewriterEffect : MonoBehaviour
 
             charIndex = Mathf.Clamp(charIndex, 0, textToType.Length);
 
-            for(int i = lastCharIndex; i<charIndex; i++)
+            for (int i = lastCharIndex; i < charIndex; i++)
             {
                 bool isLast = i >= textToType.Length - 1;
 
@@ -118,7 +119,7 @@ public class TypewriterEffect : MonoBehaviour
 
     private bool IsPunctuation(char character, out float waitTime)
     {
-        foreach(Punctuation punctuationCategory in punctuations)
+        foreach (Punctuation punctuationCategory in punctuations)
         {
             if (punctuationCategory.punctuations.Contains(character))
             {

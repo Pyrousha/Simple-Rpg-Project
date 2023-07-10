@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BeauRoutine;
 
 public class AlignWithCamera : MonoBehaviour
 {
@@ -44,29 +45,20 @@ public class AlignWithCamera : MonoBehaviour
 
     public void StartFallOver()
     {
-        StartCoroutine(FallOver(0.5f));
+        Routine.Start(this, FallOver(0.5f));
     }
 
     private IEnumerator FallOver(float _lerpDuration)
     {
         Mode = FaceCameraMode.MatchYRotation;
-
         float startXRotation = transform.localEulerAngles.x;
 
         float targetXRotation = 90.0f;
 
-        float startTime = Time.time;
-        float elapsedPercentage = 0;
-
-        while (elapsedPercentage < 1)
+        yield return Tween.Float(0, 1, (elapsedPercentage) =>
         {
-            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / _lerpDuration);
-            elapsedPercentage = Utils.Accelerate(elapsedPercentage);
-
-            transform.localEulerAngles = new Vector3(
-                Mathf.Lerp(startXRotation, targetXRotation, elapsedPercentage), transform.localEulerAngles.y, transform.localEulerAngles.z);
-
-            yield return null;
-        }
+            transform.localEulerAngles =
+            new Vector3(Mathf.Lerp(startXRotation, targetXRotation, elapsedPercentage), transform.localEulerAngles.y, transform.localEulerAngles.z);
+        }, _lerpDuration).Ease(Curve.QuadOut);
     }
 }

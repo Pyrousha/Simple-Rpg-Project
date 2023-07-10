@@ -53,10 +53,12 @@ public class SceneTransitioner : Singleton<SceneTransitioner>
 
     private async void LoadScene(int _newSceneIndex)
     {
+        float startTime = Time.time;
+
         var scene = SceneManager.LoadSceneAsync(_newSceneIndex);
         scene.allowSceneActivation = false;
 
-        await Task.Delay(250);
+        const int msToDelay = 250;
 
         do
         {
@@ -64,6 +66,13 @@ public class SceneTransitioner : Singleton<SceneTransitioner>
             await Task.Delay(1);
         }
         while (scene.progress < 0.9f);
+
+        int msTaken = Mathf.RoundToInt((Time.time - startTime) * 1000);
+        if (msTaken < msToDelay)
+        {
+            //Loading screen will show up for at least 250ms
+            await Task.Delay(msToDelay - msTaken);
+        }
 
         scene.allowSceneActivation = true;
     }

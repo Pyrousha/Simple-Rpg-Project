@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using BeauRoutine;
 using UnityEngine;
 using UnityEngine.UI;
 using static BaseCombatEntity;
@@ -66,7 +67,7 @@ public class CombatEntity : MonoBehaviour
         }
     }
 
-    public void SetSprite(Sprite _sprite)
+    private void SetSprite(Sprite _sprite)
     {
         combatSprite.sprite = _sprite;
         spriteShadow.sprite = _sprite;
@@ -116,43 +117,34 @@ public class CombatEntity : MonoBehaviour
             hpBar?.gameObject.SetActive(false);
     }
 
-    private Coroutine moveCoroutine = null;
+    private Routine moveCoroutine = Routine.Null;
     public void SetIsForward(bool _isFoward)
     {
-        if (moveCoroutine != null)
-            StopCoroutine(moveCoroutine);
+        moveCoroutine.Stop();
 
         Vector3 targPos = InCombatPosition;
         if (_isFoward)
         {
+            //Party members move forward when "forward", enemies move back (both move towards the center of the screen) 
             if (OverworldEntity.IsPlayer)
                 targPos += new Vector3(0, 0, 0.5f);
             else
                 targPos -= new Vector3(0, 0, 0.5f);
         }
 
-        moveCoroutine = StartCoroutine(MoveToPos(targPos, 0.25f));
+        moveCoroutine = Routine.Start(this, MoveToPos(targPos, 0.25f));
     }
 
     private IEnumerator MoveToPos(Vector3 _targetPos, float _duration)
     {
-        Vector3 _startPos = transform.position;
-
-        float startTime = Time.time;
-        float elapsedPercentage = 0;
-
-        while (elapsedPercentage < 1)
-        {
-            elapsedPercentage = Mathf.Min(1, (Time.time - startTime) / _duration);
-            elapsedPercentage = Utils.Accelerate(elapsedPercentage);
-
-            transform.position = Vector3.Lerp(_startPos, _targetPos, elapsedPercentage);
-
-            yield return null;
-        }
+        yield return transform.MoveTo(_targetPos, _duration).Ease(Curve.QuadOut);
     }
 
-    public void SetFacingDir(Vector3 _globalForward)
+    /// <summary>
+    /// Sets the sprite of this entity based on the relation of its facing direction and the camera's position
+    /// </summary>
+    /// <param name="_globalForward"></param>
+    public void UpdateFacingSprite(Vector3 _globalForward)
     {
         // if (OverworldEntity.IsPlayer)
         //     SetSprite(OverworldEntity.BaseStats.Sprite_Up);

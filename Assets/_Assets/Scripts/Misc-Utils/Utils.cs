@@ -57,16 +57,6 @@ public static class Utils
         return numberToReturnString;
     }
 
-    public static float Parametric(float _x)
-    {
-        return _x * _x / (2 * (_x * _x - _x) + 1);
-    }
-
-    public static float Accelerate(float _x)
-    {
-        return _x * _x;
-    }
-
     [System.Serializable]
     public class RangedInt
     {

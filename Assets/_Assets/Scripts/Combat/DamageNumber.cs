@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using BeauRoutine;
 
 public class DamageNumber : MonoBehaviour
 {
@@ -41,12 +42,12 @@ public class DamageNumber : MonoBehaviour
         anim.enabled = true;
         anim.speed = 1.0f / _duration;
 
-        StartCoroutine(DestroyAfterSeconds(_duration));
+        Routine.Start(this, DestroyAfterSeconds(_duration));
     }
 
     private IEnumerator DestroyAfterSeconds(float _timeToWait)
     {
-        yield return new WaitForSeconds(_timeToWait);
+        yield return _timeToWait;
 
         Destroy(gameObject);
     }

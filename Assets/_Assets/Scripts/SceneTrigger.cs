@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BeauRoutine;
 using UnityEngine;
 
 public class SceneTrigger : MonoBehaviour
@@ -10,6 +11,6 @@ public class SceneTrigger : MonoBehaviour
 
     public void LoadNextScene()
     {
-        StartCoroutine(SceneTransitioner.Instance.StartLoadScene(newSceneIndex, spawnPosition, followerDirection));
+        Routine.Start(this, SceneTransitioner.Instance.StartLoadScene(newSceneIndex, spawnPosition, followerDirection));
     }
 }

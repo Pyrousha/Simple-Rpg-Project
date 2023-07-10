@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine.UI;
+using BeauRoutine;
 
 public class DialogueUI : Singleton<DialogueUI>
 {
@@ -64,7 +65,7 @@ public class DialogueUI : Singleton<DialogueUI>
         if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "FadeIn")
             anim.SetTrigger("FadeIn");
 
-        StartCoroutine(StepThroughDialogue(dialogueObject));
+        Routine.Start(this, StepThroughDialogue(dialogueObject));
     }
 
     public void SetCurrDialogueObject(DialogueObject newDO)

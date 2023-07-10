@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static CombatMenuButton;
 using System.Linq;
+using BeauRoutine;
 
 public class CombatController : Singleton<CombatController>
 {
@@ -432,7 +433,7 @@ public class CombatController : Singleton<CombatController>
             entitiesWithAttacksToUse.Add(new EntityWithAttack(enemy, alivePlayers[targetPlayerIndex], enemy.BasicAttack));
         }
 
-        StartCoroutine(EntitiesAttack());
+        Routine.Start(EntitiesAttack());
     }
 
     private IEnumerator EntitiesAttack()
