@@ -155,9 +155,9 @@ public class CombatEntity : MonoBehaviour
 
 
 
-        Vector2 planarForward = -new Vector2(_globalForward.x, _globalForward.z);
-        Vector2 cameraForward = new Vector2(CombatTransitionController.Instance.CombatCamera.position.x,
-            CombatTransitionController.Instance.CombatCamera.position.z);
+        Vector2 planarForward = new Vector2(_globalForward.x, _globalForward.z);
+        Vector3 cameraForward3D = CombatTransitionController.Instance.CombatCamera.forward;
+        Vector2 cameraForward = new Vector2(cameraForward3D.x, cameraForward3D.z);
 
         float degDiff = Vector2.SignedAngle(planarForward, cameraForward);
         if (degDiff < 0)
@@ -170,7 +170,7 @@ public class CombatEntity : MonoBehaviour
         }
         if (degDiff >= 45 && degDiff < 135)
         {
-            SetSprite(OverworldEntity.BaseStats.Sprite_Left);
+            SetSprite(OverworldEntity.BaseStats.Sprite_Right);
             return;
         }
         if (degDiff >= 135 && degDiff < 225)
@@ -180,7 +180,7 @@ public class CombatEntity : MonoBehaviour
         }
         if (degDiff >= 225 && degDiff < 315)
         {
-            SetSprite(OverworldEntity.BaseStats.Sprite_Right);
+            SetSprite(OverworldEntity.BaseStats.Sprite_Left);
             return;
         }
     }
