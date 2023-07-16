@@ -58,7 +58,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     public void TryInteract()
     {
-        if ((played && playOnce) || OverworldMenuController.Instance.IsMenuActive)
+        if ((played && playOnce) || PauseController.Instance.IsPaused)
             return;
 
         DialogueUI.Instance.ShowDialogue(dialogueObject, gameObject);
@@ -66,7 +66,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     public void TryInteract(HeroDialogueInteract player)
     {
-        if ((played && playOnce) || OverworldMenuController.Instance.IsMenuActive)
+        if ((played && playOnce) || PauseController.Instance.IsPaused)
             return;
 
         if (playWithoutInput || InputHandler.Instance.Interact_Or_Confirm.Down)

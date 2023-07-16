@@ -46,9 +46,9 @@ public class UIButton : Button, ISelectHandler, IDeselectHandler
         }
 
         if (description != null)
-            DescriptionBox.Instance.SetUI(description);
+            DescriptionBox.Instance?.SetUI(description);
         else
-            DescriptionBox.Instance.SetStatus(false);
+            DescriptionBox.Instance?.SetStatus(false);
 
         base.OnSelect(eventData);
     }

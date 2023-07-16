@@ -18,7 +18,6 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
 
     private Animator anim;
     private bool isMenuActive = false;
-    public bool IsMenuActive => isMenuActive;
 
     [SerializeField] private Button[] buttons;
 
@@ -44,7 +43,7 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
             }
         }
 
-        if (InputHandler.Instance.Menu.Down && !DialogueUI.Instance.isOpen)
+        if (InputHandler.Instance.Menu.Down)
         {
             if (isMenuActive)
                 CloseMenu();
@@ -55,6 +54,11 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
 
     private void OpenMenu()
     {
+        if (PauseController.Instance.IsPaused)
+            return;
+
+        PauseController.Instance.AddPauser(gameObject);
+
         currSubmenu = OverworldMenuSubmenus_Enum.Main;
 
         isMenuActive = true;
@@ -75,6 +79,8 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
             button.enabled = false;
 
         EventSystem.current.SetSelectedGameObject(null);
+
+        PauseController.Instance.RemovePauser(gameObject);
     }
 
     public void OnButtonClicked(MenuButtons_Overworld_Enum _buttonType)

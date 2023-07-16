@@ -33,7 +33,7 @@ public class PlayerController_2D_TopDown : Singleton<PlayerController_2D_TopDown
 
     private bool CanMove()
     {
-        if (OverworldMenuController.Instance.IsMenuActive || DialogueUI.Instance.isOpen)
+        if (PauseController.Instance.IsPaused)
             return false;
         return true;
     }

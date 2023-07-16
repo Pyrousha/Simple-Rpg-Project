@@ -12,7 +12,7 @@ public class HeroDialogueInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DialogueUI.Instance.isOpen == false)
+        if (!PauseController.Instance.IsPaused && DialogueUI.Instance.isOpen == false)
         {
             if (highestPrioInteractable != null)
             {

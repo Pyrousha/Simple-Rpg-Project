@@ -571,6 +571,8 @@ public class CombatController : Singleton<CombatController>
                                 EndCombat(CombatWinCondition.Win);
                                 yield break;
                             }
+                            else
+                                UpdateEnemyButtons();
                         }
                     }
                 }

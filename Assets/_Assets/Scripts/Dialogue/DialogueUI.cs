@@ -59,6 +59,7 @@ public class DialogueUI : Singleton<DialogueUI>
         }
 
         isOpen = true;
+        PauseController.Instance.AddPauser(gameObject);
 
         dialogueParent.SetActive(true);
 
@@ -185,6 +186,7 @@ public class DialogueUI : Singleton<DialogueUI>
         textLabel.text = string.Empty;
 
         isOpen = false;
+        PauseController.Instance.RemovePauser(gameObject);
     }
 
     public void DisableDialogueBox()
@@ -194,6 +196,8 @@ public class DialogueUI : Singleton<DialogueUI>
         //This shouldn't be needed, but Unity be Unity sometimes...
         currDialogueObject = null;
         textLabel.text = string.Empty;
+
         isOpen = false;
+        PauseController.Instance.RemovePauser(gameObject);
     }
 }

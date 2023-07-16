@@ -67,6 +67,16 @@ public class CombatEntity : MonoBehaviour
         }
     }
 
+    public void SetSpriteAlpha(float _alpha)
+    {
+        _alpha = Mathf.Max(_alpha, 0);
+
+        Color currColor = combatSprite.color;
+        currColor.a = _alpha;
+        combatSprite.color = currColor;
+        spriteShadow.color = currColor;
+    }
+
     private void SetSprite(Sprite _sprite)
     {
         combatSprite.sprite = _sprite;
