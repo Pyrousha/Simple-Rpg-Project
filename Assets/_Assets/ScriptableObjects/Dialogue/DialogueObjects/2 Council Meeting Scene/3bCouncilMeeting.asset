@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
+  m_Name: 3bCouncilMeeting
+  m_EditorClassIdentifier: 
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: e5eb6fd1d26e25241be4ccbac38ec47d, type: 2}
+    Text: Do I look like a crossing guard? Ask someone for directions.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField:
+  - responseText: I think I'm a long way from home.
+    nextDialogueObject: {fileID: 0}

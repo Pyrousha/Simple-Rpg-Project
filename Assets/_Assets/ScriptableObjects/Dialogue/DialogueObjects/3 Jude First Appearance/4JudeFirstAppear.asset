@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
+  m_Name: 4JudeFirstAppear
+  m_EditorClassIdentifier: 
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: Anyways, Your Highness, could you get to the point of why you're here?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: Right. I want to sort out your water tower issue. I hope it might put me
+      back in Father's good graces.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: You said he didn't know about the problem.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: Right. So when I tell him it's solved, he'll be so relieved.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: Right . . . Why don't we leave it up to the realm-jumper? They're supposed
+      to be harbingers, aren't they?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: Quite right! What do you harbinge, then? You ought to know I'm skilled
+      with a pair of daggers. My trainer says I could be the quickest of my lineage.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: f8b53f6188814fd4cae6ed6074b0ba66, type: 2}
+    Text: BEYZA looks at you and shakes her head slightly. JUDE smiles widely.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField: []

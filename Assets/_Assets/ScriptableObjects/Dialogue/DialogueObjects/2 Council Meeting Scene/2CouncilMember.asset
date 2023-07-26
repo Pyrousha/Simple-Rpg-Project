@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
+  m_Name: 2CouncilMember
+  m_EditorClassIdentifier: 
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: e5eb6fd1d26e25241be4ccbac38ec47d, type: 2}
+    Text: Oh. Well, hello, I suppose. Unfortunately you've caught us at a bad time.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField:
+  - responseText: Sorry. A strange creature sent me here. He said you could help.
+    nextDialogueObject: {fileID: 11400000, guid: 3f05def1c55e52b4ba63c4724fb53212,
+      type: 2}
+  - responseText: I just need to get home.
+    nextDialogueObject: {fileID: 11400000, guid: 5ac6b14bef71ab149a3d53627a0ffc5e,
+      type: 2}

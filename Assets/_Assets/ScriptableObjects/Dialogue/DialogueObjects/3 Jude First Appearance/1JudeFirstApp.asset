@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
+  m_Name: 1JudeFirstApp
+  m_EditorClassIdentifier: 
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: Hello, fine . . . Peasants? I was hoping to find an audience with your
+      little council.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: Prince?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: Indeed. Though it seems just "Jude" would be more apt at the moment.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: Trouble in the paradise of Duskport Castle?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: You are rather sharp.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: What do you need from the council?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: Well, I recently found out about the water tower trouble--
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: Don't tell me the kings know.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: No, no. When last I was in attendance at the castle, it seemed Father was
+      unaware.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: Good. And do us a favor by not clueing them in, would you?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: I fear there's no danger of that. In fact, that's the very reason I'm here.
+      You see--
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e72051a6a512f4c4aab1db3036965b34, type: 2}
+    Text: Wait a moment. Is that . . . A realm jumper?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField:
+  - responseText: In the flesh. Apparently.
+    nextDialogueObject: {fileID: 11400000, guid: 53fca010d2c6e004e92c303febafaa07,
+      type: 2}
+  - responseText: That's what I've heard.
+    nextDialogueObject: {fileID: 11400000, guid: 53fca010d2c6e004e92c303febafaa07,
+      type: 2}

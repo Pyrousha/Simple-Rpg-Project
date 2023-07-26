@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
+  m_Name: 4CouncilMeeting
+  m_EditorClassIdentifier: 
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: Councilor, I think we have a realm-jumper on our hands.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e5eb6fd1d26e25241be4ccbac38ec47d, type: 2}
+    Text: The last thing I need. Do you know you're considered terribly bad luck?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: d4d4e3cb12aec9041b12a2ee3ad034ee, type: 2}
+    Text: A realm-jumper! Now? Oh, it's really over. It's all over.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e5eb6fd1d26e25241be4ccbac38ec47d, type: 2}
+    Text: Please, Dods, let's not reduce to theatrics just yet.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: 1e1656ad24fcc354f807ef4a5bedcb0a, type: 2}
+    Text: And why shouldn't we?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: Because this realm-jumper could be of use.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e5eb6fd1d26e25241be4ccbac38ec47d, type: 2}
+    Text: What do you have in mind, Beyza?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: We'll have to hire half the Magilate to send 'em back to their own realm,
+      right?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e5eb6fd1d26e25241be4ccbac38ec47d, type: 2}
+    Text: At least.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: You were going to send me to take care of the water tower problem, anyway,
+      right? I'll take this problem with, and when we're done, consider it their
+      payment for the Mages.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: 1e1656ad24fcc354f807ef4a5bedcb0a, type: 2}
+    Text: You want a bad luck charm with you! payment for the Mages.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e5eb6fd1d26e25241be4ccbac38ec47d, type: 2}
+    Text: You would've wanted assistance on this job, I take it?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: It's hardly a one-person task.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e5eb6fd1d26e25241be4ccbac38ec47d, type: 2}
+    Text: We must confer. Beyza, why don't you and our realm-jumper go get some fresh
+      air.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: You got it, boss.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField: []
