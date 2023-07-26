@@ -49,7 +49,7 @@ MonoBehaviour:
   playOnStart: 0
   dialogueObject: {fileID: 11400000, guid: 8bd1a56bb94e72745876c881fb3768e0, type: 2}
   playWithoutInput: 0
-  playOption: 2
+  playOption: 1
   <InteractPopupText>k__BackingField: Chat
   <Priority>k__BackingField: 0
 --- !u!114 &771002266
@@ -155,7 +155,7 @@ Transform:
   - {fileID: 1331666511847248954}
   - {fileID: 8583402363087542308}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!70 &7390640825615974217
 CapsuleCollider2D:

@@ -63,11 +63,6 @@ public class MiscInteractable : MonoBehaviour, IInteractable
                         break;
                     }
 
-                case DialogueActivator.PlayOptions.playOnceIfSucceeds:
-                    {
-                        break;
-                    }
-
                 case DialogueActivator.PlayOptions.playAgainWithInput:
                     {
                         played = true;
