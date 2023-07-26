@@ -28,6 +28,8 @@ MonoBehaviour:
   <NextDialogueObject>k__BackingField: {fileID: 0}
   <Responses>k__BackingField:
   - responseText: I need to get home.
-    nextDialogueObject: {fileID: 0}
+    nextDialogueObject: {fileID: 11400000, guid: b736540af739b1b4b996cb8d637c15c6,
+      type: 2}
   - responseText: How do I get out of here?
-    nextDialogueObject: {fileID: 0}
+    nextDialogueObject: {fileID: 11400000, guid: b736540af739b1b4b996cb8d637c15c6,
+      type: 2}

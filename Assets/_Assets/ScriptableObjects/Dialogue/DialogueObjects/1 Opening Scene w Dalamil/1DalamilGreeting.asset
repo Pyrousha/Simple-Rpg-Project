@@ -24,4 +24,5 @@ MonoBehaviour:
     nextDialogueObject: {fileID: 11400000, guid: b5fe325b827f1764a99be7bb7ffc26da,
       type: 2}
   - responseText: Where am I?
-    nextDialogueObject: {fileID: 0}
+    nextDialogueObject: {fileID: 11400000, guid: 6f46f5abd79771b488018ec8aa80df9a,
+      type: 2}
