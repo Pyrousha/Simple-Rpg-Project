@@ -28,6 +28,8 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
     public void TriggerCombat(Transform _overworldEnemy, List<OverworldEntity> _enemiesToFight)
     {
+        PauseController.Instance.Fallback_CombatStarted();
+
         CombatController.Instance.InCombat = true;
         CombatController.Instance.SetEntitiesForCombat(_enemiesToFight);
 
@@ -122,21 +124,33 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         }, cameraSpinDuration).Ease(Curve.QuadOut);
     }
 
-    private IEnumerator LerpCombatEntity(CombatEntity _entity, Vector3 _targetPos, float _targetLocalScale)
+    private IEnumerator LerpCombatEntity(CombatEntity _entity, Vector3 _targetPos, float _targetLocalScale, bool _isCombatEnding = false)
     {
+        _entity.SetSpriteAlpha(1);
+
         Vector3 startPos = _entity.transform.position;
         Vector3 startScale = _entity.transform.localScale;
         Vector3 targetScale = Vector3.one * _targetLocalScale;
 
         yield return Tween.Float(0, 1, (elapsedPercentage) =>
         {
-            _entity.transform.position = Vector3.Lerp(startPos, _targetPos, elapsedPercentage);
-            _entity.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedPercentage);
-
             if (_entity.OverworldEntity.IsPlayer)
+            {
+                _entity.transform.position = Vector3.Lerp(startPos, _targetPos, elapsedPercentage);
+                _entity.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedPercentage);
                 _entity.UpdateFacingSprite(new Vector3(0, 0, 1));
+            }
             else
+            {
+                if (_isCombatEnding == false)
+                    _entity.transform.position = Vector3.Lerp(startPos, _targetPos, elapsedPercentage);
+                else
+                    _entity.SetSpriteAlpha(1 - elapsedPercentage * 1.5f);
+
+                _entity.transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedPercentage);
                 _entity.UpdateFacingSprite(new Vector3(0, 0, -1));
+            }
+
         }, lerpDuration);
     }
 
@@ -149,7 +163,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
     {
         foreach (CombatEntity entity in entitiesInCombat)
         {
-            Routine.Start(this, LerpCombatEntity(entity, entity.StartTransitionPosition, 1));
+            Routine.Start(this, LerpCombatEntity(entity, entity.StartTransitionPosition, 1, true));
         }
 
         // StartCoroutine(LerpCombatEntity(player_combat, player_combat_startingPos, 1));
@@ -161,6 +175,8 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         combatFloorAnim.SetBool("Status", false);
 
         yield return new WaitForSeconds(lerpDuration);
+
+        EnemySpawner.Instance.DestroyAllEnemies();
 
         enemy_overworld.gameObject.SetActive(false);
 

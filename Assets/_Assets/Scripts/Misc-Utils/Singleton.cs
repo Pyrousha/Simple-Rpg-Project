@@ -13,12 +13,19 @@ public class Singleton<T> : MonoBehaviour where T : Component
         }
     }
 
-    void Awake()
+    // void Awake()
+    // {
+    //     if (instance != null && instance != this)
+    //     {
+    //         Debug.LogWarning("Duplicate instance of singleton found: " + gameObject.name + ", destroying.");
+    //         Destroy(gameObject);
+    //     }
+
+    //     instance = GetComponent<T>();
+    // }
+
+    public void SetInstance(T _instance)
     {
-        if (instance != null && instance != this)
-        {
-            Debug.LogWarning("Duplicate instance of singleton found: " + gameObject.name + ", destroying.");
-            Destroy(gameObject);
-        }
+        instance = _instance;
     }
 }

@@ -21,6 +21,11 @@ public class EnemyCombatTrigger : MonoBehaviour
 
     public void OnTouchedPlayer()
     {
+        int numEnemiesToFight = Random.Range(1, enemiesToFight.Count + 1);
+
+        while (enemiesToFight.Count > numEnemiesToFight)
+            enemiesToFight.RemoveAt(enemiesToFight.Count - 1);
+
         CombatTransitionController.Instance.TriggerCombat(enemyTransform, enemiesToFight);
     }
 }
