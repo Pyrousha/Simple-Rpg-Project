@@ -17,7 +17,6 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     public enum PlayOptions
     {
         playOnce,
-        playOnceIfSucceeds,
         playAgainWithInput
     }
 
