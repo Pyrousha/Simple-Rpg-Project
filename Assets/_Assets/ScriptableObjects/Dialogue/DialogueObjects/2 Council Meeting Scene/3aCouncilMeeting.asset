@@ -21,4 +21,5 @@ MonoBehaviour:
   <NextDialogueObject>k__BackingField: {fileID: 0}
   <Responses>k__BackingField:
   - responseText: I think I'm a long way from home.
-    nextDialogueObject: {fileID: 0}
+    nextDialogueObject: {fileID: 11400000, guid: 9ff92bf1d34815f468894eea2eea5c19,
+      type: 2}

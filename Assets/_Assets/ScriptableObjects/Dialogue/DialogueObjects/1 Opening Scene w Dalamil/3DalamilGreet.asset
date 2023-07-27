@@ -20,11 +20,6 @@ MonoBehaviour:
     OptionalOverrides:
       PortraitImageOverride: {fileID: 0}
       VoiceClipOverride: {fileID: 0}
-  <NextDialogueObject>k__BackingField: {fileID: 0}
-  <Responses>k__BackingField:
-  - responseText: Option 1
-    nextDialogueObject: {fileID: 0}
-  - responseText: Option 2
-    nextDialogueObject: {fileID: 0}
-  - responseText: Option 3
-    nextDialogueObject: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 11400000, guid: 59e55752e1a82e1428720637a0908926,
+    type: 2}
+  <Responses>k__BackingField: []

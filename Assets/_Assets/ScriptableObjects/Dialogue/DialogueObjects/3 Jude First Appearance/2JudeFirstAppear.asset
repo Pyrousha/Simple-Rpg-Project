@@ -26,6 +26,8 @@ MonoBehaviour:
   <NextDialogueObject>k__BackingField: {fileID: 0}
   <Responses>k__BackingField:
   - responseText: In my realm, that's a rude thing to say.
-    nextDialogueObject: {fileID: 0}
+    nextDialogueObject: {fileID: 11400000, guid: 600bd54b0f180974490281ee994a0b78,
+      type: 2}
   - responseText: I've been working on it.
-    nextDialogueObject: {fileID: 0}
+    nextDialogueObject: {fileID: 11400000, guid: 7a30be5704034e84f86dfbc9d948ee16,
+      type: 2}
