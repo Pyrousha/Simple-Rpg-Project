@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &6508341 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1174128317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &99478457
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +322,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 284503491}
+  - {fileID: 6508341}
   m_Father: {fileID: 926404686}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54506,6 +54513,249 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1174128317
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 381327944}
+    m_Modifications:
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: dialogueObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 6faf4259baa854146b8f3e8879865295,
+        type: 2}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].name
+      value: 'Yeesh. Yeah, the Ducal Double. Formally Dawnport and Duskport, for
+        the two castles over yonder. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].name
+      value: 'Yeesh. Yeah, the Ducal Double. Formally Dawnport and Duskport, for
+        the two castles over yonder. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[2].name
+      value: And the match company is at its production limit.
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[3].name
+      value: I want the water tower operational again as much as any of you, but
+        we really need to consider discretion--
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[4].name
+      value: Councilor, I hate to interrupt, but we have a guest.
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].afterTextSpoken.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1174128318}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateDialogueObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogueActivator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 8bd1a56bb94e72745876c881fb3768e0,
+        type: 2}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: DialogueObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].afterTextSpoken.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666511847248955, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: dialogueObject
+      value: 
+      objectReference: {fileID: 11400000, guid: af130ad6f1edc27499a51cb89ebd2084,
+        type: 2}
+    - target: {fileID: 1331666513139145454, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_Name
+      value: Example Dialogue NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.974
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.134
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331666513139145455, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668990850386301583, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1259981213, guid: 42794d3fca694724baf570e5fe52fc24,
+        type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1331666511847248953, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1174128321}
+  m_SourcePrefab: {fileID: 100100000, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+--- !u!114 &1174128318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1331666511847248955, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1174128317}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174128320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654830e879a10b64f8ddf02385e11b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &1174128319 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7668990850386301583, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1174128317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1174128320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1331666511847248953, guid: bac1b9d211f2b9048b9fcdb4319e8fa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1174128317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1174128321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174128320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353d76216aa3a4a4ba47957f70c99ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueObject: {fileID: 11400000, guid: 8bd1a56bb94e72745876c881fb3768e0, type: 2}
+  events:
+  - name: Ayooooooooo
+    afterTextSpoken:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Yes or no?
+    afterTextSpoken:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1174128319}
+          m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  copyIndex: 0
+  pasteIndex: 0
+  deleteAfterCopy: 0
 --- !u!1 &1453388079
 GameObject:
   m_ObjectHideFlags: 0

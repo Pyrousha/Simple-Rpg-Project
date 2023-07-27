@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ResponseHandler : MonoBehaviour
 {
+    [SerializeField] private RectTransform responsesParent;
     [SerializeField] private RectTransform responseBox;
     [SerializeField] private RectTransform responseButtonTemplate;
     [SerializeField] private RectTransform responseContainer;
@@ -65,6 +66,8 @@ public class ResponseHandler : MonoBehaviour
         responseObjects = new GameObject[responses.Length];
         responseArray = new Response[responses.Length];
 
+        List<RectTransform> rectsToUpdate = new List<RectTransform>() { responsesParent };
+
         for (int i = 0; i < responses.Length; i++)
         {
             Response response = responses[i];
@@ -86,14 +89,20 @@ public class ResponseHandler : MonoBehaviour
             tempResponseButtons.Add(responseButton);
 
             responseBoxHeight += responseButtonTemplate.sizeDelta.y;
+
+            rectsToUpdate.Add(responseButton.GetComponent<RectTransform>());
         }
 
         responseIndex = 0;
 
-        Invoke("SetIndicator", 0);
-
         responseBox.sizeDelta = new Vector2(responseBox.sizeDelta.x, responseBoxHeight);
         responseBox.gameObject.SetActive(true);
+
+        foreach (RectTransform rect in rectsToUpdate)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(responsesParent);
+
+        SetIndicator();
 
         responsesEnabled = true;
     }
@@ -109,11 +118,11 @@ public class ResponseHandler : MonoBehaviour
 
         responseBox.gameObject.SetActive(false);
 
-        foreach (GameObject button in tempResponseButtons)
+        while (tempResponseButtons.Count > 0)
         {
-            Destroy(button);
+            Destroy(tempResponseButtons[^1]);
+            tempResponseButtons.RemoveAt(tempResponseButtons.Count - 1);
         }
-        tempResponseButtons.Clear();
 
         if (responseEvents != null && responseIndex <= responseEvents.Length)
         {
