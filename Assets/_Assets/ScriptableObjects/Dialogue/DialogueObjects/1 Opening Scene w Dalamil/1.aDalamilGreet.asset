@@ -22,4 +22,5 @@ MonoBehaviour:
   <NextDialogueObject>k__BackingField: {fileID: 0}
   <Responses>k__BackingField:
   - responseText: The "Ducal Double"?
-    nextDialogueObject: {fileID: 0}
+    nextDialogueObject: {fileID: 11400000, guid: 6faf4259baa854146b8f3e8879865295,
+      type: 2}
