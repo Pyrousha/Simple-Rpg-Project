@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ public class PauseController : Singleton<PauseController>
     {
         if (pausers.Contains(_newPauser))
         {
-            Debug.LogError("List of pausers already contains " + _newPauser.name);
+            Debug.LogWarning("List of pausers already contains " + _newPauser.name);
             return;
         }
 
@@ -27,7 +26,7 @@ public class PauseController : Singleton<PauseController>
     {
         if (!pausers.Contains(_newPauser))
         {
-            Debug.LogError("List of pausers does not contain " + _newPauser.name);
+            Debug.LogWarning("List of pausers does not contain " + _newPauser.name);
             return;
         }
 
@@ -45,14 +44,5 @@ public class PauseController : Singleton<PauseController>
             IsPaused = _newIsPaused;
             OnPausedStateChanged_Event?.Invoke(IsPaused);
         }
-    }
-
-    /// <summary>
-    /// Called when combat is started, forces the game to unpause
-    /// </summary>
-    public void Fallback_CombatStarted()
-    {
-        pausers = new List<GameObject>();
-        TrySetIsPaused(false);
     }
 }

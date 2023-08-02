@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,6 +34,8 @@ public class SceneTransitioner : Singleton<SceneTransitioner>
 
     public IEnumerator StartLoadScene(int _newSceneIndex, Vector3 _spawnPosition, Vector3 _followerDirection)
     {
+        PauseController.Instance.AddPauser(gameObject);
+
         placePartyMembers = true;
         spawnPosition = _spawnPosition;
         followerDirection = _followerDirection;
@@ -99,5 +100,7 @@ public class SceneTransitioner : Singleton<SceneTransitioner>
             }
             placePartyMembers = false;
         }
+
+        PauseController.Instance.RemovePauser(gameObject);
     }
 }

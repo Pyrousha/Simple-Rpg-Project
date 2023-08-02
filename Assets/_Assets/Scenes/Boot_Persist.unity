@@ -8292,7 +8292,7 @@ GameObject:
   - component: {fileID: 1046579344}
   - component: {fileID: 1046579345}
   m_Layer: 0
-  m_Name: ToMainMenu
+  m_Name: SceneTransitioner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,7 +1,6 @@
-using System;
+using BeauRoutine;
 using System.Collections;
 using System.Collections.Generic;
-using BeauRoutine;
 using UnityEngine;
 
 public class CombatTransitionController : Singleton<CombatTransitionController>
@@ -28,7 +27,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
 
     public void TriggerCombat(Transform _overworldEnemy, List<OverworldEntity> _enemiesToFight)
     {
-        PauseController.Instance.Fallback_CombatStarted();
+        PauseController.Instance.AddPauser(gameObject);
 
         CombatController.Instance.InCombat = true;
         CombatController.Instance.SetEntitiesForCombat(_enemiesToFight);
@@ -184,5 +183,7 @@ public class CombatTransitionController : Singleton<CombatTransitionController>
         OverworldParent.Instance.gameObject.SetActive(true);
         persistentOverworldParent.SetActive(true);
         CombatController.Instance.InCombat = false;
+
+        PauseController.Instance.RemovePauser(gameObject);
     }
 }

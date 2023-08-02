@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using BeauRoutine;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static BaseCombatEntity;
 
 public class CombatEntity : MonoBehaviour
 {
@@ -172,7 +168,7 @@ public class CombatEntity : MonoBehaviour
         float degDiff = Vector2.SignedAngle(planarForward, cameraForward);
         if (degDiff < 0)
             degDiff += 360;
-        Debug.Log(degDiff);
+        //Debug.Log(degDiff);
         if (degDiff < 45 || degDiff >= 315)
         {
             SetSprite(OverworldEntity.BaseStats.Sprite_Up);

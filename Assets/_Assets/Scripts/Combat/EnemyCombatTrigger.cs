@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +11,9 @@ public class EnemyCombatTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (PauseController.Instance.IsPaused)
+            return;
+
         if (beenInCombat == false && triggerCombatOnTouchPlayer)
         {
             OnTouchedPlayer();
