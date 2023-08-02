@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: b6aa10c020c4f7e478b64105dad95496
+guid: 01a7e69d4f022cd418fdeb18f9cb5518
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -47,7 +48,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,19 +116,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hero_Spritesheet_0
+      name: forest tilemap_minimal_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 51
-        width: 16
-        height: 16
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ef13e1dc86591c49b6c1f7e696cdd0d
-      internalID: -328249764
+      spriteID: cad51360463127b4aac3edb5d426336d
+      internalID: -1947198617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_1
+      name: forest tilemap_minimal_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 51
-        width: 16
-        height: 16
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2773e4b3bdf585a479cdfc81c74f64cd
-      internalID: 1304540990
+      spriteID: b5f19fb5b410a054190ce32363f9cf2c
+      internalID: -952733081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_2
+      name: forest tilemap_minimal_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 51
-        width: 16
-        height: 16
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fa083d10cce76c44884d671ad945e60
-      internalID: -820808647
+      spriteID: f82b5c23b86701846a4f9585e1f2c78f
+      internalID: 1453343400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_3
+      name: forest tilemap_minimal_3
       rect:
         serializedVersion: 2
-        x: 51
-        y: 51
-        width: 16
-        height: 16
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bad81e0fb816b53409336ac0cfca9c08
-      internalID: 1485230344
+      spriteID: 9afd0083234f6d447bdb1b66b3853679
+      internalID: 2067188839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_4
+      name: forest tilemap_minimal_4
       rect:
         serializedVersion: 2
-        x: 68
-        y: 51
-        width: 16
-        height: 16
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d81992e4f7f3af4ebfc795d6c24dc66
-      internalID: -1244924292
+      spriteID: ffa084309913155499d866d1b6ef7049
+      internalID: -356383788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_5
+      name: forest tilemap_minimal_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 34
-        width: 16
-        height: 16
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adbb56af8bbb5ce4db0f406c0eb60fc1
-      internalID: -1493000461
+      spriteID: 479ca2392c96c8f4f86fb07f83c03be9
+      internalID: 1906548565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_6
+      name: forest tilemap_minimal_6
       rect:
         serializedVersion: 2
-        x: 17
-        y: 34
-        width: 16
-        height: 16
+        x: 192
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61b874fb380541f4db3bb00c9d62cc30
-      internalID: -1890729939
+      spriteID: 0c02e6dc4fa2b9f45bf7125b08e55a15
+      internalID: 1666809053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_7
+      name: forest tilemap_minimal_7
       rect:
         serializedVersion: 2
-        x: 34
-        y: 34
-        width: 16
-        height: 16
+        x: 224
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,209 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28d6049ae3c739d42a1158ae08b240ef
-      internalID: 230151678
+      spriteID: a7703fc635d9c18458298c19779f1644
+      internalID: -1270804033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_8
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 34
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b455f05fbcc2af744b27cee2aad9dbb6
-      internalID: -194336086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_9
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 34
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bfb2d9abc6c72084a8c6c1cdde05d922
-      internalID: -754875788
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_10
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 17
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07cc5105e501ba249b81f493022bdc31
-      internalID: 31184707
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_11
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 17
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ef5d8fe3e308a146b21100d01e981e6
-      internalID: -51891092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_12
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 17
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e085690ae0865db4ea45e52eeb9d0b17
-      internalID: 720766656
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_13
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 17
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67295b25a6f993b449402d5599bbba63
-      internalID: -1361035447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_14
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 17
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a10d474c834f12d42bcec7669ceedb96
-      internalID: 46944345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_15
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 17
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fce098c29b5b81c48b2e3af03024e73c
-      internalID: -549735615
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_16
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 17
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23dd8c5b47ba35141bffac8780df5122
-      internalID: -1485262109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Spritesheet_17
+      name: forest tilemap_minimal_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d58157677e48a6840898239b7cd4665c
-      internalID: 1711604169
+      spriteID: e1b5fa0fea2cb0d4db117e462f27d5c1
+      internalID: 999725635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_18
+      name: forest tilemap_minimal_9
       rect:
         serializedVersion: 2
-        x: 17
+        x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -509,20 +326,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6836ece14d4489749837ce3a8b54b237
-      internalID: 1014269223
+      spriteID: e8a183b4286f4b345b9210412e9bf9c4
+      internalID: -1348176065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_19
+      name: forest tilemap_minimal_10
       rect:
         serializedVersion: 2
-        x: 34
+        x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -530,20 +347,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e7bc589dab2cec409e47ffcdafb5ecb
-      internalID: -1809711043
+      spriteID: 7d4094053bd00da4ab26d08cdbf40beb
+      internalID: -98860569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_20
+      name: forest tilemap_minimal_11
       rect:
         serializedVersion: 2
-        x: 51
+        x: 96
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -551,20 +368,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0e1b708889b4d2478bb24064614f0bf
-      internalID: -1228619450
+      spriteID: 6f056c3450d4d264bb93c0e4f3c64063
+      internalID: 1945521419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_21
+      name: forest tilemap_minimal_12
       rect:
         serializedVersion: 2
-        x: 68
+        x: 128
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,20 +389,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 253c09a2eb45c7649a9bc31ae75f2f0d
-      internalID: 1906136759
+      spriteID: db93981c35932fc4d9ff87179ccf0e05
+      internalID: -68096614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_22
+      name: forest tilemap_minimal_13
       rect:
         serializedVersion: 2
-        x: 85
+        x: 160
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -593,20 +410,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ebebb9deefda4b4eb99a50db0689b46
-      internalID: -1658611689
+      spriteID: 8e523601732e93243be8810e675da201
+      internalID: 540779958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Spritesheet_23
+      name: forest tilemap_minimal_14
       rect:
         serializedVersion: 2
-        x: 102
+        x: 192
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -614,8 +431,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9db0d1ea2bbd87a45990b7e8b183bb93
-      internalID: -118529955
+      spriteID: 8ebe674168103584cbccfdbb2fd7fd74
+      internalID: 421799984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: forest tilemap_minimal_15
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ffe461a749eb0945b2ba75316c4c30c
+      internalID: -1944712222
       vertices: []
       indices: 
       edges: []
@@ -631,33 +469,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hero_Spritesheet_0: -328249764
-      Hero_Spritesheet_1: 1304540990
-      Hero_Spritesheet_10: 31184707
-      Hero_Spritesheet_11: -51891092
-      Hero_Spritesheet_12: 720766656
-      Hero_Spritesheet_13: -1361035447
-      Hero_Spritesheet_14: 46944345
-      Hero_Spritesheet_15: -549735615
-      Hero_Spritesheet_16: -1485262109
-      Hero_Spritesheet_17: 1711604169
-      Hero_Spritesheet_18: 1014269223
-      Hero_Spritesheet_19: -1809711043
-      Hero_Spritesheet_2: -820808647
-      Hero_Spritesheet_20: -1228619450
-      Hero_Spritesheet_21: 1906136759
-      Hero_Spritesheet_22: -1658611689
-      Hero_Spritesheet_23: -118529955
-      Hero_Spritesheet_3: 1485230344
-      Hero_Spritesheet_4: -1244924292
-      Hero_Spritesheet_5: -1493000461
-      Hero_Spritesheet_6: -1890729939
-      Hero_Spritesheet_7: 230151678
-      Hero_Spritesheet_8: -194336086
-      Hero_Spritesheet_9: -754875788
-  spritePackingTag: 
+      forest tilemap_minimal_0: -1947198617
+      forest tilemap_minimal_1: -952733081
+      forest tilemap_minimal_10: -98860569
+      forest tilemap_minimal_11: 1945521419
+      forest tilemap_minimal_12: -68096614
+      forest tilemap_minimal_13: 540779958
+      forest tilemap_minimal_14: 421799984
+      forest tilemap_minimal_15: -1944712222
+      forest tilemap_minimal_2: 1453343400
+      forest tilemap_minimal_3: 2067188839
+      forest tilemap_minimal_4: -356383788
+      forest tilemap_minimal_5: 1906548565
+      forest tilemap_minimal_6: 1666809053
+      forest tilemap_minimal_7: -1270804033
+      forest tilemap_minimal_8: 999725635
+      forest tilemap_minimal_9: -1348176065
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
