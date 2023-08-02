@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ResponseHandler : MonoBehaviour
@@ -100,7 +100,7 @@ public class ResponseHandler : MonoBehaviour
 
         foreach (RectTransform rect in rectsToUpdate)
             LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(responsesParent);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(responseContainer);
 
         SetIndicator();
 
@@ -109,11 +109,14 @@ public class ResponseHandler : MonoBehaviour
 
     private void SetIndicator()
     {
-        triangleIndicator.position = responseObjects[responseIndex].transform.Find("IncidatorLocation").position;
+        triangleIndicator.parent = responseObjects[responseIndex].transform.Find("IncidatorLocation");
+        triangleIndicator.localPosition = Vector3.zero;
     }
 
     private void OnPickedResponse(Response response, int responseIndex)
     {
+        triangleIndicator.parent = responseBox;
+
         responsesEnabled = false;
 
         responseBox.gameObject.SetActive(false);

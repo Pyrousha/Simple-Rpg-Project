@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using BeauRoutine;
 using System.Collections;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using BeauRoutine;
 
 public class DialogueUI : Singleton<DialogueUI>
 {
@@ -14,7 +14,6 @@ public class DialogueUI : Singleton<DialogueUI>
     [Space(10)]
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private TMP_Text nameLabel;
-    [SerializeField] private TMP_Text nameSpacing;
     [SerializeField] private Image speakerImage;
 
     [SerializeField] private GameObject dialogueParent;
@@ -104,7 +103,6 @@ public class DialogueUI : Singleton<DialogueUI>
 
             //Set speaker labels + icon
             nameLabel.text = speaker.CharacterName;
-            nameSpacing.text = " " + speaker.CharacterName + " ";
 
             //Set portrait and voice to override values, or default if null
             Debug.Log("defaultSprite: ");

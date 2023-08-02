@@ -509,7 +509,7 @@ SpriteAtlas:
   - forest tilemap_minimal_11
   - forest tilemap_minimal_14
   - forest tilemap_minimal_15
-  - AngledCorners_Filled 1
+  - AngledCorners_Filled_OpenLeft
   - Spike
   - Multislash
   - Nameplate

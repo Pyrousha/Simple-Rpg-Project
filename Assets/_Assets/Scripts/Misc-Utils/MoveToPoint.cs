@@ -13,7 +13,7 @@ public class MoveToPoint : MonoBehaviour
         //TODO: Fix this (ewwwwwwwwww)
         transform.GetChild(0).gameObject.SetActive(true);
 
-        Routine.Start(this, MoveRoutine(_targetPos, _duration, Curve.QuadOut));
+        Routine.Start(this, MoveRoutine(_targetPos, _duration, Curve.QuadIn));
     }
 
     private IEnumerator MoveRoutine(Vector3 _targetPos, float _duration, Curve _curve)
