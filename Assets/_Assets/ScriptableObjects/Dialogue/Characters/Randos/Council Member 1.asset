@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb1d7b5ed2c152419536425f7f28b9c, type: 3}
   m_Name: Council Member 1
   m_EditorClassIdentifier: 
-  characterName: 
-  defaultPortraitSprite: {fileID: 0}
+  characterName: Council Member 1
+  defaultPortraitSprite: {fileID: 21300000, guid: e6883ff19200af041a0641237635fe05,
+    type: 3}
   defaultVoice: {fileID: 0}

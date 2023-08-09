@@ -23,7 +23,7 @@ MonoBehaviour:
     OptionalOverrides:
       PortraitImageOverride: {fileID: 0}
       VoiceClipOverride: {fileID: 0}
-  - Speaker: {fileID: 11400000, guid: d4d4e3cb12aec9041b12a2ee3ad034ee, type: 2}
+  - Speaker: {fileID: 11400000, guid: 1e1656ad24fcc354f807ef4a5bedcb0a, type: 2}
     Text: A realm-jumper! Now? Oh, it's really over. It's all over.
     OptionalOverrides:
       PortraitImageOverride: {fileID: 0}
@@ -61,13 +61,18 @@ MonoBehaviour:
       VoiceClipOverride: {fileID: 0}
   - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
     Text: You were going to send me to take care of the water tower problem, anyway,
-      right? I'll take this problem with, and when we're done, consider it their
-      payment for the Mages.
+      right?
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 11400000, guid: e8687d2d0604c814c9228509da24144b, type: 2}
+    Text: I'll take this problem with, and when we're done, consider it their payment
+      for the Mages.
     OptionalOverrides:
       PortraitImageOverride: {fileID: 0}
       VoiceClipOverride: {fileID: 0}
   - Speaker: {fileID: 11400000, guid: 1e1656ad24fcc354f807ef4a5bedcb0a, type: 2}
-    Text: You want a bad luck charm with you! payment for the Mages.
+    Text: You want a bad luck charm with you!
     OptionalOverrides:
       PortraitImageOverride: {fileID: 0}
       VoiceClipOverride: {fileID: 0}

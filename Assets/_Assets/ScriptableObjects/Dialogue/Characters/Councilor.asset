@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Councilor
   m_EditorClassIdentifier: 
   characterName: Councilor
-  defaultPortraitSprite: {fileID: 0}
+  defaultPortraitSprite: {fileID: 21300000, guid: c33c1efbfa35bda4f86d518bfc009cc7,
+    type: 3}
   defaultVoice: {fileID: 0}

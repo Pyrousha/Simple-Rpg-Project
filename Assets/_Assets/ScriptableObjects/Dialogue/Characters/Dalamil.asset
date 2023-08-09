@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dalamil
   m_EditorClassIdentifier: 
   characterName: Dalamil
-  defaultPortraitSprite: {fileID: 21300000, guid: ca59949380bf9f345a55716a24d1cb7a,
+  defaultPortraitSprite: {fileID: 21300000, guid: 20c28ba44fab4ee468e59aea5f961bb4,
     type: 3}
   defaultVoice: {fileID: 8300000, guid: d9a98646893e9384a8cf05fb9ef937aa, type: 3}

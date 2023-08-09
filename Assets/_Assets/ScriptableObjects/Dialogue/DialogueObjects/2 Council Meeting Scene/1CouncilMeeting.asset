@@ -18,7 +18,7 @@ MonoBehaviour:
     OptionalOverrides:
       PortraitImageOverride: {fileID: 0}
       VoiceClipOverride: {fileID: 0}
-  - Speaker: {fileID: 11400000, guid: 3bc15836d6462144e9d310754f15dbc8, type: 2}
+  - Speaker: {fileID: 11400000, guid: 1e1656ad24fcc354f807ef4a5bedcb0a, type: 2}
     Text: Swiftly and decisively too. The city is running out of gas.
     OptionalOverrides:
       PortraitImageOverride: {fileID: 0}

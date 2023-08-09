@@ -78,6 +78,7 @@ SpriteAtlas:
     - e6883ff19200af041a0641237635fe05: 21300000
     - a5257d03278a2d24ea4bd0ba02d8d07c: 21300000
     - ca59949380bf9f345a55716a24d1cb7a: 21300000
+    - 39a05cd36b32b7c4bbc4830bb534d223: 21300000
     - a08ec5a492eb352478dfa74f42815c3b: 21300000
     - 20c28ba44fab4ee468e59aea5f961bb4: 21300000
     - b524001566d834a4d8d96542978f9087: 21300000
@@ -86,6 +87,7 @@ SpriteAtlas:
     - e7c964b5818414847a564a61d703c80d: 21300000
     - 33a4e506934f02d4ba343ab9f8d1519f: 21300000
     - 88dbfdd6fbae64449bd84a0f4a4e57b9: 21300000
+    - 58f59c67015851c43b039a712b3887ae: 21300000
     - 7bf2ff77c2e458440bcdba27f4f521b8: 21300000
     - 327b194874f434b46954b53c9275e24c: 2038455271
     - 327b194874f434b46954b53c9275e24c: -630331858
@@ -171,6 +173,7 @@ SpriteAtlas:
     - 6d9ba6bbe8d69244ca7045e08f6e5d47: -1451425677
     - 6d9ba6bbe8d69244ca7045e08f6e5d47: -1313544822
     - 691842cb5ce5d6946afdfd29f6cae877: 21300000
+    - c33c1efbfa35bda4f86d518bfc009cc7: 21300000
     - ec2a422d42f3f674a9ac92c8eef13041: 21300000
     - 01a7e69d4f022cd418fdeb18f9cb5518: -1348176065
     - 01a7e69d4f022cd418fdeb18f9cb5518: 999725635
@@ -239,6 +242,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e6883ff19200af041a0641237635fe05, type: 3}
   - {fileID: 21300000, guid: a5257d03278a2d24ea4bd0ba02d8d07c, type: 3}
   - {fileID: 21300000, guid: ca59949380bf9f345a55716a24d1cb7a, type: 3}
+  - {fileID: 21300000, guid: 39a05cd36b32b7c4bbc4830bb534d223, type: 3}
   - {fileID: 21300000, guid: a08ec5a492eb352478dfa74f42815c3b, type: 3}
   - {fileID: 21300000, guid: 20c28ba44fab4ee468e59aea5f961bb4, type: 3}
   - {fileID: 21300000, guid: b524001566d834a4d8d96542978f9087, type: 3}
@@ -247,6 +251,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e7c964b5818414847a564a61d703c80d, type: 3}
   - {fileID: 21300000, guid: 33a4e506934f02d4ba343ab9f8d1519f, type: 3}
   - {fileID: 21300000, guid: 88dbfdd6fbae64449bd84a0f4a4e57b9, type: 3}
+  - {fileID: 21300000, guid: 58f59c67015851c43b039a712b3887ae, type: 3}
   - {fileID: 21300000, guid: 7bf2ff77c2e458440bcdba27f4f521b8, type: 3}
   - {fileID: 2038455271, guid: 327b194874f434b46954b53c9275e24c, type: 3}
   - {fileID: -630331858, guid: 327b194874f434b46954b53c9275e24c, type: 3}
@@ -332,6 +337,7 @@ SpriteAtlas:
   - {fileID: -1451425677, guid: 6d9ba6bbe8d69244ca7045e08f6e5d47, type: 3}
   - {fileID: -1313544822, guid: 6d9ba6bbe8d69244ca7045e08f6e5d47, type: 3}
   - {fileID: 21300000, guid: 691842cb5ce5d6946afdfd29f6cae877, type: 3}
+  - {fileID: 21300000, guid: c33c1efbfa35bda4f86d518bfc009cc7, type: 3}
   - {fileID: 21300000, guid: ec2a422d42f3f674a9ac92c8eef13041, type: 3}
   - {fileID: -1348176065, guid: 01a7e69d4f022cd418fdeb18f9cb5518, type: 3}
   - {fileID: 999725635, guid: 01a7e69d4f022cd418fdeb18f9cb5518, type: 3}
@@ -399,6 +405,7 @@ SpriteAtlas:
   - Shield
   - AngledCorners_Filled
   - Dalamil_Portrait
+  - beyza2
   - Square
   - goblin1
   - TextBox_D1
@@ -407,6 +414,7 @@ SpriteAtlas:
   - Castle
   - PopupNotch
   - triangle_down
+  - cowboy_sherif
   - Corners
   - Slime_Sheet_0
   - Slime_Sheet_1
@@ -492,6 +500,7 @@ SpriteAtlas:
   - forest tilemap_29
   - forest tilemap_28
   - Tree
+  - concept_councilman
   - Potion
   - forest tilemap_minimal_9
   - forest tilemap_minimal_8

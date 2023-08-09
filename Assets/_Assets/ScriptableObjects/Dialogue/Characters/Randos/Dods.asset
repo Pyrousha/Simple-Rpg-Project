@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb1d7b5ed2c152419536425f7f28b9c, type: 3}
   m_Name: Dods
   m_EditorClassIdentifier: 
-  characterName: 
-  defaultPortraitSprite: {fileID: 0}
+  characterName: Dods
+  defaultPortraitSprite: {fileID: 21300000, guid: 58f59c67015851c43b039a712b3887ae,
+    type: 3}
   defaultVoice: {fileID: 0}
