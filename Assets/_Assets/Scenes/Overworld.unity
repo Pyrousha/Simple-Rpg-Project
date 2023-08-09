@@ -929,9 +929,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.15789475
+    y: 0
     width: 1
-    height: 0.68314147
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -55311,15 +55311,21 @@ PrefabInstance:
     - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
       propertyPath: dialogueObject
       value: 
-      objectReference: {fileID: 11400000, guid: af130ad6f1edc27499a51cb89ebd2084,
+      objectReference: {fileID: 11400000, guid: 6faf4259baa854146b8f3e8879865295,
         type: 2}
     - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
       propertyPath: events.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
       propertyPath: events.Array.data[0].name
-      value: Watch it!
+      value: 'Yeesh. Yeah, the Ducal Double. Formally Dawnport and Duskport, for
+        the two castles over yonder. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
+      propertyPath: events.Array.data[1].name
+      value: Really, the dukes are the only ones who recognize the distinction, and
+        they aren't good for much besides ignoring.
       objectReference: {fileID: 0}
     - target: {fileID: 771002266, guid: bac1b9d211f2b9048b9fcdb4319e8fa5, type: 3}
       propertyPath: events.Array.data[0].afterTextSpoken.m_PersistentCalls.m_Calls.Array.size
