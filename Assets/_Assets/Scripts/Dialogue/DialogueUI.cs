@@ -65,6 +65,7 @@ public class DialogueUI : Singleton<DialogueUI>
         if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "FadeIn")
             anim.SetTrigger("FadeIn");
 
+        //StartCoroutine(StepThroughDialogue(currDialogueObject));
         Routine.Start(this, StepThroughDialogue(dialogueObject));
     }
 
@@ -105,11 +106,11 @@ public class DialogueUI : Singleton<DialogueUI>
             nameLabel.text = speaker.CharacterName;
 
             //Set portrait and voice to override values, or default if null
-            Debug.Log("defaultSprite: ");
-            Debug.Log(speaker.DefaultPortraitSprite);
+            //Debug.Log("defaultSprite: ");
+            //Debug.Log(speaker.DefaultPortraitSprite);
 
-            Debug.Log("override sprite:");
-            Debug.Log(currDialogueLine.OptionalOverrides.PortraitImageOverride);
+            //Debug.Log("override sprite:");
+            //Debug.Log(currDialogueLine.OptionalOverrides.PortraitImageOverride);
 
             if (currDialogueLine.OptionalOverrides.PortraitImageOverride != null)
                 speakerImage.sprite = currDialogueLine.OptionalOverrides.PortraitImageOverride;
@@ -122,15 +123,36 @@ public class DialogueUI : Singleton<DialogueUI>
             else
                 voiceClip = speaker.DefaultVoice;
 
+            yield return null;
 
             //show text
             string dialogue = currDialogueLine.Text;
-            yield return RunTypingEffect(dialogue, voiceClip);
+            typewriterEffect.Run(dialogue, textLabel, voiceClip);
+
+            while (typewriterEffect.IsRunning)
+            {
+                yield return null;
+
+                if (InputHandler.Instance.Interact_Or_Confirm.Down)
+                    typewriterEffect.Stop();
+            }
+
+            //After text is done typing
             textLabel.color = typewriterEffect.TextColor;
+            yield return null;
+
+            //yield return 1.0f;
 
             //if responses exist, don't let player close text box
             if ((i == dialogueObject.DialogueLines.Length - 1) && (dialogueObject.HasResponses))
+            {
+                //Handle Dialogue Events if they exist
+                if ((dialogueEvents != null) && (dialogueEvents.Length > 0) && (i < dialogueEvents.Length))
+                {
+                    dialogueEvents[i].AfterTextSpoken?.Invoke();
+                }
                 break;
+            }
 
             //Wait for input to show next slide
             yield return null;
@@ -156,21 +178,6 @@ public class DialogueUI : Singleton<DialogueUI>
             else
             {
                 CloseDialogueBox();
-            }
-        }
-    }
-
-    private IEnumerator RunTypingEffect(string dialogue, AudioClip voiceClip)
-    {
-        typewriterEffect.Run(dialogue, textLabel, voiceClip);
-
-        while (typewriterEffect.isRunning)
-        {
-            yield return null;
-
-            if (InputHandler.Instance.Interact_Or_Confirm.Down)
-            {
-                typewriterEffect.Stop();
             }
         }
     }

@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using BeauRoutine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using System.Text.RegularExpressions;
-using BeauRoutine;
+using TMPro;
+using UnityEngine;
 
 public class TypewriterEffect : MonoBehaviour
 {
@@ -13,7 +13,8 @@ public class TypewriterEffect : MonoBehaviour
     [SerializeField] private AudioSource voiceAudioSource;
     public Color TextColor => textColor;
 
-    public bool isRunning { get; private set; }
+    public bool IsRunning { get; private set; }
+    private TMP_Text currTextLabel;
 
     private readonly List<Punctuation> punctuations = new List<Punctuation>()
     {
@@ -26,13 +27,23 @@ public class TypewriterEffect : MonoBehaviour
 
     public void Run(string textToType, TMP_Text textLabel, AudioClip voiceClip)
     {
+        IsRunning = true;
+        currTextLabel = textLabel;
+
+        typingCoroutine.Stop();
         typingCoroutine = Routine.Start(this, TypeText(textToType, textLabel, voiceClip));
     }
 
     public void Stop()
     {
         typingCoroutine.Stop();
-        isRunning = false;
+        IsRunning = false;
+
+        if (currTextLabel != null)
+        {
+            currTextLabel.color = textColor;
+            currTextLabel = null;
+        }
     }
 
     private IEnumerator TypeText(string textToType, TMP_Text textLabel, AudioClip voiceClip)
@@ -43,8 +54,6 @@ public class TypewriterEffect : MonoBehaviour
         Color32[] newVertexColors;
         Color32 c0 = textColor;
         textLabel.color = Color.clear;
-
-        isRunning = true;
 
         float t = 0;
         int charIndex = 0;
@@ -114,7 +123,7 @@ public class TypewriterEffect : MonoBehaviour
             yield return null;
         }
 
-        isRunning = false;
+        IsRunning = false;
     }
 
     private bool IsPunctuation(char character, out float waitTime)
