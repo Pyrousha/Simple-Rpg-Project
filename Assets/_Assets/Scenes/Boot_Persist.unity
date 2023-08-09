@@ -533,6 +533,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2079863660}
     m_Modifications:
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
       propertyPath: m_Name
@@ -1016,6 +1021,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Equip
       objectReference: {fileID: 0}
+    - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -1344,6 +1354,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1980052044}
     m_Modifications:
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
       propertyPath: m_Name
@@ -2361,6 +2376,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Items
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -3608,6 +3628,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Flee
       objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
       propertyPath: m_Name
@@ -4004,6 +4029,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Items
       objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
       propertyPath: m_Name
@@ -4215,6 +4245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Arts
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -4726,6 +4761,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Spells
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -5257,6 +5297,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Spells
       objectReference: {fileID: 0}
+    - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -5418,6 +5463,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 596665191}
     m_Modifications:
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
       propertyPath: m_Name
@@ -5739,6 +5789,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -5794,6 +5849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Items
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -7470,6 +7530,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 636791057200788503, guid: b181b2482ee0d0c42a6d22233d9fb791,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7727914102971808338, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -7488,6 +7553,11 @@ PrefabInstance:
     - target: {fileID: 7727914103400708779, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967093692177652801, guid: b181b2482ee0d0c42a6d22233d9fb791,
+        type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7682,6 +7752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Defend
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -9084,7 +9159,7 @@ PrefabInstance:
     - target: {fileID: 1125822520374157353, guid: 35b5804b7018c314485ec7a5dec61aef,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 57.155
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125822520374157353, guid: 35b5804b7018c314485ec7a5dec61aef,
         type: 3}
@@ -9275,6 +9350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dialogue Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806571, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2047606627029477499, guid: 35b5804b7018c314485ec7a5dec61aef,
         type: 3}
@@ -9832,6 +9912,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Attributes
       objectReference: {fileID: 0}
+    - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -9888,6 +9973,7 @@ GameObject:
   - component: {fileID: 1314373503}
   - component: {fileID: 1314373502}
   - component: {fileID: 1314373505}
+  - component: {fileID: 1314373506}
   m_Layer: 0
   m_Name: CombatUI
   m_TagString: Untagged
@@ -10010,6 +10096,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1314373506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314373500}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c761f369d77ded46859d5dacf9ce679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1331157805
 GameObject:
   m_ObjectHideFlags: 0
@@ -10649,6 +10747,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Spells
       objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
       propertyPath: m_Name
@@ -11087,6 +11190,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 636791057200788503, guid: b181b2482ee0d0c42a6d22233d9fb791,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7727914102971808338, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -11105,6 +11213,11 @@ PrefabInstance:
     - target: {fileID: 7727914103400708779, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967093692177652801, guid: b181b2482ee0d0c42a6d22233d9fb791,
+        type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11588,6 +11701,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Save Game
       objectReference: {fileID: 0}
+    - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -11826,6 +11944,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Flee
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -12917,6 +13040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Defend
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -14610,6 +14738,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Spells
       objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
       propertyPath: m_Name
@@ -14983,6 +15116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Defend
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -16829,6 +16967,11 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 7967504859673983632, guid: a21c9710db586cd4db5c768da8a3162c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8857192608037896505, guid: a21c9710db586cd4db5c768da8a3162c,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -16884,6 +17027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Defend
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -17057,6 +17205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Spells
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -17739,6 +17892,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Items
+      objectReference: {fileID: 0}
+    - target: {fileID: 140920172261407468, guid: 0bb557a5c1461a84faeab55f16ca641e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 299289387343957252, guid: 0bb557a5c1461a84faeab55f16ca641e,
         type: 3}
@@ -18876,6 +19034,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 636791057200788503, guid: b181b2482ee0d0c42a6d22233d9fb791,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7727914102971808338, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -18894,6 +19057,11 @@ PrefabInstance:
     - target: {fileID: 7727914103400708779, guid: b181b2482ee0d0c42a6d22233d9fb791,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967093692177652801, guid: b181b2482ee0d0c42a6d22233d9fb791,
+        type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
