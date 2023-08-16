@@ -20,9 +20,9 @@ MonoBehaviour:
       VoiceClipOverride: {fileID: 0}
   <NextDialogueObject>k__BackingField: {fileID: 0}
   <Responses>k__BackingField:
-  - responseText: A goblin sent me here. He said you could help.
-    nextDialogueObject: {fileID: 11400000, guid: 3f05def1c55e52b4ba63c4724fb53212,
-      type: 2}
   - responseText: I just need to get home.
     nextDialogueObject: {fileID: 11400000, guid: 5ac6b14bef71ab149a3d53627a0ffc5e,
+      type: 2}
+  - responseText: A goblin sent me here. He said you could help.
+    nextDialogueObject: {fileID: 11400000, guid: 3f05def1c55e52b4ba63c4724fb53212,
       type: 2}

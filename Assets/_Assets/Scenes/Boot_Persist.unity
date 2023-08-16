@@ -3516,8 +3516,8 @@ Camera:
   m_GameObject: {fileID: 470885205}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -9159,7 +9159,7 @@ PrefabInstance:
     - target: {fileID: 1125822520374157353, guid: 35b5804b7018c314485ec7a5dec61aef,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 57.155
       objectReference: {fileID: 0}
     - target: {fileID: 1125822520374157353, guid: 35b5804b7018c314485ec7a5dec61aef,
         type: 3}
@@ -9189,6 +9189,11 @@ PrefabInstance:
     - target: {fileID: 1125822520618364093, guid: 35b5804b7018c314485ec7a5dec61aef,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822520812565545, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125822521304176919, guid: 35b5804b7018c314485ec7a5dec61aef,
@@ -9353,7 +9358,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1125822522208806571, guid: 35b5804b7018c314485ec7a5dec61aef,
         type: 3}
+      propertyPath: m_text
+      value: Among us in real life among us in real life among us in real life among
+        us in real life among us in real life among us in real life among us in real
+        life among us in real life among us in real life among us in real life (ReAL
+        REAL AMOGUS OH NONONONOOO)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806571, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
       propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806571, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806572, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806572, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806572, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806572, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806572, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806572, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 250.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125822522208806572, guid: 35b5804b7018c314485ec7a5dec61aef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2047606627029477499, guid: 35b5804b7018c314485ec7a5dec61aef,
