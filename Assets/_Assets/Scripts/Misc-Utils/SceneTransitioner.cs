@@ -9,8 +9,7 @@ public class SceneTransitioner : Singleton<SceneTransitioner>
     [SerializeField] private int sceneToLoadIndex = 1;
 
     private bool placePartyMembers = false;
-    private Vector3 spawnPosition;
-    private Vector3 followerDirection;
+    private string targetTriggerID;
     private const float partyMemberSpacing = 0.5f;
 
     private AnimatorController_2DTopDown playerAnimController;
@@ -32,13 +31,12 @@ public class SceneTransitioner : Singleton<SceneTransitioner>
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public IEnumerator StartLoadScene(int _newSceneIndex, Vector3 _spawnPosition, Vector3 _followerDirection)
+    public IEnumerator StartLoadScene(int _newSceneIndex, string _targetID)
     {
         PauseController.Instance.AddPauser(gameObject);
 
         placePartyMembers = true;
-        spawnPosition = _spawnPosition;
-        followerDirection = _followerDirection;
+        targetTriggerID = _targetID;
 
         ScreenTransitionUI.Instance.DarkAnim.SetBool("IsDark", true);
 
@@ -93,10 +91,14 @@ public class SceneTransitioner : Singleton<SceneTransitioner>
 
         if (placePartyMembers)
         {
+            SceneTrigger targTrigger = SceneTriggerHolder.Instance.GetTriggerWithID(targetTriggerID);
+            Vector3 spawnPosition = targTrigger.SpawnPosition.position;
+            Vector3 followerDirection = targTrigger.SpawnPosition.up;
+
             for (int i = 0; i < PartyManager.Instance.PartyMembers.Count; i++)
             {
                 Transform partyMember = PartyManager.Instance.PartyMembers[i].transform.parent;
-                partyMember.position = spawnPosition + followerDirection * i * partyMemberSpacing;
+                partyMember.position = spawnPosition + i * partyMemberSpacing * followerDirection;
             }
             placePartyMembers = false;
         }

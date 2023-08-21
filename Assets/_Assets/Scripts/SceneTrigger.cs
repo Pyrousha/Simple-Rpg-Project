@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using BeauRoutine;
 using UnityEngine;
 
 public class SceneTrigger : MonoBehaviour
 {
+    [field: SerializeField] public string ID;
     [SerializeField] private int newSceneIndex;
-    [SerializeField] private Vector3 spawnPosition;
-    [SerializeField] private Vector3 followerDirection;
+
+    [field: SerializeField] public Transform SpawnPosition { get; private set; }
 
     public void LoadNextScene()
     {
-        Routine.Start(this, SceneTransitioner.Instance.StartLoadScene(newSceneIndex, spawnPosition, followerDirection));
+        Routine.Start(this, SceneTransitioner.Instance.StartLoadScene(newSceneIndex, ID));
     }
 }
