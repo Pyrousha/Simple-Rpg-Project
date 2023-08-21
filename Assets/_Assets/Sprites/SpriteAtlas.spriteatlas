@@ -77,6 +77,8 @@ SpriteAtlas:
     - d1b912e106ee11f41bc1cca889ad5183: 21300000
     - e6883ff19200af041a0641237635fe05: 21300000
     - a5257d03278a2d24ea4bd0ba02d8d07c: 21300000
+    - a5690a835e1568a4995e66e41a15c286: -1078746509
+    - 14200193acd93ef48bcc6eb3a1e344a4: -1078746509
     - ca59949380bf9f345a55716a24d1cb7a: 21300000
     - 39a05cd36b32b7c4bbc4830bb534d223: 21300000
     - a08ec5a492eb352478dfa74f42815c3b: 21300000
@@ -97,11 +99,15 @@ SpriteAtlas:
     - 327b194874f434b46954b53c9275e24c: -584050875
     - 327b194874f434b46954b53c9275e24c: -22960034
     - 327b194874f434b46954b53c9275e24c: 1702584024
+    - bffef588ce835694fbe2d459eaec7fb9: 1939098564
     - bffef588ce835694fbe2d459eaec7fb9: -1406682122
     - bffef588ce835694fbe2d459eaec7fb9: 464061867
     - bffef588ce835694fbe2d459eaec7fb9: -1416211901
     - bffef588ce835694fbe2d459eaec7fb9: 1334498806
+    - bffef588ce835694fbe2d459eaec7fb9: 1578530845
     - bffef588ce835694fbe2d459eaec7fb9: -1100121995
+    - bffef588ce835694fbe2d459eaec7fb9: -1433710392
+    - bffef588ce835694fbe2d459eaec7fb9: -1022509234
     - 0a133da8b7158b74e807380c4bf1d10c: 21300000
     - 881501ca4fe3d61409efc324f2636fda: -754875788
     - 881501ca4fe3d61409efc324f2636fda: -194336086
@@ -247,6 +253,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d1b912e106ee11f41bc1cca889ad5183, type: 3}
   - {fileID: 21300000, guid: e6883ff19200af041a0641237635fe05, type: 3}
   - {fileID: 21300000, guid: a5257d03278a2d24ea4bd0ba02d8d07c, type: 3}
+  - {fileID: -1078746509, guid: a5690a835e1568a4995e66e41a15c286, type: 3}
+  - {fileID: -1078746509, guid: 14200193acd93ef48bcc6eb3a1e344a4, type: 3}
   - {fileID: 21300000, guid: ca59949380bf9f345a55716a24d1cb7a, type: 3}
   - {fileID: 21300000, guid: 39a05cd36b32b7c4bbc4830bb534d223, type: 3}
   - {fileID: 21300000, guid: a08ec5a492eb352478dfa74f42815c3b, type: 3}
@@ -267,11 +275,15 @@ SpriteAtlas:
   - {fileID: -584050875, guid: 327b194874f434b46954b53c9275e24c, type: 3}
   - {fileID: -22960034, guid: 327b194874f434b46954b53c9275e24c, type: 3}
   - {fileID: 1702584024, guid: 327b194874f434b46954b53c9275e24c, type: 3}
+  - {fileID: 1939098564, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: -1406682122, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: 464061867, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: -1416211901, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: 1334498806, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
+  - {fileID: 1578530845, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: -1100121995, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
+  - {fileID: -1433710392, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
+  - {fileID: -1022509234, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: 21300000, guid: 0a133da8b7158b74e807380c4bf1d10c, type: 3}
   - {fileID: -754875788, guid: 881501ca4fe3d61409efc324f2636fda, type: 3}
   - {fileID: -194336086, guid: 881501ca4fe3d61409efc324f2636fda, type: 3}
@@ -416,6 +428,8 @@ SpriteAtlas:
   - AngledCorners_Outline
   - Shield
   - AngledCorners_Filled
+  - BlackSquare_Half_0
+  - BlackSquare_Half_0
   - Dalamil_Portrait
   - beyza2
   - Square
@@ -436,11 +450,15 @@ SpriteAtlas:
   - Slime_Sheet_5
   - Slime_Sheet_6
   - Slime_Sheet_7
+  - House Tileset_00_8
   - House Tileset_00_1
   - House Tileset_00_0
   - House Tileset_00_3
   - House Tileset_00_2
+  - House Tileset_00_5
   - House Tileset_00_4
+  - House Tileset_00_7
+  - House Tileset_00_6
   - BladeSlash
   - Hero_Spritesheet_9
   - Hero_Spritesheet_8

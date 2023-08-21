@@ -52,7 +52,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -148,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -169,7 +169,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -178,9 +178,10 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 6}
-        - {x: 6, y: 6}
-        - {x: 6, y: -16}
+        - {x: -16, y: 12}
+        - {x: 8, y: 12}
+        - {x: 12, y: 8}
+        - {x: 12, y: -16}
         - {x: 16, y: -16}
         - {x: 16, y: 16}
       tessellationDetail: 1
@@ -196,7 +197,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -205,10 +206,10 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: -16}
-        - {x: -6, y: -16}
-        - {x: -6, y: -8}
-        - {x: -8, y: -6}
-        - {x: -16, y: -6}
+        - {x: -13, y: -16}
+        - {x: -13, y: -14}
+        - {x: -14, y: -13}
+        - {x: -16, y: -13}
       tessellationDetail: 0
       bones: []
       spriteID: 2bf629630e14d184db58cdec846b3f71
@@ -222,7 +223,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -231,13 +232,102 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -16, y: 16}
-        - {x: -16, y: 6}
-        - {x: 16, y: 6}
+        - {x: -16, y: 12}
+        - {x: 16, y: 12}
         - {x: 16, y: 16}
       tessellationDetail: 1
       bones: []
       spriteID: 10367205f5956aa4f9618c3e621c01c6
       internalID: -1100121995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House Tileset_00_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e488ec1f608301b40b4cebdcd96b8b55
+      internalID: 1578530845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House Tileset_00_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -12, y: -16}
+        - {x: -13, y: -15}
+        - {x: -15, y: -13}
+        - {x: -16, y: -12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89fb438e66ea91547a64c64e3ada48eb
+      internalID: -1022509234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House Tileset_00_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02720d73420eec944836f1548b945724
+      internalID: -1433710392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House Tileset_00_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e451b4b2a57f7264993c3ca95ab1912c
+      internalID: 1939098564
       vertices: []
       indices: 
       edges: []
@@ -258,6 +348,10 @@ TextureImporter:
       House Tileset_00_2: 1334498806
       House Tileset_00_3: -1416211901
       House Tileset_00_4: -1100121995
+      House Tileset_00_5: 1578530845
+      House Tileset_00_6: -1022509234
+      House Tileset_00_7: -1433710392
+      House Tileset_00_8: 1939098564
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
