@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowTarget : MonoBehaviour
@@ -50,7 +48,6 @@ public class FollowTarget : MonoBehaviour
 
             dirFacing = currInput;
         }
-
 
         //Apply ground fricion
         Vector3 velocity_local_friction = noGravVelocity.normalized * Mathf.Max(0, noGravVelocity.magnitude - frictionSpeed_ground);

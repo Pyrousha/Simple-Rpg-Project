@@ -99,6 +99,8 @@ SpriteAtlas:
     - 327b194874f434b46954b53c9275e24c: -584050875
     - 327b194874f434b46954b53c9275e24c: -22960034
     - 327b194874f434b46954b53c9275e24c: 1702584024
+    - bffef588ce835694fbe2d459eaec7fb9: 2009287018
+    - bffef588ce835694fbe2d459eaec7fb9: -1826854675
     - bffef588ce835694fbe2d459eaec7fb9: 1939098564
     - bffef588ce835694fbe2d459eaec7fb9: -1406682122
     - bffef588ce835694fbe2d459eaec7fb9: 464061867
@@ -275,6 +277,8 @@ SpriteAtlas:
   - {fileID: -584050875, guid: 327b194874f434b46954b53c9275e24c, type: 3}
   - {fileID: -22960034, guid: 327b194874f434b46954b53c9275e24c, type: 3}
   - {fileID: 1702584024, guid: 327b194874f434b46954b53c9275e24c, type: 3}
+  - {fileID: 2009287018, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
+  - {fileID: -1826854675, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: 1939098564, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: -1406682122, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: 464061867, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
@@ -450,6 +454,8 @@ SpriteAtlas:
   - Slime_Sheet_5
   - Slime_Sheet_6
   - Slime_Sheet_7
+  - House Tileset_00_10
+  - House Tileset_00_9
   - House Tileset_00_8
   - House Tileset_00_1
   - House Tileset_00_0

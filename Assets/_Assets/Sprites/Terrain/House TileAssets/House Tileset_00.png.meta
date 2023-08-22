@@ -255,7 +255,13 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: 16}
+        - {x: -16, y: 12}
+        - {x: 12, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: -12}
+        - {x: -12, y: 16}
       tessellationDetail: 0
       bones: []
       spriteID: e488ec1f608301b40b4cebdcd96b8b55
@@ -332,6 +338,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: House Tileset_00_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fcb21d6a6850e44ae40396d2abd4ca
+      internalID: -1826854675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: House Tileset_00_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdae565645d8e274298fc1bf863deeea
+      internalID: 2009287018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -345,6 +393,7 @@ TextureImporter:
     nameFileIdTable:
       House Tileset_00_0: 464061867
       House Tileset_00_1: -1406682122
+      House Tileset_00_10: 2009287018
       House Tileset_00_2: 1334498806
       House Tileset_00_3: -1416211901
       House Tileset_00_4: -1100121995
@@ -352,6 +401,7 @@ TextureImporter:
       House Tileset_00_6: -1022509234
       House Tileset_00_7: -1433710392
       House Tileset_00_8: 1939098564
+      House Tileset_00_9: -1826854675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
