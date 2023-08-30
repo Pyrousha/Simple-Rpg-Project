@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5006199324827035764}
   - component: {fileID: 6947899465782090388}
   m_Layer: 0
-  m_Name: SceneTrigger_Holder
+  m_Name: Trigger_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
