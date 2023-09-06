@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b061c82e498004991f9411d6e3f77d, type: 3}
+  m_Name: Heal
+  m_EditorClassIdentifier: 
+  <IsPhysical>k__BackingField: 0
+  <HitsMultipleEnemies>k__BackingField: 0
+  <NumAttacks>k__BackingField: 1
+  <AttackScalingMultiplier>k__BackingField: 2
+  <Priority>k__BackingField: 0
+  <ManaCost>k__BackingField: 5
+  <TargetAllies>k__BackingField: 1
+  <Description>k__BackingField:
+    <Icon>k__BackingField: {fileID: 21300000, guid: 0564d00f7665c5941b560cd3dcf80e46,
+      type: 3}
+    <Name>k__BackingField: 
+    <CostText>k__BackingField: 
+    <DescriptionText>k__BackingField: 

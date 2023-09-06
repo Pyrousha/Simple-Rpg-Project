@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +27,11 @@ public class LinkSelectables : MonoBehaviour
 
     public void Link()
     {
+        if (startVertical)
+            numCols = 0;
+        else
+            numRows = 0;
+
         selectables = new List<Selectable>();
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -35,25 +40,35 @@ public class LinkSelectables : MonoBehaviour
                 selectables.Add(childObj.GetComponent<Selectable>());
         }
 
-        if (startVertical)
-            numCols = Mathf.CeilToInt((float)selectables.Count / numRows);
-        else
-            numRows = Mathf.CeilToInt((float)selectables.Count / numCols);
+        LinkSpecified(selectables, numRows, numCols);
+    }
 
-        for (int i = 0; i < selectables.Count; i++)
+    public static void LinkSpecified(List<Selectable> _selectables, int _numRows, int _numCols = 1)
+    {
+        bool startVertical = _numRows > 0;
+
+        _numCols = (int)MathF.Max(_numCols, 1);
+        _numRows = (int)MathF.Max(_numRows, 1);
+
+        if (startVertical)
+            _numCols = Mathf.CeilToInt((float)_selectables.Count / _numRows);
+        else
+            _numRows = Mathf.CeilToInt((float)_selectables.Count / _numCols);
+
+        for (int i = 0; i < _selectables.Count; i++)
         {
-            Selectable currSelectable = selectables[i];
+            Selectable currSelectable = _selectables[i];
             int x;
             int y;
             if (startVertical)
             {
-                x = i / numRows;
-                y = i % numRows;
+                x = i / _numRows;
+                y = i % _numRows;
             }
             else
             {
-                x = i % numCols;
-                y = i / numCols;
+                x = i % _numCols;
+                y = i / _numCols;
             }
 
             Selectable up = GetSelectableAtPosition(x, y - 1, false, currSelectable);
@@ -75,21 +90,21 @@ public class LinkSelectables : MonoBehaviour
 
         Selectable GetSelectableAtPosition(int _x, int _y, bool _isHorizontal, Selectable _currSelectable)
         {
-            _x = (_x + numCols) % numCols;
-            _y = (_y + numRows) % numRows;
+            _x = (_x + _numCols) % _numCols;
+            _y = (_y + _numRows) % _numRows;
             int newIndex;
             if (startVertical)
-                newIndex = _x * numRows + _y;
+                newIndex = _x * _numRows + _y;
             else
-                newIndex = _x + _y * numCols;
+                newIndex = _x + _y * _numCols;
 
-            while (newIndex >= selectables.Count)
+            while (newIndex >= _selectables.Count)
             {
                 //Invalid
                 if (startVertical)
                 {
                     if (_isHorizontal)
-                        newIndex -= numRows;
+                        newIndex -= _numRows;
                     else
                         newIndex -= 1;
                 }
@@ -98,11 +113,11 @@ public class LinkSelectables : MonoBehaviour
                     if (_isHorizontal)
                         newIndex -= 1;
                     else
-                        newIndex -= numCols;
+                        newIndex -= _numCols;
                 }
             }
 
-            Selectable toReturn = selectables[newIndex];
+            Selectable toReturn = _selectables[newIndex];
             if (toReturn != _currSelectable)
                 return toReturn;
 
@@ -110,3 +125,4 @@ public class LinkSelectables : MonoBehaviour
         }
     }
 }
+

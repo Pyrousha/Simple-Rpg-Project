@@ -1,12 +1,12 @@
 
+using BeauRoutine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static CombatMenuButton;
-using System.Linq;
-using BeauRoutine;
 
 public class CombatController : Singleton<CombatController>
 {
@@ -34,25 +34,6 @@ public class CombatController : Singleton<CombatController>
         Arts,
         Spells,
         Items
-    }
-
-    [System.Serializable]
-    public struct SelectableMapping
-    {
-        public GameObject CurrSelectable { get; private set; }
-        public Selectable LastSelectable { get; private set; }
-
-        public SelectableMapping(GameObject currSelectable, Selectable lastSelectable)
-        {
-            this.CurrSelectable = currSelectable;
-            this.LastSelectable = lastSelectable;
-        }
-
-        // public void SetLastSelectable(Selectable _lastSelectable)
-        // {
-        //     Debug.Log($"Updated lastSelectable for object \"{CurrSelectable.name}\" (is now {_lastSelectable.name}, was {LastSelectable.name})");
-        //     LastSelectable = _lastSelectable;
-        // }
     }
 
     [SerializeField] private List<CombatEntity> enemyEntitySlots;
@@ -90,7 +71,7 @@ public class CombatController : Singleton<CombatController>
     private AttackSpell selectedAttackSpell;
     private CombatEntity forwardEntity;
 
-    private List<SelectableMapping> selectablesMap = new List<SelectableMapping>();
+    private Dictionary<GameObject, Selectable> selectablesMap = new Dictionary<GameObject, Selectable>();
 
     public void SetEntitiesForCombat(List<OverworldEntity> _enemiesToFight)
     {
@@ -349,19 +330,15 @@ public class CombatController : Singleton<CombatController>
 
     private void SetLastSelectable(GameObject _currSelectable, Selectable _lastSelectable)
     {
-        for (int i = 0; i < selectablesMap.Count; i++)
+        if (selectablesMap.ContainsKey(_currSelectable))
         {
-            SelectableMapping currMap = selectablesMap[i];
-            if (currMap.CurrSelectable == _currSelectable && currMap.LastSelectable != _lastSelectable)
-            {
-                //replace currMap with new one
-                selectablesMap[i] = new SelectableMapping(_currSelectable, _lastSelectable);
-                return;
-            }
+            //Found Gameobject, update lastSelectable
+            selectablesMap[_currSelectable] = _lastSelectable;
+            return;
         }
 
         //Selectable was not found, add to mapping
-        selectablesMap.Add(new SelectableMapping(_currSelectable, _lastSelectable));
+        selectablesMap.Add(_currSelectable, _lastSelectable);
     }
 
     private void Update()
@@ -377,14 +354,10 @@ public class CombatController : Singleton<CombatController>
                 Debug.LogWarning("Tried to cancel when nothing is selected.");
             }
 
-            foreach (SelectableMapping mapping in selectablesMap)
+            if (selectablesMap.ContainsKey(currSelectedObj))
             {
-                if (mapping.CurrSelectable == currSelectedObj)
-                {
-                    //Found mapping!
-                    mapping.LastSelectable.Select();
-                    return;
-                }
+                selectablesMap[currSelectedObj].Select();
+                return;
             }
 
             Debug.LogWarning("Unable to find mapping for " + currSelectedObj.name);

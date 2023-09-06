@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OverworldMenuButton : MonoBehaviour
 {
+    [SerializeField] private GameObject objToEnable;
+    [SerializeField] private Selectable firstSelectable;
+
     public enum MenuButtons_Overworld_Enum
     {
         Items,

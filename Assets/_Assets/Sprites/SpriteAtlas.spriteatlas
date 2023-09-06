@@ -111,6 +111,7 @@ SpriteAtlas:
     - bffef588ce835694fbe2d459eaec7fb9: -1433710392
     - bffef588ce835694fbe2d459eaec7fb9: -1022509234
     - 0a133da8b7158b74e807380c4bf1d10c: 21300000
+    - 4547a05a268eecf4da1e404c21e65d7c: 21300000
     - 881501ca4fe3d61409efc324f2636fda: -754875788
     - 881501ca4fe3d61409efc324f2636fda: -194336086
     - 881501ca4fe3d61409efc324f2636fda: 1485230344
@@ -187,6 +188,7 @@ SpriteAtlas:
     - 6d9ba6bbe8d69244ca7045e08f6e5d47: -1313544822
     - 691842cb5ce5d6946afdfd29f6cae877: 21300000
     - c33c1efbfa35bda4f86d518bfc009cc7: 21300000
+    - 6c7b8cbc0508b3c42ad9407e7c7206ad: 21300000
     - ec2a422d42f3f674a9ac92c8eef13041: 21300000
     - 01a7e69d4f022cd418fdeb18f9cb5518: -1348176065
     - 01a7e69d4f022cd418fdeb18f9cb5518: 999725635
@@ -289,6 +291,7 @@ SpriteAtlas:
   - {fileID: -1433710392, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: -1022509234, guid: bffef588ce835694fbe2d459eaec7fb9, type: 3}
   - {fileID: 21300000, guid: 0a133da8b7158b74e807380c4bf1d10c, type: 3}
+  - {fileID: 21300000, guid: 4547a05a268eecf4da1e404c21e65d7c, type: 3}
   - {fileID: -754875788, guid: 881501ca4fe3d61409efc324f2636fda, type: 3}
   - {fileID: -194336086, guid: 881501ca4fe3d61409efc324f2636fda, type: 3}
   - {fileID: 1485230344, guid: 881501ca4fe3d61409efc324f2636fda, type: 3}
@@ -365,6 +368,7 @@ SpriteAtlas:
   - {fileID: -1313544822, guid: 6d9ba6bbe8d69244ca7045e08f6e5d47, type: 3}
   - {fileID: 21300000, guid: 691842cb5ce5d6946afdfd29f6cae877, type: 3}
   - {fileID: 21300000, guid: c33c1efbfa35bda4f86d518bfc009cc7, type: 3}
+  - {fileID: 21300000, guid: 6c7b8cbc0508b3c42ad9407e7c7206ad, type: 3}
   - {fileID: 21300000, guid: ec2a422d42f3f674a9ac92c8eef13041, type: 3}
   - {fileID: -1348176065, guid: 01a7e69d4f022cd418fdeb18f9cb5518, type: 3}
   - {fileID: 999725635, guid: 01a7e69d4f022cd418fdeb18f9cb5518, type: 3}
@@ -466,6 +470,7 @@ SpriteAtlas:
   - House Tileset_00_7
   - House Tileset_00_6
   - BladeSlash
+  - desk thingie maybe
   - Hero_Spritesheet_9
   - Hero_Spritesheet_8
   - Hero_Spritesheet_3
@@ -542,6 +547,7 @@ SpriteAtlas:
   - forest tilemap_28
   - Tree
   - concept_councilman
+  - Heal
   - Potion
   - forest tilemap_minimal_9
   - forest tilemap_minimal_8

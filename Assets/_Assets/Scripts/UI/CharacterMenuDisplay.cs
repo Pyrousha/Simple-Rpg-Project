@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CharacterMenuDisplay : MonoBehaviour
 {
-    private OverworldEntity entity;
+    public OverworldEntity Entity { get; private set; }
 
-    [Space(10)]
+    [field: SerializeField] public Selectable Selectable { get; private set; }
     [SerializeField] private Image characterPortrait;
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI levelNum;
@@ -20,25 +18,25 @@ public class CharacterMenuDisplay : MonoBehaviour
 
     public void SetEntity(OverworldEntity _newEntity)
     {
-        entity = _newEntity;
+        Entity = _newEntity;
 
-        if (entity == null)
+        if (Entity == null)
         {
             for (int i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).gameObject.SetActive(false);
             return;
         }
 
-        characterPortrait.sprite = entity.BaseStats.Sprite_Down;
-        characterName.text = entity.BaseStats.name;
-        levelNum.text = "Lv " + entity.Level;
-        hpBar.SetUIValues(entity.Hp, entity.MaxHp.Value);
-        mpBar.SetUIValues(entity.Mp, entity.MaxMp.Value);
-        xpBar.SetUIValues(entity.Xp);
+        characterPortrait.sprite = Entity.BaseStats.Sprite_Down;
+        characterName.text = Entity.BaseStats.name;
+        levelNum.text = "Lv " + Entity.Level;
+        hpBar.SetUIValues(Entity.Hp, Entity.MaxHp.Value);
+        mpBar.SetUIValues(Entity.Mp, Entity.MaxMp.Value);
+        xpBar.SetUIValues(Entity.Xp);
 
-        entity.SetHealthBars += UpdateHpUI;
-        entity.SetManaBars += UpdateMpUI;
-        entity.SetXpBarAndLevelNum += UpdateXpAndLevelUI;
+        Entity.SetHealthBars += UpdateHpUI;
+        Entity.SetManaBars += UpdateMpUI;
+        Entity.SetXpBarAndLevelNum += UpdateXpAndLevelUI;
         subscribedToAction = true;
     }
 
@@ -60,9 +58,9 @@ public class CharacterMenuDisplay : MonoBehaviour
     {
         if (subscribedToAction)
         {
-            entity.SetHealthBars -= UpdateHpUI;
-            entity.SetManaBars -= UpdateMpUI;
-            entity.SetXpBarAndLevelNum -= UpdateXpAndLevelUI;
+            Entity.SetHealthBars -= UpdateHpUI;
+            Entity.SetManaBars -= UpdateMpUI;
+            Entity.SetXpBarAndLevelNum -= UpdateXpAndLevelUI;
         }
     }
 }

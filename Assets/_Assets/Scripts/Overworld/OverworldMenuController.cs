@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,17 +8,35 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
 {
     private enum OverworldMenuSubmenus_Enum
     {
-        Main
-
-        //TODO: Fill with submenus (Like "Items", "Equip", etc.)
+        Main,
+        Items,
+        SpellArts,
+        Settings,
+        Equip,
+        Attributes,
+        Save
     }
 
+    [SerializeField] private UIButton itemsButton;
+    [SerializeField] private UIButton spellArtsButton;
+    [SerializeField] private UIButton SettingsButton;
+    [SerializeField] private UIButton equipButton;
+    [SerializeField] private UIButton attributesButton;
+    [SerializeField] private UIButton saveButton;
+
+    [Space(10)]
+    [SerializeField] private GameObject prefab_itemKey;
+    [SerializeField] private GameObject prefab_itemConsumable;
+    [SerializeField] private GameObject prefab_equipment;
+    [SerializeField] private GameObject prefab_abilitySpell;
+
     private OverworldMenuSubmenus_Enum currSubmenu;
+    private OverworldEntity selectedCharacter;
 
     private Animator anim;
     private bool isMenuActive = false;
 
-    [SerializeField] private Button[] buttons;
+    private Dictionary<GameObject, Selectable> selectablesMap = new Dictionary<GameObject, Selectable>();
 
     private void Awake()
     {
@@ -64,19 +81,13 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         isMenuActive = true;
         anim.SetBool("Active", isMenuActive);
 
-        foreach (Button button in buttons)
-            button.enabled = true;
-
-        buttons[0].Select(); //Select first button
+        itemsButton.Select(); //Select first button
     }
 
     private void CloseMenu()
     {
         isMenuActive = false;
         anim.SetBool("Active", isMenuActive);
-
-        foreach (Button button in buttons)
-            button.enabled = false;
 
         EventSystem.current.SetSelectedGameObject(null);
 
@@ -103,5 +114,23 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
             case MenuButtons_Overworld_Enum.Save:
                 break;
         }
+    }
+
+    private void AddToSelectablesMap(GameObject _currSelectable, Selectable _lastSelectable)
+    {
+        if (selectablesMap.ContainsKey(_currSelectable))
+        {
+            //Found Gameobject, update lastSelectable
+            selectablesMap[_currSelectable] = _lastSelectable;
+            return;
+        }
+
+        //Selectable was not found, add to mapping
+        selectablesMap.Add(_currSelectable, _lastSelectable);
+    }
+
+    public void OnClickedSubmenuSelectable(SubmenuSelectable submenuSelectable)
+    {
+
     }
 }

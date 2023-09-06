@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PartyManager : Singleton<PartyManager>
 {
@@ -28,6 +27,19 @@ public class PartyManager : Singleton<PartyManager>
         }
     }
 
+    public List<Selectable> AlivePartyMembers()
+    {
+        List<Selectable> list = new List<Selectable>();
+        foreach (CharacterMenuDisplay display in characterDisplays)
+        {
+            if (display.Entity == null && !display.Entity.IsDead)
+                list.Add(display.Selectable);
+        }
+
+        LinkSelectables.LinkSpecified(list, 1);
+
+        return list;
+    }
     public OverworldEntity GetFirstAlivePlayer()
     {
         foreach (OverworldEntity partyMember in PartyMembers)
