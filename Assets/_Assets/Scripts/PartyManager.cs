@@ -32,8 +32,8 @@ public class PartyManager : Singleton<PartyManager>
         List<Selectable> list = new List<Selectable>();
         foreach (CharacterMenuDisplay display in characterDisplays)
         {
-            if (display.Entity == null && !display.Entity.IsDead)
-                list.Add(display.Selectable);
+            if (display.Entity != null && !display.Entity.IsDead)
+                list.Add(display.C_Selectable);
         }
 
         LinkSelectables.LinkSpecified(list, 1);

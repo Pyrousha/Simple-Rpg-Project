@@ -1,12 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 
 public class UIButton : Button, ISelectHandler, IDeselectHandler
 {
+    [Space(25)]
+    [Header("UIButton Stuff")]
+
     private List<Graphic> graphics = new List<Graphic>();
     private Button button;
 
@@ -14,11 +16,15 @@ public class UIButton : Button, ISelectHandler, IDeselectHandler
     [SerializeField] private Color disabledColor_selected;
     [SerializeField] private DescriptionBox.DescriptionInfo description;
 
+    public Selectable C_Selectable { get; private set; }
+
     protected override void Awake()
     {
         graphics = new List<Graphic>(GetComponentsInChildren<Graphic>());
         button = GetComponent<Button>();
         disabledColor_normal = button.colors.disabledColor;
+
+        C_Selectable = GetComponent<Selectable>();
     }
 
     protected override void DoStateTransition(SelectionState state, bool instant)

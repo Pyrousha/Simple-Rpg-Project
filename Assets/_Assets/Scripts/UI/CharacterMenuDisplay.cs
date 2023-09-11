@@ -1,12 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CharacterMenuDisplay : MonoBehaviour
+public class CharacterMenuDisplay : UIButton, ISelectHandler
 {
     public OverworldEntity Entity { get; private set; }
 
-    [field: SerializeField] public Selectable Selectable { get; private set; }
     [SerializeField] private Image characterPortrait;
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI levelNum;
@@ -54,7 +54,7 @@ public class CharacterMenuDisplay : MonoBehaviour
         levelNum.text = "Lv " + _level;
     }
 
-    void OnDestroy()
+    new void OnDestroy()
     {
         if (subscribedToAction)
         {
@@ -62,5 +62,17 @@ public class CharacterMenuDisplay : MonoBehaviour
             Entity.SetManaBars -= UpdateMpUI;
             Entity.SetXpBarAndLevelNum -= UpdateXpAndLevelUI;
         }
+    }
+
+    public override void OnSelect(BaseEventData eventData)
+    {
+        OverworldMenuController.Instance.OnSelectedPartyMember(Entity, C_Selectable);
+
+        base.OnSelect(eventData);
+    }
+
+    public void OnClicked()
+    {
+        OverworldMenuController.Instance.OnClickedPartyMember(Entity);
     }
 }

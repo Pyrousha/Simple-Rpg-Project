@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class CombatMenuButton : MonoBehaviour, ISelectHandler
+public class CombatMenuButton : UIButton, ISelectHandler
 {
-    private Selectable selectable;
-
-    private void Awake()
-    {
-        selectable = GetComponent<Selectable>();
-    }
-
     public enum MenuButtons_Combat_Enum
     {
         Attack,
@@ -27,11 +17,13 @@ public class CombatMenuButton : MonoBehaviour, ISelectHandler
 
     public void TriggerClickOnCombatController()
     {
-        CombatController.Instance.OnButtonClicked(buttonType, selectable);
+        CombatController.Instance.OnButtonClicked(buttonType, C_Selectable);
     }
 
-    public void OnSelect(BaseEventData eventData)
+    public override void OnSelect(BaseEventData eventData)
     {
         CombatController.Instance.SetCurrSubmenu(CombatController.SubmenuEnum.None);
+
+        base.OnSelect(eventData);
     }
 }

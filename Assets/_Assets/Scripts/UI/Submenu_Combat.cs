@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +25,7 @@ public class Submenu_Combat : MonoBehaviour
         anim.SetBool("Status", _enabled);
 
         if (_enabled)
-            attackSpellButtons[0].Select();
+            attackSpellButtons[0].C_Selectable.Select();
     }
 
     public List<Selectable> SetSpells(List<AttackSpell> _attackSpells, int _mpLeft)
@@ -43,7 +42,7 @@ public class Submenu_Combat : MonoBehaviour
             {
                 //There is a spell for this selctable
                 attackSpellButtons[i].SetAttackSpell(_attackSpells[i]);
-                attackSpellButtons[i].Selectable.interactable = (_mpLeft >= _attackSpells[i].ManaCost);
+                attackSpellButtons[i].C_Selectable.interactable = (_mpLeft >= _attackSpells[i].ManaCost);
             }
             else
                 attackSpellButtons[i].SetAttackSpell(null);
@@ -54,7 +53,7 @@ public class Submenu_Combat : MonoBehaviour
         List<Selectable> selectablesToReturn = new List<Selectable>();
         foreach (AttackSpellButton button in attackSpellButtons)
         {
-            selectablesToReturn.Add(button.Selectable);
+            selectablesToReturn.Add(button.C_Selectable);
         }
         return selectablesToReturn;
     }

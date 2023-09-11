@@ -1,22 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using System;
-using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class AttackSpellButton : MonoBehaviour, ISelectHandler
+public class AttackSpellButton : UIButton, ISelectHandler
 {
     private AttackSpell attackSpell;
 
     [SerializeField] private TextMeshProUGUI text;
-    public Selectable Selectable { get; private set; }
-
-    private void Awake()
-    {
-        Selectable = GetComponent<Selectable>();
-    }
 
     public void SetAttackSpell(AttackSpell _newSpell)
     {
@@ -32,18 +22,15 @@ public class AttackSpellButton : MonoBehaviour, ISelectHandler
         gameObject.SetActive(true);
     }
 
-    public void Select()
-    {
-        Selectable.Select();
-    }
-
     public void OnClicked()
     {
-        CombatController.Instance.OnSpellClicked(Selectable, attackSpell);
+        CombatController.Instance.OnSpellClicked(C_Selectable, attackSpell);
     }
 
-    public void OnSelect(BaseEventData eventData)
+    public override void OnSelect(BaseEventData eventData)
     {
         DescriptionBox.Instance.SetUI(attackSpell.Description);
+
+        base.OnSelect(eventData);
     }
 }

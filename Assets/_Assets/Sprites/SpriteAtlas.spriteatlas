@@ -91,6 +91,7 @@ SpriteAtlas:
     - 88dbfdd6fbae64449bd84a0f4a4e57b9: 21300000
     - 58f59c67015851c43b039a712b3887ae: 21300000
     - 7bf2ff77c2e458440bcdba27f4f521b8: 21300000
+    - 3d34e5183bdaf364fb3929fb1835407d: 21300000
     - 327b194874f434b46954b53c9275e24c: 2038455271
     - 327b194874f434b46954b53c9275e24c: -630331858
     - 327b194874f434b46954b53c9275e24c: -408921459
@@ -271,6 +272,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 88dbfdd6fbae64449bd84a0f4a4e57b9, type: 3}
   - {fileID: 21300000, guid: 58f59c67015851c43b039a712b3887ae, type: 3}
   - {fileID: 21300000, guid: 7bf2ff77c2e458440bcdba27f4f521b8, type: 3}
+  - {fileID: 21300000, guid: 3d34e5183bdaf364fb3929fb1835407d, type: 3}
   - {fileID: 2038455271, guid: 327b194874f434b46954b53c9275e24c, type: 3}
   - {fileID: -630331858, guid: 327b194874f434b46954b53c9275e24c, type: 3}
   - {fileID: -408921459, guid: 327b194874f434b46954b53c9275e24c, type: 3}
@@ -450,6 +452,7 @@ SpriteAtlas:
   - triangle_down
   - cowboy_sherif
   - Corners
+  - table_sprite
   - Slime_Sheet_0
   - Slime_Sheet_1
   - Slime_Sheet_2

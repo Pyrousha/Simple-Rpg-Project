@@ -1,11 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class OverworldMenuButton : MonoBehaviour
+public class OverworldMenuButton : UIButton, ISelectHandler
 {
-    [SerializeField] private GameObject objToEnable;
-    [SerializeField] private Selectable firstSelectable;
-
     public enum MenuButtons_Overworld_Enum
     {
         Items,
@@ -20,6 +17,13 @@ public class OverworldMenuButton : MonoBehaviour
 
     public void TriggerClickOnMenuController()
     {
-        OverworldMenuController.Instance.OnButtonClicked(buttonType);
+        OverworldMenuController.Instance.OnMainButtonClicked(buttonType);
+    }
+
+    public override void OnSelect(BaseEventData eventData)
+    {
+        OverworldMenuController.Instance.OnMainButtonSelected(buttonType, C_Selectable);
+
+        base.OnSelect(eventData);
     }
 }
