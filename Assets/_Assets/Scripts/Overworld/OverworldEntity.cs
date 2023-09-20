@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 using static BaseCombatEntity;
 
 public class OverworldEntity : MonoBehaviour
@@ -25,6 +23,8 @@ public class OverworldEntity : MonoBehaviour
     [field: SerializeField] public AttackSpell BasicAttack { get; private set; }
     [field: SerializeField] public List<AttackSpell> Arts { get; private set; }
     [field: SerializeField] public List<AttackSpell> Spells { get; private set; }
+
+    public List<AttackSpell> SpellsAndArts { get; private set; }
 
     public int Level { get; private set; }
 
@@ -61,6 +61,17 @@ public class OverworldEntity : MonoBehaviour
         }
 
         StatValues statsToLoad = BaseStats.LeveledStats[0];
+
+        //TODO: load arts/spells 
+        SpellsAndArts = new List<AttackSpell>();
+
+        foreach (AttackSpell spell in Spells)
+            SpellsAndArts.Add(spell);
+
+        foreach (AttackSpell spell in Arts)
+            SpellsAndArts.Add(spell);
+
+        SpellsAndArts = SpellsAndArts.OrderBy(a => a.ManaCost).ToList();
 
         //TODO: load data from storage
         // if ([local_save_data_exists])

@@ -9,12 +9,16 @@ public class UIButton : Button, ISelectHandler, IDeselectHandler
     [Space(25)]
     [Header("UIButton Stuff")]
 
-    private List<Graphic> graphics = new List<Graphic>();
-    private Button button;
+    protected List<Graphic> graphics = new List<Graphic>();
+    protected Button button;
+    protected ColorBlock normalColors;
 
-    private Color disabledColor_normal;
-    [SerializeField] private Color disabledColor_selected;
+
+
+    [SerializeField] protected ColorBlock disabledColors;
     [SerializeField] private DescriptionBox.DescriptionInfo description;
+
+    public bool IsFullyInteractable { get; private set; }
 
     public Selectable C_Selectable { get; private set; }
 
@@ -22,7 +26,7 @@ public class UIButton : Button, ISelectHandler, IDeselectHandler
     {
         graphics = new List<Graphic>(GetComponentsInChildren<Graphic>());
         button = GetComponent<Button>();
-        disabledColor_normal = button.colors.disabledColor;
+        normalColors = button.colors;
 
         C_Selectable = GetComponent<Selectable>();
     }
@@ -44,13 +48,6 @@ public class UIButton : Button, ISelectHandler, IDeselectHandler
 
     public override void OnSelect(BaseEventData eventData)
     {
-        if (!button.interactable)
-        {
-            ColorBlock cb = button.colors;
-            cb.disabledColor = disabledColor_selected;
-            button.colors = cb;
-        }
-
         if (description != null)
             DescriptionBox.Instance?.SetUI(description);
         else
@@ -64,10 +61,28 @@ public class UIButton : Button, ISelectHandler, IDeselectHandler
         if (!button.interactable)
         {
             ColorBlock cb = button.colors;
-            cb.disabledColor = disabledColor_normal;
+            cb.disabledColor = normalColors.disabledColor;
             button.colors = cb;
         }
 
         base.OnDeselect(eventData);
+    }
+
+    public void SetButtonInteractable(bool _newInteractable, bool _useDisabledColorsEvenIfEnabled = false)
+    {
+        button.interactable = _newInteractable;
+
+        if (_newInteractable == false || _useDisabledColorsEvenIfEnabled)
+        {
+            button.colors = disabledColors;
+
+            IsFullyInteractable = false;
+        }
+        else
+        {
+            button.colors = normalColors;
+
+            IsFullyInteractable = true;
+        }
     }
 }

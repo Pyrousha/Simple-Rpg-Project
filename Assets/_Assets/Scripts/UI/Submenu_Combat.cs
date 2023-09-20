@@ -40,9 +40,9 @@ public class Submenu_Combat : MonoBehaviour
         {
             if (i < _attackSpells.Count)
             {
-                //There is a spell for this selctable
+                //There is a spell for this selctable, set visuals and interactable state
                 attackSpellButtons[i].SetAttackSpell(_attackSpells[i]);
-                attackSpellButtons[i].C_Selectable.interactable = (_mpLeft >= _attackSpells[i].ManaCost);
+                attackSpellButtons[i].SetButtonInteractable(_mpLeft >= _attackSpells[i].ManaCost);
             }
             else
                 attackSpellButtons[i].SetAttackSpell(null);

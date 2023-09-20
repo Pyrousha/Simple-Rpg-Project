@@ -1723,14 +1723,7 @@ MonoBehaviour:
   numRows: 0
   numCols: 2
   LinkOnValidate: 1
-  selectables:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  selectables: []
 --- !u!4 &261787050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5522909902092590372, guid: 88666d76655f1674190a1e524a884ce7,

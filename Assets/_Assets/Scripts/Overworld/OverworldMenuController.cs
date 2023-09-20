@@ -34,18 +34,20 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
     [SerializeField] private TextMeshProUGUI contextText;
 
     [Space(10)]
-    private List<ItemButton> itemButtons = new List<ItemButton>();
+    private List<ItemSpellButton> itemButtons = new List<ItemSpellButton>();
     [SerializeField] private LinkSelectables subButtonParent;
     [SerializeField] private GameObject prefab_itemButton;
 
     private MenuButtons_Overworld_Enum? submenuType = null;
-    private SubmenuState? submenuState = null;
+    //private SubmenuState? submenuState = null;
 
     private OverworldEntity selectedCharacter;
     private AttackSpell selectedAttackSpell;
     private Item selectedItem;
+    private bool isSelectedASpell;
 
     private Selectable currSelectable;
+    private Selectable lastSelectedOverride = null;
 
     private Animator anim;
     private bool isMenuActive = false;
@@ -65,9 +67,16 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
 
         if (isMenuActive && InputHandler.Instance.Cancel.Down)
         {
-            if (submenuState == null)
+            if (submenuType == null)
             {
                 CloseMenu();
+                return;
+            }
+
+            if (lastSelectedOverride == null)
+            {
+                lastSelectedOverride.Select();
+                lastSelectedOverride = null;
                 return;
             }
 
@@ -135,7 +144,7 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         int buttonsToSpawn = _buttonsNeeded - itemButtons.Count;
         for (int i = 0; i < buttonsToSpawn; i++)
         {
-            ItemButton newButton = Instantiate(prefab_itemButton, subButtonParent.transform).GetComponent<ItemButton>();
+            ItemSpellButton newButton = Instantiate(prefab_itemButton, subButtonParent.transform).GetComponent<ItemSpellButton>();
             itemButtons.Add(newButton);
         }
 
@@ -150,10 +159,10 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
                 itemButtons[i].gameObject.SetActive(true);
                 itemButtons[i].SetItem(items[i], "x" + InventoryManager.Instance.Items[items[i]]);
 
-                AddToSelectablesMap(itemButtons[i].gameObject, currSelectable);
-            }
+                LinkSpecifiedToCurrSelectable(itemButtons[i]);
 
-            return;
+                itemButtons[i].SetButtonInteractable(true);
+            }
         }
         else
         {
@@ -163,14 +172,16 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
                 //Enable buttons and set spells
                 for (int i = 0; i < _buttonsNeeded; i++)
                 {
-                    AttackSpell currSpell = selectedCharacter.Spells[i];
+                    AttackSpell currSpell = selectedCharacter.SpellsAndArts[i];
 
                     itemButtons[i].gameObject.SetActive(true);
                     itemButtons[i].SetSpell(currSpell);
 
-                    AddToSelectablesMap(itemButtons[i].gameObject, currSelectable);
-                }
+                    LinkSpecifiedToCurrSelectable(itemButtons[i]);
 
+                    bool canUseSpell = (currSpell.TargetAllies && selectedCharacter.Mp >= currSpell.ManaCost);
+                    itemButtons[i].SetButtonInteractable(true, canUseSpell);
+                }
             }
         }
 
@@ -230,6 +241,7 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
                 break;
         }
     }
+
     public void OnMainButtonClicked(MenuButtons_Overworld_Enum _buttonType)
     {
         if (isMenuActive == false)
@@ -270,12 +282,15 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         }
     }
 
-    private void SelectFirstPartyMember()
+    private void SelectFirstPartyMember(bool _linkCurrSelectable = true)
     {
         List<Selectable> alivePartyMembers = PartyManager.Instance.AlivePartyMembers();
 
-        foreach (Selectable charSelectable in alivePartyMembers)
-            AddToSelectablesMap(currSelectable.gameObject, charSelectable);
+        if (_linkCurrSelectable)
+        {
+            foreach (Selectable charSelectable in alivePartyMembers)
+                LinkSpecifiedToCurrSelectable(charSelectable);
+        }
 
         currSelectable = alivePartyMembers[0];
         currSelectable.Select();
@@ -289,7 +304,7 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         switch (submenuType)
         {
             case MenuButtons_Overworld_Enum.Spells:
-                PopulateRightMenu(selectedCharacter.Spells.Count, MenuButtons_Overworld_Enum.Spells);
+                PopulateRightMenu(_entity.SpellsAndArts.Count, MenuButtons_Overworld_Enum.Spells);
                 break;
 
             case MenuButtons_Overworld_Enum.Attributes:
@@ -310,14 +325,15 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         {
             case MenuButtons_Overworld_Enum.Spells:
 
-                if (itemButtons.Count > 0)
+                if (selectedCharacter.SpellsAndArts.Count > 0)
                 {
                     itemButtons[0].C_Selectable.Select();
+
                     //submenuState = SubmenuState.ItemSelect;
-                    SetText("Select an item to use");
+                    SetText("Select an art/spell to use");
                 }
                 else
-                    SetTextTemporary("No items in inventory!", 1);
+                    SetTextTemporary("OOP This fella don't know shit!", 1);
                 break;
 
             case MenuButtons_Overworld_Enum.Attributes:
@@ -330,17 +346,46 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         }
     }
 
-    private void AddToSelectablesMap(GameObject _currSelectable, Selectable _lastSelectable)
+    public void OnSelectedItemSpell(ItemSpellButton _itemSpell)
     {
-        if (selectablesMap.ContainsKey(_currSelectable))
+        lastSelectedOverride = _itemSpell.C_Selectable;
+    }
+
+    public void OnClickedItemSpell(ItemSpellButton _itemSpell)
+    {
+        if (_itemSpell.IsFullyInteractable)
+        {
+            isSelectedASpell = _itemSpell.IsSpell;
+
+            if (_itemSpell.IsSpell)
+                selectedAttackSpell = _itemSpell.Spell;
+            else
+                selectedItem = _itemSpell.Item;
+
+            //Go to character select
+            SelectFirstPartyMember(false);
+        }
+        else
+        {
+            //Invalid spell clicked, show feedback
+            if (_itemSpell.Spell.TargetAllies == false)
+                SetTextTemporary("This spell must be used in combat");
+            else
+                SetTextTemporary("Not enough MP!");
+        }
+    }
+
+    private void LinkSpecifiedToCurrSelectable(Selectable _sourceSelectable)
+    {
+        if (selectablesMap.ContainsKey(_sourceSelectable.gameObject))
         {
             //Found Gameobject, update lastSelectable
-            selectablesMap[_currSelectable] = _lastSelectable;
+            selectablesMap[_sourceSelectable.gameObject] = currSelectable;
             return;
         }
 
         //Selectable was not found, add to mapping
-        selectablesMap.Add(_currSelectable, _lastSelectable);
+        selectablesMap.Add(_sourceSelectable.gameObject, currSelectable);
     }
 
     /// <summary>
@@ -375,19 +420,20 @@ public class OverworldMenuController : Singleton<OverworldMenuController>
         {
             string currText = contextText.text;
 
-            SetText(_text);
+            SetText(_text, false);
 
             yield return _duration;
 
-            SetText(currText);
+            SetText(currText, false);
         }
     }
 
     private Routine tempTextRoutine = Routine.Null;
 
-    public void SetText(string _text)
+    public void SetText(string _text, bool _stopRoutine = true)
     {
-        tempTextRoutine.Stop();
+        if (_stopRoutine)
+            tempTextRoutine.Stop();
 
         contextText.text = _text;
     }

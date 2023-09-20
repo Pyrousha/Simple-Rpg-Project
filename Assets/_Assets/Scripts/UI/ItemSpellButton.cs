@@ -3,21 +3,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemButton : UIButton, ISelectHandler
+public class ItemSpellButton : UIButton, ISelectHandler
 {
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemQuantity;
 
-    private Item item;
-    private AttackSpell spell;
+    public Item Item { get; private set; }
+    public AttackSpell Spell { get; private set; }
 
-    bool isSpell = false;
+    public bool IsSpell { get; private set; }
 
     public void SetItem(Item _item, string _quantityText)
     {
-        item = _item;
-        isSpell = false;
+        Item = _item;
+        IsSpell = false;
 
         itemImage.sprite = _item.Icon;
         itemName.text = _item.name;
@@ -27,8 +27,8 @@ public class ItemButton : UIButton, ISelectHandler
 
     public void SetSpell(AttackSpell _spell)
     {
-        spell = _spell;
-        isSpell = true;
+        Spell = _spell;
+        IsSpell = true;
 
         itemImage.sprite = _spell.Description.Icon;
         itemName.text = _spell.name;
@@ -38,6 +38,13 @@ public class ItemButton : UIButton, ISelectHandler
 
     public override void OnSelect(BaseEventData eventData)
     {
-        //OverworldMenuController.Instance.OnSelectedItem()
+        base.OnSelect(eventData);
+
+        OverworldMenuController.Instance.OnSelectedItemSpell(this);
+    }
+
+    public void OnClick()
+    {
+        OverworldMenuController.Instance.OnClickedItemSpell(this);
     }
 }
