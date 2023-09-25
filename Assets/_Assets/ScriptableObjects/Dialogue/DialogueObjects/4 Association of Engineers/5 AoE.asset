@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
+  m_Name: 5 AoE
+  m_EditorClassIdentifier: 
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: 4087c6747050b7945b93a30657017aaf, type: 2}
+    Text: "Here we go. Yes. There were reports of strange shadows and ominous noises
+      coming from the tower a few weeks ago. Then, the water just stopped coming.\r"
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  - Speaker: {fileID: 0}
+    Text: 
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField:
+  - responseText: What kind of noises?
+    nextDialogueObject: {fileID: 11400000, guid: 1017c1bc6d058f542a2d5e646e953006,
+      type: 2}
+  - responseText: A gang?
+    nextDialogueObject: {fileID: 11400000, guid: 4a8dfe8dc5e70c9419e6ac0bbaae7a85,
+      type: 2}

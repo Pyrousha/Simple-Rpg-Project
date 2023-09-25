@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
+  m_Name: 1 Focsle-Dalamil
+  m_EditorClassIdentifier: 
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: 6477f7a3e5faa3444a324fac4bbad9d4, type: 2}
+    Text: "Didn't really expect to see you here, kid. But, since you're here, I assume
+      you got questions.\r"
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField:
+  - responseText: Do you know anything about the water tower?
+    nextDialogueObject: {fileID: 11400000, guid: 64ae20d6a69122c4d91a78672e2d46e8,
+      type: 2}
+  - responseText: Are you part of the gang?
+    nextDialogueObject: {fileID: 11400000, guid: c3a22a35c1dae494ea818a2c0d4c0c57,
+      type: 2}
+  - responseText: Did you have a nice lunch?
+    nextDialogueObject: {fileID: 11400000, guid: cd611facc0fbbf146960f05d5377d3e8,
+      type: 2}

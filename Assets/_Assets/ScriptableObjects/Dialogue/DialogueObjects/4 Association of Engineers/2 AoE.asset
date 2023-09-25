@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
+  m_Name: 2 AoE
+  m_EditorClassIdentifier: 
+  <DialogueLines>k__BackingField:
+  - Speaker: {fileID: 11400000, guid: 4087c6747050b7945b93a30657017aaf, type: 2}
+    Text: Did Carla send you back? I've told her not to do that. I'm a rather busy
+      man.
+    OptionalOverrides:
+      PortraitImageOverride: {fileID: 0}
+      VoiceClipOverride: {fileID: 0}
+  <NextDialogueObject>k__BackingField: {fileID: 0}
+  <Responses>k__BackingField:
+  - responseText: Clearly
+    nextDialogueObject: {fileID: 11400000, guid: 37efe2e84561b884cbf7c60a57920dc0,
+      type: 2}
+  - responseText: Sorry to interupt your daydreaming
+    nextDialogueObject: {fileID: 11400000, guid: 35df688ce4675a644a57a18b4bb9b7a4,
+      type: 2}
