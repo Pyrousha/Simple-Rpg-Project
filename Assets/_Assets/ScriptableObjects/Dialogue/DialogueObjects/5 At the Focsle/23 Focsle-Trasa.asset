@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c77e930972665f4f9a9210fba3c3022, type: 3}
-  m_Name: 16IBIP Focsle-Trasa
+  m_Name: 23 Focsle-Trasa
   m_EditorClassIdentifier: 
   <DialogueLines>k__BackingField:
   - Speaker: {fileID: 11400000, guid: 151cba7eb02a2aa4382a1d7de0a06e25, type: 2}
-    Text: "No. We haven't sent a single soul to investigate.\r"
+    Text: So, what do you say? Want to team up on this investigation?
     OptionalOverrides:
       PortraitImageOverride: {fileID: 0}
       VoiceClipOverride: {fileID: 0}
   <NextDialogueObject>k__BackingField: {fileID: 0}
   <Responses>k__BackingField:
-  - responseText: That's odd.
-    nextDialogueObject: {fileID: 11400000, guid: ff9c0bbf6a0aecc4298529b5d8a03082,
+  - responseText: Yes.
+    nextDialogueObject: {fileID: 11400000, guid: fe454110d9433784bbb57b7b6f4ff90f,
       type: 2}
-  - responseText: Why not?
-    nextDialogueObject: {fileID: 11400000, guid: 2569407b1597c5046847ebc2658fa2cd,
+  - responseText: No.
+    nextDialogueObject: {fileID: 11400000, guid: babdef687ee2ecb4e8557b1843b48c45,
       type: 2}
